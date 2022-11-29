@@ -11,9 +11,8 @@ public class Main {
         } else {
 
             for (int i = 1; i <= value; i++)
-                result = result * i;
+                result *= i;
             {System.out.println("Ваш факториал  " + value + "!  равен:" + result);}
-            return;
         }
     }
 }

@@ -1,5 +1,5 @@
 public class TestQueue implements Queue {
-    public static void main(String[] args) {
+    public void main(String[] args) {
         QueueArray queue = new QueueArray(10);
         Queue.AddQueue(1);
         Queue.AddQueue(2);
