@@ -1,4 +1,4 @@
-
+package com;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Random;
+import com.Tiles.*;
 
 
 
@@ -121,6 +122,9 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
         // react to key down events
         player.keyPressed(e,MAS_MAP, enemies);
     }
+    public void mousePressed(MouseEvent m){
+        player.mousePressed(m,enemies);
+    }
 
     @Override
     public void keyReleased(KeyEvent e) {
@@ -224,7 +228,6 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
         }
         return treeList;
     }
-
     private ArrayList<Grass> fillGrass() {
         ArrayList<Grass> grassList = new ArrayList<>();
         for (int i = 0; i < COLUMNS; i++) {
@@ -232,7 +235,6 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
                 grassList.add(new Grass(i, j));
             }
         }
-
         return grassList;
     }
 
@@ -243,7 +245,7 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
         for (Enemy enemy : enemies) {
             if (enemy.isAlive()) {
                 enemy.getDamage(15);
-                // if the player is on the same tile as a coin, collect it
+                // if the player is on the same tile as an enemy, collect it
                 if (player.getPos().equals(enemy.getPos())) {
                     // give the player some points for picking this up
                     player.addExperience(100);
@@ -251,7 +253,7 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
                 }
             }
         }
-        // remove collected coins from the board
+        // remove enemies from the board
         enemies.removeAll(enemiesKilled);
     }
 }

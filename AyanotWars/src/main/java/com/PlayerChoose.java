@@ -1,3 +1,8 @@
+package com;
+
+import com.CreateMap;
+import com.Player;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,7 +27,7 @@ public class PlayerChoose implements ActionListener  {
 
         logo = new JLabel();
         logo.setBounds(250, 30, 400, 100);
-        logo.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("logo.png"))));
+        logo.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/logo.png"))));
 
         warrior = new JButton("Warrior");
         warrior.setFont(myFont);

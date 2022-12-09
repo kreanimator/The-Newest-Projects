@@ -1,7 +1,9 @@
+package com;
+
 public class Unit{
 
     double exp = 0;
-    double hp = 0;
+    protected double hp = 0;
     int level = 0;
     double damage = 0;
     boolean isKilled;

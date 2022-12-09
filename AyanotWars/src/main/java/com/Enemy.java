@@ -1,32 +1,40 @@
+package com;
+
+import com.CreateMap;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
 
 
-public class Boss {
+public class Enemy extends Unit {
 
     private BufferedImage image;
 
     private final Point pos;
+    private int hp = 100;
+    private boolean isKilled;
 
-    public Boss(int x, int y) {
+    public Enemy(int x, int y) {
 
         loadImage();
-
-
         pos = new Point(x, y);
+    }
+
+
+
+    void getDamage(int value){
+        this.hp -= value;
     }
 
     private void loadImage() {
         try {
 
 //            image = ImageIO.read(new File("/images/enemy.png"));
-            File enemyImageFile = new File("src/main/resources/images/boss.png");
+            File enemyImageFile = new File("src/main/resources/images/enemy.png");
             System.out.println("File IO is OK");
             image = ImageIO.read(enemyImageFile);
         } catch (IOException exc) {
@@ -58,14 +66,14 @@ public class Boss {
         } catch (Exception ignored) {
         }
     }
-
-
-    //    public void move (){
-//
-//    }
-    private static int direction() {
-        return new Random().nextInt(2);
+    boolean isAlive (){
+        return hp > 0;
     }
+    boolean isKilled() {return hp <= 0;}
+
+//    private static int direction() {
+//        return new Random().nextInt(2);
+//    }
     public void draw(Graphics g, ImageObserver observer) {
 
         g.drawImage(

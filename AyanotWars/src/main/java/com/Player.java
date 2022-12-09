@@ -1,11 +1,17 @@
+package com;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import com.PlayerType.Mage;
+import com.PlayerType.Warlock;
+import com.PlayerType.Warrior;
 
 public class Player extends Unit {
 
@@ -14,13 +20,17 @@ public class Player extends Unit {
 
     private int experience;
     private static String playerClass = "";
+    protected int damage;
 
     public static void setPlayerClass(String playerClass) {
         if (playerClass == "warrior") {
+            Warrior warrior = new Warrior();
             Player.playerClass = "src/main/resources/images/warrior.png";
         } else if (playerClass == "warlock") {
+            Warlock warlock = new Warlock();
             Player.playerClass = "src/main/resources/images/warlock.png";
         } else if (playerClass == "mage") {
+           Mage mage = new Mage();
             Player.playerClass = "src/main/resources/images/mage.png";
         }
     }
@@ -59,6 +69,7 @@ public class Player extends Unit {
     public void keyPressed(KeyEvent e, int[][] obstacles, ArrayList<Enemy> enemies) {
 
         int key = e.getKeyCode();
+
 
         try {
             if (key == KeyEvent.VK_UP && obstacles[pos.x][pos.y - 1] != 2) {
@@ -100,6 +111,25 @@ public class Player extends Unit {
         } catch (Exception nothingSpecial){
 
         }
+
+    }
+    public void mousePressed(MouseEvent m,ArrayList<Enemy> enemies){
+        int mb = m.getButton();
+
+        try {
+
+            if (mb == MouseEvent.BUTTON1) {
+                attack();
+                for (Enemy enemy : enemies) {
+                    enemy.getDamage(15);
+                }
+            }
+        } catch (Exception nothingSpecial){
+
+        }
+    }
+    void attack (int damage){
+        this.hp -= damage;
     }
 
     public void tick() {
