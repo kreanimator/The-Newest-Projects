@@ -1,16 +1,7 @@
-public class Warrior implements Player{
+public class Warrior extends Player{
 
-    double exp = 0;
-    double hp = 200;
-    int level = 0;
-    double damage = 15;
-
-    @Override
-    public void attack(){
-
-    }
-    @Override
-    public void move(){
-
+    public Warrior() {
+        this.hp = 200;
+        this.damage = 20;
     }
 }
