@@ -138,7 +138,7 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
         // set the text to be displayed
         String text = "Exp " + player.getExperience();
         String textLvl = "Level " + player.getLevel();
-        String hplvl = "HP " + player.getHP();
+        String hpLvl = "HP " + player.getHP();
         // we need to cast the Graphics to Graphics2D to draw nicer text
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.getHSBColor(31,18,95));
@@ -179,12 +179,7 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
         int x2 = (int) (rect.getX() + (rect.getWidth() - metrics.stringWidth(text)) / 8);
         // determine the y coordinate for the text
         // (note we add the ascent, as in java 2d 0 is top of the screen)
-        g2d.drawString(hplvl,x2,y);
-    }
-    private void drawHealthBar(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(java.awt.Color.RED);
-        g2.fillRect(0,60, 50, 10);
+        g2d.drawString(hpLvl,x2,y);
     }
 
     private ArrayList<Enemy> populateEnemies() {
@@ -261,7 +256,6 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
         }
         return grassList;
     }
-
     private void killEnemies() {
         // allow player to pickup coins
         ArrayList<Enemy> enemiesKilled = new ArrayList<>();
