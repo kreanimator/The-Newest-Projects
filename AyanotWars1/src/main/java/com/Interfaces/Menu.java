@@ -1,3 +1,5 @@
+package com.Interfaces;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -27,7 +29,7 @@ public class Menu implements ActionListener {
 
         logo = new JLabel();
         logo.setBounds(250, 30, 400, 100);
-        logo.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("logo.png"))));
+        logo.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/logo.png"))));
 
 
         startButton = new JButton("Start");

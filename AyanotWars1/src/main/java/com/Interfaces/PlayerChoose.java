@@ -1,3 +1,8 @@
+package com.Interfaces;
+
+import com.CreateMap;
+import com.Player;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,7 +14,6 @@ public class PlayerChoose implements ActionListener  {
     JButton warrior, warlock, mage;
     JLabel logo;
     JLabel iconWar, iconMag, iconWarl;
-
     Font myFont = new Font("TimesRoman", Font.BOLD, 30);
 
     public PlayerChoose() {
@@ -23,7 +27,7 @@ public class PlayerChoose implements ActionListener  {
 
         logo = new JLabel();
         logo.setBounds(250, 30, 400, 100);
-        logo.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("logo.png"))));
+        logo.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/logo.png"))));
 
         warrior = new JButton("Warrior");
         warrior.setFont(myFont);
@@ -42,19 +46,19 @@ public class PlayerChoose implements ActionListener  {
 
         iconWar = new JLabel();
         iconWar.setBounds(250, 325, 60, 60);
-        iconWar.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("warrior.png"))));
+        iconWar.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/warrior.png"))));
         iconWar.setHorizontalAlignment(SwingConstants.LEFT);
         iconWar.setVisible(true);
 
         iconWarl = new JLabel();
         iconWarl.setBounds(250, 405, 60, 60);
-        iconWarl.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("warlock.png"))));
+        iconWarl.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/warlock.png"))));
         iconWarl.setHorizontalAlignment(SwingConstants.LEFT);
         iconWarl.setVisible(true);
 
         iconMag = new JLabel();
         iconMag.setBounds(250, 485, 60, 60);
-        iconMag.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("mage.png"))));
+        iconMag.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icons/mage.png"))));
         iconMag.setHorizontalAlignment(SwingConstants.LEFT);
         iconMag.setVisible(true);
 
@@ -69,17 +73,17 @@ public class PlayerChoose implements ActionListener  {
 
     }
     JFrame window = new JFrame("Ayanot wars");
-//    CreateMap createMap = new CreateMap();
 
     public void initWindow(){
-//        window.add(createMap);
+
         window.setSize(900,900);
-//        window.addKeyListener(createMap);
-        window.setLocationRelativeTo(null);
+
+        //window.setLocationRelativeTo(null); //
         window.setVisible(true);
         window.setResizable(false);
         window.pack();
         window.setLayout(null);
+
     }
 
     @Override
@@ -90,7 +94,7 @@ public class PlayerChoose implements ActionListener  {
             window.add(createMap);
             window.addKeyListener(createMap);
             SwingUtilities.invokeLater(this::initWindow);
-//           new CreateMap();
+
             chooseWindow.dispose();
         }
         if (e.getSource() == warlock) {
@@ -99,7 +103,6 @@ public class PlayerChoose implements ActionListener  {
             window.add(createMap);
             window.addKeyListener(createMap);
             SwingUtilities.invokeLater(this::initWindow);
-//           new CreateMap();
             chooseWindow.dispose();
         }
         if (e.getSource() == mage) {
@@ -108,7 +111,6 @@ public class PlayerChoose implements ActionListener  {
             window.add(createMap);
             window.addKeyListener(createMap);
             SwingUtilities.invokeLater(this::initWindow);
-//           new CreateMap();
             chooseWindow.dispose();
         }
     }

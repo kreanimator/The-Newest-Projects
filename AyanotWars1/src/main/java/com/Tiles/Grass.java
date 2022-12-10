@@ -1,3 +1,7 @@
+package com.Tiles;
+
+import com.CreateMap;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -5,17 +9,14 @@ import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 
-public class Stone {
-
+public class Grass {
     private BufferedImage image;
 
     private final Point pos;
 
-    public Stone(int x, int y) {
+    public Grass(int x, int y) {
 
         loadImage();
-
-
         pos = new Point(x, y);
     }
 
@@ -23,16 +24,14 @@ public class Stone {
         try {
 
 //            image = ImageIO.read(new File("/images/enemy.png"));
-            File enemyImageFile = new File("src/main/resources/images/stone.png");
+            File enemyImageFile = new File("src/main/resources/images/grass.png");
             System.out.println("File IO is OK");
             image = ImageIO.read(enemyImageFile);
         } catch (IOException exc) {
             System.out.println("Error opening image file: " + exc.getMessage());
         }
     }
-
     public void draw(Graphics g, ImageObserver observer) {
-
         g.drawImage(
                 image,
                 pos.x * CreateMap.TILE_SIZE,
@@ -40,10 +39,8 @@ public class Stone {
                 observer
         );
     }
-
     public Point getPos() {
         return pos;
     }
 
 }
-

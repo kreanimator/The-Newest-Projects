@@ -1,3 +1,7 @@
+package com.Tiles;
+
+import com.CreateMap;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -5,13 +9,13 @@ import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 
-public class Enemy {
+public class Stone {
 
     private BufferedImage image;
 
     private final Point pos;
 
-    public Enemy(int x, int y) {
+    public Stone(int x, int y) {
 
         loadImage();
 
@@ -23,7 +27,7 @@ public class Enemy {
         try {
 
 //            image = ImageIO.read(new File("/images/enemy.png"));
-            File enemyImageFile = new File("src/main/resources/images/enemy.png");
+            File enemyImageFile = new File("src/main/resources/images/stone.png");
             System.out.println("File IO is OK");
             image = ImageIO.read(enemyImageFile);
         } catch (IOException exc) {
@@ -46,3 +50,4 @@ public class Enemy {
     }
 
 }
+
