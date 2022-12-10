@@ -1,4 +1,4 @@
-package com;
+package com.Interfaces;
 
 import javax.swing.*;
 import java.awt.*;

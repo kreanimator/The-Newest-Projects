@@ -1,4 +1,4 @@
-package com;
+package com.Interfaces;
 
 import com.CreateMap;
 import com.Player;
