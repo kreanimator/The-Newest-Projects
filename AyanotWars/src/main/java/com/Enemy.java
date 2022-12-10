@@ -70,6 +70,7 @@ public class Enemy extends Unit {
         return hp > 0;
     }
     boolean isKilled() {return hp <= 0;}
+    public String getHP(){return String.valueOf(hp);}
 
 //    private static int direction() {
 //        return new Random().nextInt(2);
@@ -82,6 +83,11 @@ public class Enemy extends Unit {
                 pos.y * CreateMap.TILE_SIZE,
                 observer
         );
+    }
+    public void drawHealthBar(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(java.awt.Color.RED);
+        g2.fillRect(pos.x * CreateMap.TILE_SIZE, pos.y * CreateMap.TILE_SIZE-10, 50, 5);
     }
 
     public Point getPos() {

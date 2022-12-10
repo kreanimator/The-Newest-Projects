@@ -7,7 +7,6 @@ import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Random;
 import com.Tiles.*;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 
@@ -96,6 +95,7 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
         for (Enemy enemy : enemies) {
             enemy.draw(g, this);
             enemy.tick();
+            enemy.drawHealthBar(g);
 
         }
         for (Stone stone : stone) {
@@ -140,6 +140,9 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
         String textLvl = "Level " + player.getLevel();
         String hplvl = "HP " + player.getHP();
         // we need to cast the Graphics to Graphics2D to draw nicer text
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(Color.getHSBColor(31,18,95));
+        g2.fillRect(0, TILE_SIZE * (ROWS - 1), TILE_SIZE * COLUMNS, TILE_SIZE);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(
                 RenderingHints.KEY_TEXT_ANTIALIASING,
@@ -159,8 +162,7 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
         // the text will be contained within this rectangle.
         // here I've sized it to be the entire bottom row of board tiles
         Rectangle rect = new Rectangle(0, TILE_SIZE * (ROWS - 1), TILE_SIZE * COLUMNS, TILE_SIZE);
-        rect.setFill(Color.WHITE);
-        rect.setVisible(true);
+
 
 
         // determine the x coordinate for the text
@@ -178,6 +180,11 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
         // determine the y coordinate for the text
         // (note we add the ascent, as in java 2d 0 is top of the screen)
         g2d.drawString(hplvl,x2,y);
+    }
+    private void drawHealthBar(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(java.awt.Color.RED);
+        g2.fillRect(0,60, 50, 10);
     }
 
     private ArrayList<Enemy> populateEnemies() {
@@ -266,7 +273,9 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
                 if (player.getPos().equals(enemy.getPos())) {
                     // give the player some points for picking this up
                     player.addExperience(100);
-                    player.addLevel(1);
+                    for(int i =1; i < 20; i++) {
+                        player.addLevel(i);
+                    }
                     enemiesKilled.add(enemy);
 //                }if (String.valueOf(NUM_ENEMIES).equals(String.valueOf(enemiesKilled))){
 //                    populateEnemies();

@@ -1,18 +1,24 @@
 package com.Interfaces;
 
+import com.CreateMap;
+import com.Enemy;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+
+import java.awt.*;
 import java.time.Duration;
 
 
 public class Healthbar {
 
+
+
+}
 //    Rectangle base = new Rectangle(0, 0, 400, 20);
 //        base.setFill(Color.GRAY);
 //
@@ -32,4 +38,3 @@ public class Healthbar {
 //
 //    add((HP));
 //        HP.setVisible(true);
-}
