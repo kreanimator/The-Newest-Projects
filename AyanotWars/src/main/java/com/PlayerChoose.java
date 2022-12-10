@@ -78,7 +78,7 @@ public class PlayerChoose implements ActionListener  {
 
         window.setSize(900,900);
 
-        window.setLocationRelativeTo(null);
+        //window.setLocationRelativeTo(null); //
         window.setVisible(true);
         window.setResizable(false);
         window.pack();

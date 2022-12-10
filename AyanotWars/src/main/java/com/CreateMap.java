@@ -7,17 +7,21 @@ import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Random;
 import com.Tiles.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+
 
 
 
 public class CreateMap extends JPanel implements ActionListener , KeyListener {
 
     // controls the size of the map
+    static Random gen = new Random();
     public static final int TILE_SIZE = 50;
     public static final int ROWS = 15;
     public static final int COLUMNS = 30;
     // controls how many enemies appear on the board
-    public static final int NUM_ENEMIES = 15;
+    public static final int NUM_ENEMIES = gen.nextInt(10,30);
     public static final int NUM_ROCKS = 15;
     public static final int NUM_TREES = 15;
 //    public static final int NUM_BOSS = 1;
@@ -28,12 +32,11 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
     private static final long serialVersionUID = 490905409104883233L;
 
     // objects that appear on the game board
-    private final Player player;
+    private final Player player = new Player();
     private final ArrayList<Enemy> enemies;
     private final ArrayList<Stone> stone;
     private final ArrayList<Tree> trees;
     private final ArrayList<Grass> grasses;
-//    private final ArrayList<Boss> bosses;
 
     public CreateMap() {
         // set the game board size
@@ -43,7 +46,7 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
         MAS_MAP[1][0] = 1;
         MAS_MAP[0][1] = 1;
         // initialize the game state
-        player = new Player();
+        //player = new Player();
         enemies = populateEnemies();
         stone = fillStones();
         trees = fillTrees();
@@ -105,8 +108,7 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
 //            boss.draw(g, this);
 //        }
         player.draw(g, this);
-//        boss.draw(g, this);
-        drawExperience(g);
+        drawActionPanel(g);
 
         // this smooths out animations on some systems
         Toolkit.getDefaultToolkit().sync();
@@ -131,9 +133,12 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
         // react to key up events
     }
 
-    private void drawExperience(Graphics g) {
+
+    private void drawActionPanel(Graphics g) {
         // set the text to be displayed
         String text = "Exp " + player.getExperience();
+        String textLvl = "Level " + player.getLevel();
+        String hplvl = "HP " + player.getHP();
         // we need to cast the Graphics to Graphics2D to draw nicer text
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(
@@ -146,7 +151,7 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
                 RenderingHints.KEY_FRACTIONALMETRICS,
                 RenderingHints.VALUE_FRACTIONALMETRICS_ON);
         // set the text color and font
-        g2d.setColor(new Color(0, 0, 0));
+        g2d.setColor(java.awt.Color.BLACK);
         g2d.setFont(new Font("Lato", Font.BOLD, 25));
         // draw the score in the bottom center of the screen
         // https://stackoverflow.com/a/27740330/4655368
@@ -154,13 +159,25 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
         // the text will be contained within this rectangle.
         // here I've sized it to be the entire bottom row of board tiles
         Rectangle rect = new Rectangle(0, TILE_SIZE * (ROWS - 1), TILE_SIZE * COLUMNS, TILE_SIZE);
+        rect.setFill(Color.WHITE);
+        rect.setVisible(true);
+
+
         // determine the x coordinate for the text
-        int x = rect.x + (rect.width - metrics.stringWidth(text)) / 2;
+        int x = (int) (rect.getX() + (rect.getWidth() - metrics.stringWidth(text)) / 2);
         // determine the y coordinate for the text
         // (note we add the ascent, as in java 2d 0 is top of the screen)
-        int y = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
+        int y = (int) (rect.getY() + ((rect.getHeight() - metrics.getHeight()) / 2) + metrics.getAscent());
         // draw the string
         g2d.drawString(text, x, y);
+        int x1 = (int) (rect.getX() + (rect.getWidth() - metrics.stringWidth(text)) / 3);
+        // determine the y coordinate for the text
+        // (note we add the ascent, as in java 2d 0 is top of the screen)
+        g2d.drawString(textLvl,x1,y);
+        int x2 = (int) (rect.getX() + (rect.getWidth() - metrics.stringWidth(text)) / 8);
+        // determine the y coordinate for the text
+        // (note we add the ascent, as in java 2d 0 is top of the screen)
+        g2d.drawString(hplvl,x2,y);
     }
 
     private ArrayList<Enemy> populateEnemies() {
@@ -179,9 +196,9 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
                 i++;
             }
         }
-
         return enemyList;
     }
+
 
     private ArrayList<Stone> fillStones() {
         ArrayList<Stone> stoneList = new ArrayList<>();
@@ -244,13 +261,17 @@ public class CreateMap extends JPanel implements ActionListener , KeyListener {
 
         for (Enemy enemy : enemies) {
             if (enemy.isAlive()) {
-                enemy.getDamage(15);
+                enemy.getDamage(player.damage);
                 // if the player is on the same tile as an enemy, collect it
                 if (player.getPos().equals(enemy.getPos())) {
                     // give the player some points for picking this up
                     player.addExperience(100);
+                    player.addLevel(1);
                     enemiesKilled.add(enemy);
-                }
+//                }if (String.valueOf(NUM_ENEMIES).equals(String.valueOf(enemiesKilled))){
+//                    populateEnemies();
+            }
+                    //TODO: Regeneration of enemies
             }
         }
         // remove enemies from the board

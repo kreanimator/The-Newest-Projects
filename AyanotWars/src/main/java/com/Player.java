@@ -9,6 +9,9 @@ import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Random;
+
 import com.PlayerType.Mage;
 import com.PlayerType.Warlock;
 import com.PlayerType.Warrior;
@@ -19,34 +22,38 @@ public class Player extends Unit {
     private final Point pos;
 
     private int experience;
+    protected int hp =100;
+    private int level = 1;
     private static String playerClass = "";
     protected int damage;
 
     public static void setPlayerClass(String playerClass) {
-        if (playerClass == "warrior") {
-            Warrior warrior = new Warrior();
+
+        if (Objects.equals(playerClass, "warrior")) {
             Player.playerClass = "src/main/resources/images/warrior.png";
-        } else if (playerClass == "warlock") {
-            Warlock warlock = new Warlock();
+            Warrior warrior = new Warrior();
+        } else if (Objects.equals(playerClass, "warlock")) {
             Player.playerClass = "src/main/resources/images/warlock.png";
-        } else if (playerClass == "mage") {
-           Mage mage = new Mage();
+            Warlock warlock = new Warlock();
+        } else if (Objects.equals(playerClass, "mage")) {
             Player.playerClass = "src/main/resources/images/mage.png";
+            Mage mage = new Mage();
         }
     }
 
     public Player() {
-
+        Random rd = new Random();
+        int dx = rd.nextInt();
+        int dy = rd.nextInt();
         loadImage();
 
-        pos = new Point(0, 0);
+        pos = new Point(dx, dy);
         experience = 0;
     }
 
     private void loadImage() {
         try {
 
-            //            image = ImageIO.read(new File("images/warrior.png"));
             File playerImgFile = new File(playerClass);
             System.out.println("File IO is ok");
             image = ImageIO.read(playerImgFile);
@@ -149,9 +156,21 @@ public class Player extends Unit {
     public String getExperience() {
         return String.valueOf(experience);
     }
+    public String getLevel() {
+        return String.valueOf(level);
+    }
+    public String getHP(){return String.valueOf(hp);}
 
     public void addExperience(int amount) {
         experience += amount;
+    }
+    public void addLevel(int amount){
+        if (experience == 1000){
+            level += amount;
+            experience = 0;
+            hp = (int) (hp * 1.2);
+
+        }
     }
 
     public Point getPos() {

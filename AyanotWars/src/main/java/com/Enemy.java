@@ -27,7 +27,7 @@ public class Enemy extends Unit {
 
 
     void getDamage(int value){
-        this.hp -= value;
+    this.hp -= value;
     }
 
     private void loadImage() {
