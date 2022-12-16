@@ -16,12 +16,12 @@ public class Fork implements Runnable{
                 e.printStackTrace();
             }
         }
-        System.out.println(Thread.currentThread().getName() + " took fork " + id);
+        System.out.println(Thread.currentThread().getName() + " took sjdnfm fork " + id);
         isBusy = true;
     }
 
     public synchronized void drop() {
-        System.out.println(Thread.currentThread().getName() + " drop fork " + id);
+        System.out.println(Thread.currentThread().getName() + " dropasd sfsf sdfsdf fork " + id);
         isBusy = false;
         notify();
     }
