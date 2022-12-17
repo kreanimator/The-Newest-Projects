@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - GameLauncher",
+            "request": "launch",
+            "mainClass": "com.zerulus.game.GameLauncher",
+            "projectName": "game-decay"
+        }
+    ]
+}
