@@ -8,11 +8,13 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Stone {
 
     private BufferedImage image;
-
+    public static final int NUM_ROCKS = ((CreateMap.ROWS*CreateMap.COLUMNS)/30);
     private final Point pos;
 
     public Stone(int x, int y) {
@@ -22,13 +24,26 @@ public class Stone {
 
         pos = new Point(x, y);
     }
+    public static ArrayList<Stone> fillStones() {
+        ArrayList<Stone> stoneList = new ArrayList<>();
+        Random rand = new Random();
+        for (int i = 0; i < NUM_ROCKS; ) {
+            int rockX = rand.nextInt(CreateMap.COLUMNS-1);
+            int rockY = rand.nextInt(CreateMap.ROWS-1);
+            if (CreateMap.MAS_MAP[rockX][rockY] == 0) {
+                CreateMap.MAS_MAP[rockX][rockY] = 2;
+                stoneList.add(new Stone(rockX, rockY));
+                i++;
+            }
+        }
+        return stoneList;
+    }
 
     private void loadImage() {
         try {
-
-//            image = ImageIO.read(new File("/images/enemy.png"));
-            File enemyImageFile = new File("src/main/resources/images/stone.png");
-            System.out.println("File IO is OK");
+            Random rand = new Random();
+            int randomNum = rand.nextInt((4 - 1) + 1) + 1;
+            File enemyImageFile = new File("src/main/resources/images/tiles/rocks/"+randomNum+".png");
             image = ImageIO.read(enemyImageFile);
         } catch (IOException exc) {
             System.out.println("Error opening image file: " + exc.getMessage());
@@ -37,12 +52,8 @@ public class Stone {
 
     public void draw(Graphics g, ImageObserver observer) {
 
-        g.drawImage(
-                image,
-                pos.x * CreateMap.TILE_SIZE,
-                pos.y * CreateMap.TILE_SIZE,
-                observer
-        );
+        g.drawImage(image, ((pos.x * CreateMap.TILE_SIZE)-(CreateMap.TILE_SIZE/2))+CreateMap.xOffset,
+                (pos.y * CreateMap.TILE_SIZE-(CreateMap.TILE_SIZE/2))+CreateMap.yOffset, observer);
     }
 
     public Point getPos() {

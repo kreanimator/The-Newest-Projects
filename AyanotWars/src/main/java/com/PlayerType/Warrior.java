@@ -1,17 +1,16 @@
 package com.PlayerType;
 
-import com.Player;
-import com.Skills.PowerUp;
+import com.Units.Player;
 
 
-
-public class Warrior extends Player {
+public class Warrior {
 
     //PowerUp powerUp = new PowerUp();
 
-    public Warrior() {
-        this.hp = 200;
-        this.damage = 20;
-    }
+//    public Warrior() {
+//
+//        this.hp = 200;
+//        this.damage = 20;
+//    }
 
 }

@@ -1,20 +1,15 @@
 package com.PlayerType;
-import com.Player;
-import com.Skills.Heal;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import com.Units.Player;
 
 
-public class Warlock extends Player {
+public class Warlock {
 
 
     //Heal heal = new Heal();
-    public Warlock() {
-        this.hp = 150;
-        this.damage = 15;
-    }
+//    public Warlock() {
+//        this.hp = 150;
+//        this.damage = 15;
+//    }
 
 }
