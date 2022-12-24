@@ -29,9 +29,10 @@ final class SudokuGrid extends JPanel {
 
     //Panels for placing everything
     private final JPanel gridPanel;
-    private final JPanel buttonPanel;
+    private final JPanel buttonPanel,buttonPanel1;
     private final JButton undoButton;
     private final JButton clearButton;
+    private final JButton [] numButtons;
 
     private final JPanel[][] minisquarePanels;
 
@@ -49,10 +50,11 @@ final class SudokuGrid extends JPanel {
 
         this.gridPanel   = new JPanel();
         this.buttonPanel = new JPanel();
+        this.buttonPanel1 = new JPanel();
 
         //Borders between grids
         Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
-        Dimension fieldDimension = new Dimension(30, 30);
+        Dimension fieldDimension = new Dimension(35, 35);
 
             //Pop-up menu listener
         class PopupMenuListener implements ActionListener {
@@ -120,19 +122,34 @@ final class SudokuGrid extends JPanel {
                 minisquarePanels[minisquareY][minisquareX].add(grid[y][x]);
             }
         }
+
         //Thick borders
         this.gridPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK,
                 2));
         this.clearButton = new JButton("Clear");
         this.undoButton = new JButton("Undo");
-
-        this.buttonPanel.setLayout(new BorderLayout());
+        this.buttonPanel1.setLayout(new GridLayout(1,11,1,1));
         this.buttonPanel.add(clearButton, BorderLayout.WEST);
+
+        numButtons = new JButton[10];
+        for (int i =1; i<=9; i++){
+            numButtons[i] = new JButton();
+            numButtons[i].setText(String.valueOf(i));
+            numButtons[i].setVisible(true);
+            //numButtons[i].setFont(new Font("Arial",Font.BOLD,8));
+            numButtons[i].setSize(15,15);
+            numButtons[i].setFocusable(false);
+            this.buttonPanel1.add(numButtons[i]);
+
+        }
+
         this.buttonPanel.add(undoButton, BorderLayout.EAST);
 
         this.setLayout(new BorderLayout());
         this.add(gridPanel,   BorderLayout.NORTH);
         this.add(buttonPanel, BorderLayout.SOUTH);
+        this.add(buttonPanel1);
+
 
         clearButton.addActionListener((ActionEvent e) -> {
             clearAll();
