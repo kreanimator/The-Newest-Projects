@@ -10,7 +10,7 @@ import javax.swing.JMenuItem;
 
 public class SudokuFrame {
 
-    private final JFrame frame = new JFrame("Sudoku solver");
+    private final JFrame frame = new JFrame("Sudoku");
     private SudokuGrid grid;
 
     public SudokuFrame() {
