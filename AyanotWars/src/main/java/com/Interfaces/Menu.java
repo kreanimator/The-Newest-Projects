@@ -69,6 +69,7 @@ public class Menu implements ActionListener {
         if (e.getSource() == startButton) {
             window.getContentPane().removeAll();
             window.add(new PlayerChoose());
+            window.dispose();
 
 
         }

@@ -2,8 +2,8 @@ package com;
 
 import com.Items.*;
 import com.Tiles.*;
-import com.Units.Boss;
-import com.Units.Enemy;
+import com.Units.Enemies.Boss;
+import com.Units.Enemies.Enemy;
 import com.Units.Npc;
 import com.Units.Player;
 import com.Interfaces.*;
@@ -155,7 +155,6 @@ public class CreateMap extends JPanel implements ActionListener, KeyListener {
         for (Enemy enemy : enemies) {
             enemy.draw(g, this);
             enemy.tick();
-            //enemy.attackEnemies();
             enemy.drawHealthBar(g);
         }
         for (Boss boss : bosses) {

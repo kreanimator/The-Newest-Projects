@@ -4,7 +4,7 @@ package com.Interfaces;
 import com.Items.HealthPotion;
 import com.Items.Item;
 import com.Items.ManaPotion;
-import com.Units.Enemy;
+import com.Units.Enemies.Enemy;
 
 
 
