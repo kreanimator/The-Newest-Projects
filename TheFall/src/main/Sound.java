@@ -14,13 +14,18 @@ public class Sound {
         soundURL[0]= getClass().getResource("/resources/sounds/music/Dawn - slow - scary.wav");
         soundURL[1]= getClass().getResource("/resources/sounds/pickup.wav");
         soundURL[2]= getClass().getResource("/resources/sounds/door.wav");
-        soundURL[3]= getClass().getResource("/resources/sounds/inventory/coin3.wav");
+        soundURL[3]= getClass().getResource("/resources/sounds/coin.wav");
         soundURL[4]= getClass().getResource("/resources/sounds/swing.wav");
         soundURL[5]= getClass().getResource("/resources/sounds/hitslime.wav");
         soundURL[6]= getClass().getResource("/resources/sounds/locker.wav");
         soundURL[7]= getClass().getResource("/resources/sounds/receivedamage.wav");
         soundURL[8]= getClass().getResource("/resources/sounds/levelup.wav");
         soundURL[9]= getClass().getResource("/resources/sounds/cursor.wav");
+        soundURL[10]= getClass().getResource("/resources/sounds/pistolreload.wav");
+        soundURL[11]= getClass().getResource("/resources/sounds/hppack.wav");
+        soundURL[12]= getClass().getResource("/resources/sounds/pistol.wav");
+        soundURL[13]= getClass().getResource("/resources/sounds/shotgun.wav");
+        soundURL[14]= getClass().getResource("/resources/sounds/shotgunreload.wav");
 
     }
 

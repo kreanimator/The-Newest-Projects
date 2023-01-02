@@ -16,7 +16,7 @@ public class Player extends Entity {
     public final int screenY;
     public boolean attackCanceled = false;
     public ArrayList<Entity> inventory = new ArrayList<>();
-    public final int maxInventorySize =20;
+    public final int maxInventorySize = 20;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         super(gp);
@@ -35,10 +35,7 @@ public class Player extends Entity {
         solidArea.height = gp.tileSize / 2;
 
 
-
-
         setDefaultValues();
-
         getPlayerAtkImage();
         getPlayerImage();
         setItems();
@@ -60,16 +57,20 @@ public class Player extends Entity {
         coin = 0;
         currentWeapon = new OBJ_Melee_Bat_normal(gp);
         currentArmor = new OBJ_Armor_Learther(gp);
+        projectiles = new OBJ_Bullet(gp);
         attack = getAttack();
         defense = getDefense();
         maxHP = 6;
         life = maxHP;
+        maxAmmo = 10;
+        pistolAmmo = 5;
+        shotgunAmmo = 3;
     }
 
-    public void setItems(){
+    public void setItems() {
         inventory.add(currentWeapon);
         inventory.add(currentArmor);
-        inventory.add(new Key(gp));
+        inventory.add(new OBJ_Key(gp));
         inventory.add(new OBJ_Wrench(gp));
         inventory.add(new OBJ_Shotgun(gp));
         inventory.add(new OBJ_Pistol(gp));
@@ -81,7 +82,6 @@ public class Player extends Entity {
         inventory.add(new OBJ_HPPack(gp));
 
     }
-
 
 
     public void getPlayerImage() {
@@ -100,18 +100,64 @@ public class Player extends Entity {
     }
 
     public void getPlayerAtkImage() {
-        atkup1 = setup("player/attack/atkup1", gp.tileSize, (gp.tileSize * 2));
-        atkup2 = setup("player/attack/atkup2", gp.tileSize, (gp.tileSize * 2));
-        atkup3 = setup("player/attack/atkup3", gp.tileSize, (gp.tileSize * 2));
-        atkdown1 = setup("player/attack/atkdown1", gp.tileSize, (gp.tileSize * 2));
-        atkdown2 = setup("player/attack/atkdown2", gp.tileSize, (gp.tileSize * 2));
-        atkdown3 = setup("player/attack/atkdown3", gp.tileSize, (gp.tileSize * 2));
-        atkleft1 = setup("player/attack/atkleft1", (gp.tileSize * 2), gp.tileSize);
-        atkleft2 = setup("player/attack/atkleft2", (gp.tileSize * 2), gp.tileSize);
-        atkleft3 = setup("player/attack/atkleft3", (gp.tileSize * 2), gp.tileSize);
-        atkright1 = setup("player/attack/atkright1", (gp.tileSize * 2), gp.tileSize);
-        atkright2 = setup("player/attack/atkright2", (gp.tileSize * 2), gp.tileSize);
-        atkright3 = setup("player/attack/atkright3", (gp.tileSize * 2), gp.tileSize);
+
+        if (currentWeapon.type == typeMelee) {
+            atkup1 = setup("player/attack/atkup1", gp.tileSize, (gp.tileSize * 2));
+            atkup2 = setup("player/attack/atkup2", gp.tileSize, (gp.tileSize * 2));
+            atkup3 = setup("player/attack/atkup3", gp.tileSize, (gp.tileSize * 2));
+            atkdown1 = setup("player/attack/atkdown1", gp.tileSize, (gp.tileSize * 2));
+            atkdown2 = setup("player/attack/atkdown2", gp.tileSize, (gp.tileSize * 2));
+            atkdown3 = setup("player/attack/atkdown3", gp.tileSize, (gp.tileSize * 2));
+            atkleft1 = setup("player/attack/atkleft1", (gp.tileSize * 2), gp.tileSize);
+            atkleft2 = setup("player/attack/atkleft2", (gp.tileSize * 2), gp.tileSize);
+            atkleft3 = setup("player/attack/atkleft3", (gp.tileSize * 2), gp.tileSize);
+            atkright1 = setup("player/attack/atkright1", (gp.tileSize * 2), gp.tileSize);
+            atkright2 = setup("player/attack/atkright2", (gp.tileSize * 2), gp.tileSize);
+            atkright3 = setup("player/attack/atkright3", (gp.tileSize * 2), gp.tileSize);
+
+        }
+        if (currentWeapon.type == typeWrench) {
+            atkup1 = setup("player/attack/atkwrenchup1", gp.tileSize, (gp.tileSize * 2));
+            atkup2 = setup("player/attack/atkwrenchup2", gp.tileSize, (gp.tileSize * 2));
+            atkup3 = setup("player/attack/atkwrenchup3", gp.tileSize, (gp.tileSize * 2));
+            atkdown1 = setup("player/attack/atkwrenchdown1", gp.tileSize, (gp.tileSize * 2));
+            atkdown2 = setup("player/attack/atkwrenchdown2", gp.tileSize, (gp.tileSize * 2));
+            atkdown3 = setup("player/attack/atkwrenchdown3", gp.tileSize, (gp.tileSize * 2));
+            atkleft1 = setup("player/attack/atkwrenchleft1", (gp.tileSize * 2), gp.tileSize);
+            atkleft2 = setup("player/attack/atkwrenchleft2", (gp.tileSize * 2), gp.tileSize);
+            atkleft3 = setup("player/attack/atkwrenchleft3", (gp.tileSize * 2), gp.tileSize);
+            atkright1 = setup("player/attack/atkwrenchright1", (gp.tileSize * 2), gp.tileSize);
+            atkright2 = setup("player/attack/atkwrenchright2", (gp.tileSize * 2), gp.tileSize);
+            atkright3 = setup("player/attack/atkwrenchright3", (gp.tileSize * 2), gp.tileSize);
+        }
+        if (currentWeapon.type == typePistol) {
+            atkup1 = setup("player/rangedAttack/pistolup1", gp.tileSize, (gp.tileSize * 2));
+            atkup2 = setup("player/rangedAttack/pistolup2", gp.tileSize, (gp.tileSize * 2));
+            atkup3 = setup("player/rangedAttack/pistolup3", gp.tileSize, (gp.tileSize * 2));
+            atkdown1 = setup("player/rangedAttack/pistoldown1", gp.tileSize, (gp.tileSize * 2));
+            atkdown2 = setup("player/rangedAttack/pistoldown2", gp.tileSize, (gp.tileSize * 2));
+            atkdown3 = setup("player/rangedAttack/pistoldown3", gp.tileSize, (gp.tileSize * 2));
+            atkleft1 = setup("player/rangedAttack/pistolleft1", (gp.tileSize * 2), gp.tileSize);
+            atkleft2 = setup("player/rangedAttack/pistolleft2", (gp.tileSize * 2), gp.tileSize);
+            atkleft3 = setup("player/rangedAttack/pistolleft3", (gp.tileSize * 2), gp.tileSize);
+            atkright1 = setup("player/rangedAttack/pistolright1", (gp.tileSize * 2), gp.tileSize);
+            atkright2 = setup("player/rangedAttack/pistolright2", (gp.tileSize * 2), gp.tileSize);
+            atkright3 = setup("player/rangedAttack/pistolright3", (gp.tileSize * 2), gp.tileSize);
+        }
+        if (currentWeapon.type == typeShotgun) {
+            atkup1 = setup("player/rangedAttack/shotgunup1", gp.tileSize, (gp.tileSize * 2));
+            atkup2 = setup("player/rangedAttack/shotgunup2", gp.tileSize, (gp.tileSize * 2));
+            atkup3 = setup("player/rangedAttack/shotgunup3", gp.tileSize, (gp.tileSize * 2));
+            atkdown1 = setup("player/rangedAttack/shotgundown1", gp.tileSize, (gp.tileSize * 2));
+            atkdown2 = setup("player/rangedAttack/shotgundown2", gp.tileSize, (gp.tileSize * 2));
+            atkdown3 = setup("player/rangedAttack/shotgundown3", gp.tileSize, (gp.tileSize * 2));
+            atkleft1 = setup("player/rangedAttack/shotgunleft1", (gp.tileSize * 2), gp.tileSize);
+            atkleft2 = setup("player/rangedAttack/shotgunleft2", (gp.tileSize * 2), gp.tileSize);
+            atkleft3 = setup("player/rangedAttack/shotgunleft3", (gp.tileSize * 2), gp.tileSize);
+            atkright1 = setup("player/rangedAttack/shotgunright1", (gp.tileSize * 2), gp.tileSize);
+            atkright2 = setup("player/rangedAttack/shotgunright2", (gp.tileSize * 2), gp.tileSize);
+            atkright3 = setup("player/rangedAttack/shotgunright3", (gp.tileSize * 2), gp.tileSize);
+        }
     }
 
     public void update() {
@@ -171,10 +217,12 @@ public class Player extends Entity {
                 }
             }
 
-            if(keyH.ePressed && !attackCanceled){
-                gp.playSE(4);
-                attacking = true;
-                spriteCounter++;
+            if (keyH.ePressed && !attackCanceled) {
+                if (currentWeapon.type == typeMelee || currentWeapon.type == typeWrench) {
+                    gp.playSE(4);
+                    attacking = true;
+                    spriteCounter++;
+                }
             }
             gp.keyH.ePressed = false;
             attackCanceled = false;
@@ -191,6 +239,33 @@ public class Player extends Entity {
                 spriteCounter = 0;
             }
         }
+        if (gp.keyH.shotKeyPressed && !projectiles.alive && shotAvailableCounter == 30
+        && projectiles.haveResource(this)) {
+            //SET DEFAULT BULLET POSITION
+            projectiles.set(worldX, worldY, direction, true, this);
+            if(currentWeapon.type == typePistol){
+                projectiles.attack =5;
+            }
+            if(currentWeapon.type == typeShotgun){
+                projectiles.attack =8;
+            }
+
+            //SUBTRACT THE COST
+            projectiles.subtractResource(this);
+
+            //ADD IT TO THE LIST
+
+            gp.projectilesList.add(projectiles);
+            shotAvailableCounter = 0;
+            if (currentWeapon.type == typePistol) {
+                gp.playSE(12);
+
+            }
+            if (currentWeapon.type == typeShotgun) {
+                gp.playSE(13);
+            }
+
+        }
         if (invincible) {
             invincibleCounter++;
             if (invincibleCounter > 60) {
@@ -198,8 +273,21 @@ public class Player extends Entity {
                 invincibleCounter = 0;
             }
         }
+        if (shotAvailableCounter < 30) {
+            shotAvailableCounter++;
+        }
+        if ( pistolAmmo > maxAmmo){
+            pistolAmmo = maxAmmo;
+        }
+        if ( shotgunAmmo > maxAmmo){
+            shotgunAmmo = maxAmmo;
+        }
+        if ( life > maxHP){
+            life = maxHP;
+        }
 
     }
+
     private int getDefense() {
         return defense = dexterity * currentArmor.defenseValue;
     }
@@ -207,7 +295,7 @@ public class Player extends Entity {
     private int getAttack() {
 
         attackArea = currentWeapon.attackArea;
-    return attack = strength * currentWeapon.attackValue;
+        return attack = strength * currentWeapon.attackValue;
     }
 
     private void attacking() {
@@ -238,7 +326,7 @@ public class Player extends Entity {
             solidArea.height = attackArea.height;
             //Check enemy collision with the updated worldX , worldT, solidArea
             int enemyIndex = gp.cDetector.checkEntity(this, gp.enemy);
-            damageEnemy(enemyIndex);
+            damageEnemy(enemyIndex, attack);
             //After checking collision restore original data
 
             worldX = currentWorldX;
@@ -262,15 +350,25 @@ public class Player extends Entity {
         String text;
 
         if (i != 999) {
-            if ( inventory.size()!= maxInventorySize){
-                inventory.add(gp.obj[i]);
-                gp.playSE(1);
-                text = " Got a " + gp.obj[i].name + "!";
-            }else{
-                text = "Inventory is full!";
+
+            //PICKUP ONLY ITEMS
+            if (gp.obj[i].type == typePickupOnly) {
+                gp.obj[i].use(this);
+                gp.obj[i] = null;
             }
-            gp.ui.addMessage(text);
-            gp.obj[i] = null;
+
+            //INVENTORY ITEMS
+            else {
+                if (inventory.size() != maxInventorySize) {
+                    inventory.add(gp.obj[i]);
+                    gp.playSE(1);
+                    text = " Got a " + gp.obj[i].name + "!";
+                } else {
+                    text = "Inventory is full!";
+                }
+                gp.ui.addMessage(text);
+                gp.obj[i] = null;
+            }
         }
 
 
@@ -291,10 +389,10 @@ public class Player extends Entity {
 
     private void contactEnemy(int i) {
         if (i != 999) {
-            if (!invincible) {
+            if (!invincible && !gp.enemy[i].dying) {
                 gp.playSE(7);
-                int damage =  gp.enemy[i].attack - defense;
-                if (damage < 0){
+                int damage = gp.enemy[i].attack - defense;
+                if (damage < 0) {
                     damage = 0;
                 }
                 life -= damage;
@@ -304,14 +402,14 @@ public class Player extends Entity {
         }
     }
 
-    private void damageEnemy(int i) {
+    void damageEnemy(int i, int attack) {
 
         if (i != 999) {
             if (!gp.enemy[i].invincible) {
                 gp.playSE(5);
 
                 int damage = attack - gp.enemy[i].defense;
-                if (damage < 0){
+                if (damage < 0) {
                     damage = 0;
                 }
                 gp.enemy[i].life -= damage;
@@ -332,20 +430,43 @@ public class Player extends Entity {
     }
 
     private void checkLevelUp() {
-        if( exp >= nextLevel){
-            level ++;
-            nextLevel = nextLevel *2;
+        if (exp >= nextLevel) {
+            level++;
+            nextLevel = nextLevel * 2;
             maxHP += 2;
-            strength ++;
-            dexterity ++;
+            strength++;
+            dexterity++;
             attack = getAttack();
             defense = getDefense();
             gp.playSE(8);
             gp.ui.addMessage("Congratulations you got level " + level);
         }
     }
-    public void selectItem(){
 
+    public void selectItem() {
+        int itemIndex = gp.ui.getItemIndex();
+        if (itemIndex < inventory.size()) {
+            Entity selectedItem = inventory.get(itemIndex);
+            if (selectedItem.type == typeMelee || selectedItem.type == typeWrench) {
+                currentWeapon = selectedItem;
+                attack = getAttack();
+                getPlayerAtkImage();
+            }
+            if (selectedItem.type == typePistol || selectedItem.type == typeShotgun) {
+                currentWeapon = selectedItem;
+                attack = getAttack();
+                getPlayerAtkImage();
+            }
+            if (selectedItem.type == typeArmor) {
+                currentArmor = selectedItem;
+                defense = getDefense();
+            }
+            if (selectedItem.type == typeConsumable) {
+                selectedItem.use(this);
+                inventory.remove(itemIndex);
+                //later
+            }
+        }
     }
 
     public void draw(Graphics2D g2) {

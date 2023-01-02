@@ -2,6 +2,8 @@ package enemies;
 
 import entity.Entity;
 import main.GamePanel;
+import object.OBJ_Coins;
+import object.OBJ_HPPack;
 
 import java.util.Random;
 
@@ -74,6 +76,19 @@ public class GreenSlime extends Entity {
     public void damageReaction(){
         actionLockCounter = 0;
         direction = gp.player.direction;
+
+    }
+    public void checkDrop(){
+        int i = new Random().nextInt(100)+1;
+
+        //SET THE MONSTER DROP
+
+        if (i <50){
+            dropItem(new OBJ_Coins(gp));
+        }
+        if (i >=50 && i < 100){
+            dropItem(new OBJ_HPPack(gp));
+        }
 
     }
 }

@@ -6,7 +6,7 @@ import main.GamePanel;
 public class OBJ_Wrench extends Entity {
     public OBJ_Wrench(GamePanel gp) {
         super(gp);
-        type = typeMelee;
+        type = typeWrench;
         name = "Wrench";
         down1 = setup("objects/wrench",gp.tileSize,gp.tileSize);
         attackValue = 6;

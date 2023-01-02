@@ -8,6 +8,7 @@ public class OBJ_KeyCard extends Entity {
         super(gp);
         type = typeConsumable;
         name = "Key Card";
+        value = 1;
         down1 = setup("objects/keycard",gp.tileSize,gp.tileSize);
         description = "[" + name + "]\nAn old bunker key card.";
     }

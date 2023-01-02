@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener {
 
     GamePanel gp;
-    public boolean upPressed, downPressed, leftPressed, rightPressed, ePressed, spacePressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, ePressed, shotKeyPressed;
 
     //DEBUG
 
@@ -135,6 +135,9 @@ public class KeyHandler implements KeyListener {
         }
         if (key == KeyEvent.VK_E) {
             ePressed = true;
+            if(gp.player.currentWeapon.type == gp.player.typePistol || gp.player.currentWeapon.type == gp.player.typeShotgun){
+                shotKeyPressed = true;
+            }
         }
         if (key == KeyEvent.VK_C) {
             gp.gameState = gp.charState;
@@ -158,33 +161,38 @@ public class KeyHandler implements KeyListener {
 
         }
     }
-    public void charState(int key){
+    public void charState(int key) {
         if (key == KeyEvent.VK_C) {
             gp.gameState = gp.playState;
         }
         if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
-            if(gp.ui.slotRow != 0) {
+            if (gp.ui.slotRow != 0) {
                 gp.ui.slotRow--;
                 gp.playSE(9);
             }
         }
         if (key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) {
-            if(gp.ui.slotRow != 3) {
+            if (gp.ui.slotRow != 3) {
                 gp.ui.slotRow++;
                 gp.playSE(9);
             }
         }
         if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
-            if(gp.ui.slotCol != 0) {
+            if (gp.ui.slotCol != 0) {
                 gp.ui.slotCol--;
                 gp.playSE(9);
             }
         }
         if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
-            if(gp.ui.slotCol != 4) {
+            if (gp.ui.slotCol != 4) {
                 gp.ui.slotCol++;
                 gp.playSE(9);
             }
+
+        }
+        if (key == KeyEvent.VK_E || key == KeyEvent.VK_ENTER) {
+           gp.player.selectItem();
+           gp.playSE(10);
         }
     }
 
@@ -205,6 +213,11 @@ public class KeyHandler implements KeyListener {
         }
         if (key == KeyEvent.VK_D) {
             rightPressed = false;
+        }
+        if (key == KeyEvent.VK_E) {
+            ePressed = false;
+            shotKeyPressed = false;
+
         }
 
     }

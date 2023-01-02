@@ -42,6 +42,7 @@ public class Entity {
     public int invincibleCounter = 0;
     public int dyingCounter = 0;
     public int hpBarCounter = 0;
+    public int shotAvailableCounter = 0;
 
     //CHARACTERS ATRIBUTES
     public String name;
@@ -49,6 +50,9 @@ public class Entity {
     public double speed;
     public int maxHP;
     public int life;
+    public int maxAmmo;
+    public int pistolAmmo;
+    public int shotgunAmmo;
     public int level;
     public int strength;
     public int dexterity;
@@ -59,22 +63,29 @@ public class Entity {
     public int coin;
     public Entity currentWeapon;
     public Entity currentArmor;
+    public Projectiles projectiles;
 
     //ITEM ATTRIBUTES
 
     public int attackValue;
     public int defenseValue;
     public String description = "";
+    public int useCost;
+    public int value;
 
     //TYPE
-    public int type; // 0 = player 1 = npc, 2= enemy
+    public int type;
     public final int typePlayer = 0;
     public final int typeNPC = 1;
     public final int typeEnemy = 2;
     public final int typeMelee = 3;
-    public final int typeDistant = 4;
-    public final int typeArmor = 5;
-    public final int typeConsumable = 6;
+    public final int typeWrench = 4;
+    public final int typePistol = 5;
+    public final int typeShotgun = 6;
+    public final int typeArmor = 7;
+    public final int typeConsumable = 8;
+    public final int typePickupOnly = 9;
+
 
 
 
@@ -100,16 +111,10 @@ public class Entity {
         boolean contactPlayer = gp.cDetector.checkPlayer(this);
 
         if (this.type == typeEnemy && contactPlayer) {
-            if (!gp.player.invincible) {
-                gp.playSE(7);
-                int damage = attack - gp.player.defense;
-                if (damage < 0){
-                    damage = 0;
-                }
-                gp.player.life -= damage;
-                gp.player.invincible = true;
-            }
+       damagePlayer(attack);
         }
+
+
 
         //IF COLLISION IS FALSE, ENTITY CAN MOVE
 
@@ -121,6 +126,7 @@ public class Entity {
                 case "right" -> worldX += speed;
             }
         }
+
 
         spriteCounter++;
         if (spriteCounter > 12) {
@@ -140,8 +146,22 @@ public class Entity {
                 invincibleCounter = 0;
             }
         }
+        if (shotAvailableCounter < 30) {
+            shotAvailableCounter++;
+        }
 
 
+    }
+    public void damagePlayer(int attack){
+        if (!gp.player.invincible) {
+            gp.playSE(7);
+            int damage = attack - gp.player.defense;
+            if (damage < 0){
+                damage = 0;
+            }
+            gp.player.life -= damage;
+            gp.player.invincible = true;
+        }
     }
 
     public void speak() {
@@ -156,6 +176,22 @@ public class Entity {
             case "down" -> direction = "up";
             case "left" -> direction = "right";
             case "right" -> direction = "left";
+        }
+    }
+    public void use(Entity entity){
+
+    }
+    public void checkDrop(){
+
+    }
+    public void dropItem(Entity droppedItem){
+        for (int i = 0; i<gp.obj.length;i++){
+            if(gp.obj[i] == null){
+                gp.obj[i] = droppedItem;
+                gp.obj[i].worldX = worldX;
+                gp.obj[i].worldY = worldY;
+                break;
+            }
         }
     }
 
@@ -293,7 +329,6 @@ public class Entity {
 
         }
         if (dyingCounter > i * 8) {
-            dying = false;
             alive = false;
         }
     }

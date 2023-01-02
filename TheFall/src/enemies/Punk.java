@@ -1,7 +1,9 @@
 package enemies;
 
 import entity.Entity;
+import entity.Projectiles;
 import main.GamePanel;
+import object.*;
 
 import java.util.Random;
 
@@ -20,6 +22,7 @@ public class Punk extends Entity {
         attack = 5;
         defense = 2;
         exp = 15;
+        projectiles = new OBJ_Bullet(gp);
 
         solidArea.x =3;
         solidArea.y = 18;
@@ -68,11 +71,41 @@ public class Punk extends Entity {
                 direction = "right";
             }
             actionLockCounter = 0;
+
+
+
+        }
+        int i = new Random().nextInt(100)+1;
+        if(i > 99 && !projectiles.alive && shotAvailableCounter == 30){
+            projectiles.set(worldX,worldY,direction,true,this);
+            gp.projectilesList.add(projectiles);
+            gp.playSE(12);
+            shotAvailableCounter = 0;
+
         }
     }
     public void damageReaction(){
         actionLockCounter = 0;
         direction = gp.player.direction;
+
+    }
+    public void checkDrop(){
+        int i = new Random().nextInt(100)+1;
+
+        //SET THE MONSTER DROP
+
+        if (i <25){
+            dropItem(new OBJ_Coins(gp));
+        }
+        if (i >=25 && i < 50){
+            dropItem(new OBJ_HPPack(gp));
+        }
+        if (i >=50 && i < 75){
+            dropItem(new OBJ_Ammo_Pistol(gp));
+        }
+        if (i >=75 && i < 100){
+            dropItem(new OBJ_Ammo_Shotgun(gp));
+        }
 
     }
 }

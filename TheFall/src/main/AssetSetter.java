@@ -4,10 +4,8 @@ import enemies.DeathClaw;
 import enemies.GreenSlime;
 import enemies.Punk;
 import entity.NpcNick;
-import object.Door;
-import object.GarbageTrunk;
-import object.Locker;
-import object.OBJ_Ammo_Pistol;
+import object.*;
+import tile_interactive.IT_Box;
 
 public class AssetSetter {
 
@@ -21,39 +19,36 @@ public class AssetSetter {
 
     public void setObject() {
         int i =0;
-        gp.obj[i] = new Door(gp);
+        gp.obj[i] = new OBJ_Door(gp);
         gp.obj[i].worldX = gp.tileSize * 25;
         gp.obj[i].worldY = gp.tileSize * 12;
         i++;
-        gp.obj[i] = new Locker(gp);
+        gp.obj[i] = new OBJ_Locker(gp);
         gp.obj[i].worldX = gp.tileSize * 22;
         gp.obj[i].worldY = gp.tileSize * 9;
         i++;
-        gp.obj[i] = new Locker(gp);
+        gp.obj[i] = new OBJ_Locker(gp);
         gp.obj[i].worldX = gp.tileSize * 23;
         gp.obj[i].worldY = gp.tileSize * 9;
         i++;
-        gp.obj[i] = new Locker(gp);
+        gp.obj[i] = new OBJ_Locker(gp);
         gp.obj[i].worldX = gp.tileSize * 24;
         gp.obj[i].worldY = gp.tileSize * 9;
         i++;
-        gp.obj[i] = new GarbageTrunk(gp);
+        gp.obj[i] = new OBJ_GarbageTrunk(gp);
         gp.obj[i].worldX = gp.tileSize * 19;
         gp.obj[i].worldY = gp.tileSize * 11;
         i++;
-        gp.obj[i] = new GarbageTrunk(gp);
+        gp.obj[i] = new OBJ_GarbageTrunk(gp);
         gp.obj[i].worldX = gp.tileSize * 13;
         gp.obj[i].worldY = gp.tileSize * 34;
-        i++;
-        gp.obj[i] = new OBJ_Ammo_Pistol(gp);
-        gp.obj[i].worldX = gp.tileSize * 16;
-        gp.obj[i].worldY = gp.tileSize * 31;
-        i++;
-        gp.obj[i] = new OBJ_Ammo_Pistol(gp);
-        gp.obj[i].worldX = gp.tileSize * 13;
-        gp.obj[i].worldY = gp.tileSize * 32;
 
-
+    }
+    public void setInteractiveTile(){
+        int i =0;
+        gp.iTile[i] = new IT_Box(gp);
+        gp.iTile[i].worldX = gp.tileSize *1;
+        gp.iTile[i].worldY = gp.tileSize *1;
     }
 
     public void setNPC() {

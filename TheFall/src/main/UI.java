@@ -1,7 +1,9 @@
 package main;
 
 import entity.Entity;
-import object.HP;
+import object.OBJ_HP;
+import object.OBJ_Ammo_Pistol;
+import object.OBJ_Ammo_Shotgun;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -14,7 +16,7 @@ public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font myFont;
-    BufferedImage hpfull, hpminusq, hphalf, hpquater, hpblank;
+    BufferedImage hpfull,  hphalf, hpblank , pistolAmmo, shotgunAmmo;
     public String currentDialogue = "";
 
     public boolean messageOn = false;
@@ -39,10 +41,15 @@ public class UI {
 
         //CREATE HUD OBJECT
 
-        Entity hpbar = new HP(gp);
+        Entity hpbar = new OBJ_HP(gp);
         hpfull = hpbar.image;
         hphalf = hpbar.image2;
         hpblank = hpbar.image3;
+
+        Entity pistol = new OBJ_Ammo_Pistol(gp);
+        pistolAmmo = pistol.down1;
+        Entity shotgun = new OBJ_Ammo_Shotgun(gp);
+        shotgunAmmo = shotgun.down1;
     }
 
     public void addMessage(String text) {
@@ -65,6 +72,7 @@ public class UI {
         //PLAY STATE
         if (gp.gameState == gp.playState) {
             drawplayerlife();
+            drawPlayerAmmo();
             drawMessage();
 
         }
@@ -197,8 +205,26 @@ public class UI {
             i++;
             x += gp.tileSize - 10;
         }
+    }
+    public void drawPlayerAmmo(){
+        //DRAW AMMO
 
+         int x= gp.tileSize/2;
+        int y = gp.tileSize*2;
+        String shotgunammo = " = "+ gp.player.shotgunAmmo;
+        String pistolammo = " = "+ gp.player.pistolAmmo;
 
+        if(gp.player.currentWeapon.type == gp.player.typePistol){
+            g2.drawImage(pistolAmmo,10,y-30,gp.tileSize,gp.tileSize,null);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD,20f));
+            g2.drawString(pistolammo,x*2, y);
+        }
+        if(gp.player.currentWeapon.type == gp.player.typeShotgun){
+            g2.drawImage(shotgunAmmo,10,y-30,gp.tileSize,gp.tileSize,null);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD,20f));
+            g2.drawString(shotgunammo,x*2, y);
+
+        }
     }
 
     private void drawMessage() {
