@@ -108,6 +108,7 @@ public class Entity {
         gp.cDetector.checkObject(this, false);
         gp.cDetector.checkEntity(this, gp.npc);
         gp.cDetector.checkEntity(this, gp.enemy);
+        gp.cDetector.checkEntity(this, gp.iTile);
         boolean contactPlayer = gp.cDetector.checkPlayer(this);
 
         if (this.type == typeEnemy && contactPlayer) {
@@ -152,9 +153,10 @@ public class Entity {
 
 
     }
+
     public void damagePlayer(int attack){
         if (!gp.player.invincible) {
-            gp.playSE(7);
+            gp.playSE(17);
             int damage = attack - gp.player.defense;
             if (damage < 0){
                 damage = 0;
@@ -163,7 +165,9 @@ public class Entity {
             gp.player.invincible = true;
         }
     }
+    public void playSE(){
 
+    }
     public void speak() {
         if (dialogues[dialogueIndex] == null) {
             dialogueIndex = 0;
@@ -193,6 +197,45 @@ public class Entity {
                 break;
             }
         }
+    }
+    public Color getParticleColor(){
+        Color color = null;
+        return color;
+    }
+    public int getParticleSize(){
+        int size = 0;
+        return size;
+    }
+    public int getParticleSpeed(){
+        int speed = 0;
+        return speed;
+    }
+    public int getParticleLife(){
+        int maxHP = 0;
+        return maxHP;
+    }
+    public void generateParticle(Entity generator, Entity target){
+        Color color = generator.getParticleColor();
+        int size = generator.getParticleSize();
+        int speed = generator.getParticleSpeed();
+        int maxHP = generator.getParticleLife();
+
+        Particles p1 = new Particles(gp, target, color,size,speed,maxHP,-2,-1);
+        gp.particleList.add(p1);
+        Particles p2 = new Particles(gp, target, color,size,speed,maxHP,2,1);
+        gp.particleList.add(p2);
+        Particles p3 = new Particles(gp, target, color,size,speed,maxHP,0,-1);
+        gp.particleList.add(p3);
+        Particles p4 = new Particles(gp, target, color,size,speed,maxHP,-1,0);
+        gp.particleList.add(p4);
+        Particles p5 = new Particles(gp, target, color,size,speed,maxHP,1,0);
+        gp.particleList.add(p5);
+        Particles p6 = new Particles(gp, target, color,size,speed,maxHP,0,1);
+        gp.particleList.add(p6);
+        Particles p7 = new Particles(gp, target, color,size,speed,maxHP,-2,1);
+        gp.particleList.add(p7);
+        Particles p8 = new Particles(gp, target, color,size,speed,maxHP,2,-1);
+        gp.particleList.add(p8);
     }
 
     public BufferedImage setup(String imagePath, int width, int height) {
@@ -337,4 +380,5 @@ public class Entity {
         g2.setColor(Color.red);
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphaValue));
     }
+
 }

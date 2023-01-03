@@ -2,6 +2,8 @@ package enemies;
 
 import entity.Entity;
 import main.GamePanel;
+import object.armor.OBJ_Armor_Metal;
+import object.weapon.OBJ_Shotgun;
 
 import java.util.Random;
 
@@ -50,6 +52,10 @@ public class DeathClaw extends Entity {
         right3 = setup("enemies/deathclaw/right3",gp.tileSize -10,gp.tileSize -10);
 
     }
+    public void playSE(){
+        gp.playSE(16);
+
+    }
     public  void setAction() {
         actionLockCounter++;
         if (actionLockCounter == 120) {
@@ -74,6 +80,20 @@ public class DeathClaw extends Entity {
     public void damageReaction(){
         actionLockCounter = 0;
         direction = gp.player.direction;
+
+    }
+    public void checkDrop(){
+        int i = new Random().nextInt(100)+1;
+
+        //SET THE MONSTER DROP
+
+        if (i <50){
+            dropItem(new OBJ_Shotgun(gp));
+        }
+        if (i >=50 && i < 100){
+            dropItem(new OBJ_Armor_Metal(gp));
+        }
+    
 
     }
 }

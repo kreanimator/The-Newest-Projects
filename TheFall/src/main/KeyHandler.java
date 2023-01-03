@@ -11,6 +11,7 @@ public class KeyHandler implements KeyListener {
     //DEBUG
 
     boolean checkDrawTime = false;
+    int debugCounter =0;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
@@ -142,6 +143,15 @@ public class KeyHandler implements KeyListener {
         if (key == KeyEvent.VK_C) {
             gp.gameState = gp.charState;
         }
+        if (key == KeyEvent.VK_L) {
+            if (!checkDrawTime) {
+                checkDrawTime = true;
+            } else if (checkDrawTime) {
+                checkDrawTime =false;
+
+            }
+
+        }
 //            if (key == KeyEvent.VK_SPACE) {
 //                spacePressed = true;
 //            }
@@ -217,8 +227,8 @@ public class KeyHandler implements KeyListener {
         if (key == KeyEvent.VK_E) {
             ePressed = false;
             shotKeyPressed = false;
-
         }
+
 
     }
 }

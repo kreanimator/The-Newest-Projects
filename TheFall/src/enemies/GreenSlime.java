@@ -2,8 +2,8 @@ package enemies;
 
 import entity.Entity;
 import main.GamePanel;
-import object.OBJ_Coins;
-import object.OBJ_HPPack;
+import object.misc.OBJ_Coins;
+import object.misc.OBJ_HPPack;
 
 import java.util.Random;
 
@@ -76,6 +76,10 @@ public class GreenSlime extends Entity {
     public void damageReaction(){
         actionLockCounter = 0;
         direction = gp.player.direction;
+
+    }
+    public void playSE(){
+        gp.playSE(5);
 
     }
     public void checkDrop(){

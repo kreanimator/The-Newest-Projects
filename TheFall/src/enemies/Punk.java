@@ -1,9 +1,12 @@
 package enemies;
 
 import entity.Entity;
-import entity.Projectiles;
 import main.GamePanel;
-import object.*;
+import object.misc.OBJ_Coins;
+import object.misc.OBJ_HPPack;
+import object.weapon.OBJ_Ammo_Pistol;
+import object.weapon.OBJ_Ammo_Shotgun;
+import object.weapon.OBJ_Bullet;
 
 import java.util.Random;
 
@@ -87,6 +90,10 @@ public class Punk extends Entity {
     public void damageReaction(){
         actionLockCounter = 0;
         direction = gp.player.direction;
+
+    }
+    public void playSE(){
+        gp.playSE(7);
 
     }
     public void checkDrop(){

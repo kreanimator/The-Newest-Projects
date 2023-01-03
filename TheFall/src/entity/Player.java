@@ -2,7 +2,13 @@ package entity;
 
 import main.GamePanel;
 import main.KeyHandler;
-import object.*;
+import object.armor.OBJ_Armor_Learther;
+import object.armor.OBJ_Armor_Metal;
+import object.misc.OBJ_HPPack;
+import object.misc.OBJ_Key;
+import object.misc.OBJ_KeyCard;
+import object.misc.OBJ_Lockpick;
+import object.weapon.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -44,8 +50,8 @@ public class Player extends Entity {
     public void setDefaultValues() {
 
 
-        worldX = gp.tileSize * 16;
-        worldY = gp.tileSize * 37;
+        worldX = gp.tileSize * 26;
+        worldY = gp.tileSize * 82;
         speed = 4;
         direction = "down";
 //PLAYER STATUS
@@ -188,6 +194,10 @@ public class Player extends Entity {
             collisionOn = false;
             gp.cDetector.checkTile(this);
 
+            // CHECK INTERACTIVE TILES COLLISION
+
+            gp.cDetector.checkEntity(this,gp.iTile);
+
 
             // CHECK OBJECT COLLISION
             int objIndex = gp.cDetector.checkObject(this, true);
@@ -328,7 +338,8 @@ public class Player extends Entity {
             int enemyIndex = gp.cDetector.checkEntity(this, gp.enemy);
             damageEnemy(enemyIndex, attack);
             //After checking collision restore original data
-
+            int iTileIndex = gp.cDetector.checkEntity(this,gp.iTile);
+            damageInteractiveTile(iTileIndex);
             worldX = currentWorldX;
             worldY = currentWorldY;
             solidArea.width = solidAreaWidth;
@@ -341,6 +352,22 @@ public class Player extends Entity {
             spriteNumber = 1;
             spriteCounter = 0;
             attacking = false;
+        }
+    }
+
+    private void damageInteractiveTile(int i) {
+        if(i != 999 && gp.iTile[i].destructible && gp.iTile[i].isCorrectItem(this) && !gp.iTile[i].invincible){
+
+            gp.iTile[i].life--;
+            gp.iTile[i].invincible =true;
+            //Generate particle
+            generateParticle(gp.iTile[i],gp.iTile[i]);
+            if(gp.iTile[i].life ==0) {
+                gp.iTile[i].playSE();
+                gp.iTile[i] = gp.iTile[i].getDestroyedForm();
+            }
+
+
         }
     }
 
@@ -390,7 +417,7 @@ public class Player extends Entity {
     private void contactEnemy(int i) {
         if (i != 999) {
             if (!invincible && !gp.enemy[i].dying) {
-                gp.playSE(7);
+                gp.playSE(17);
                 int damage = gp.enemy[i].attack - defense;
                 if (damage < 0) {
                     damage = 0;
@@ -406,7 +433,8 @@ public class Player extends Entity {
 
         if (i != 999) {
             if (!gp.enemy[i].invincible) {
-                gp.playSE(5);
+                gp.enemy[i].playSE();
+
 
                 int damage = attack - gp.enemy[i].defense;
                 if (damage < 0) {
@@ -415,6 +443,7 @@ public class Player extends Entity {
                 gp.enemy[i].life -= damage;
                 gp.ui.addMessage(String.valueOf(damage + " damage!"));
                 gp.enemy[i].invincible = true;
+                generateParticle(gp.player.currentWeapon, gp.enemy[i]);
                 gp.enemy[i].damageReaction();
 
                 if (gp.enemy[i].life <= 0) {
@@ -584,4 +613,6 @@ public class Player extends Entity {
         g2.drawImage(image, tempScreenX, tempScreenY, null);
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
     }
+
 }
+

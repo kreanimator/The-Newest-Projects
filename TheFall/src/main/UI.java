@@ -1,9 +1,9 @@
 package main;
 
 import entity.Entity;
-import object.OBJ_HP;
-import object.OBJ_Ammo_Pistol;
-import object.OBJ_Ammo_Shotgun;
+import object.misc.OBJ_HP;
+import object.weapon.OBJ_Ammo_Pistol;
+import object.weapon.OBJ_Ammo_Shotgun;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

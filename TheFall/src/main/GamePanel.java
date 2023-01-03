@@ -24,8 +24,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     //WORLD SETTINGS
 
-    public final int maxWorldCol = 50;
-    public final int maxWorldRow = 50;
+    public final int maxWorldCol = 100;
+    public final int maxWorldRow = 100;
 
 
     //FPS
@@ -50,6 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Entity[] enemy = new Entity[40];
     public InteractiveTile [] iTile = new InteractiveTile[50];
     public ArrayList <Entity> projectilesList = new ArrayList<>();
+    public ArrayList<Entity> particleList = new ArrayList<>();
     ArrayList<Entity> entityList = new ArrayList<>();
 
     //GAME STATE
@@ -73,6 +74,7 @@ public class GamePanel extends JPanel implements Runnable {
         aSetter.setObject();
         aSetter.setNPC();
         aSetter.setEnemy();
+        aSetter.setInteractiveTile();
         // playMusic(0);
         gameState = titleState;
     }
@@ -156,6 +158,17 @@ public class GamePanel extends JPanel implements Runnable {
                     }
                 }
             }
+            //PARTICLES
+            for (int i = 0; i < particleList.size(); i++) {
+                if (particleList.get(i) != null) {
+                    if (particleList.get(i).alive) {
+                        particleList.get(i).update();
+                    }
+                    if (!particleList.get(i).alive) {
+                        particleList.remove(i);
+                    }
+                }
+            }
             for (int i = 0; i < iTile.length; i++) {
                 if (iTile[i] != null) {
                    iTile[i].update();
@@ -224,6 +237,11 @@ public class GamePanel extends JPanel implements Runnable {
                     entityList.add(projectilesList.get(i));
                 }
             }
+            for (int i = 0; i < particleList.size(); i++) {
+                if (particleList.get(i) != null) {
+                    entityList.add(particleList.get(i));
+                }
+            }
             // SORT
 
             entityList.sort(new Comparator<Entity>() {
@@ -249,8 +267,12 @@ public class GamePanel extends JPanel implements Runnable {
 
             long drawFinish = System.nanoTime();
             long passed = drawFinish - drawStart;
+            long x = player.worldX/tileSize;
+            long y = player.worldY/tileSize;
             g2.setColor(Color.WHITE);
             g2.drawString("Draw string: " + passed, 10, 400);
+            g2.drawString("Player X = " + x, 10, 448);
+            g2.drawString("Player Y = " + y, 10, 496);
             System.out.println("Draw time " + passed);
         }
         g2.dispose();
