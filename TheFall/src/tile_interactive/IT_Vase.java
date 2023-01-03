@@ -10,34 +10,34 @@ import object.weapon.OBJ_Ammo_Shotgun;
 import java.awt.*;
 import java.util.Random;
 
-public class IT_Box extends InteractiveTile{
+public class IT_Vase extends InteractiveTile{
 
     GamePanel gp;
-    public IT_Box(GamePanel gp , int col, int row) {
+    public IT_Vase(GamePanel gp , int col, int row) {
         super(gp,col,row);
         this.gp = gp;
 
-        life = 3;
+        life = 1;
 
         this.worldX = gp.tileSize * col;
         this.worldY = gp.tileSize * row;
 
-        down1=(setup("objects/interactiveobjects/destructiblebox",gp.tileSize,gp.tileSize));
+        down1=(setup("objects/interactiveobjects/vase",gp.tileSize,gp.tileSize));
         destructible=true;
     }
     public boolean isCorrectItem(Entity entity){
         boolean isCorrectItem = false;
-        if(entity.currentWeapon.type == typeWrench){
+        if(entity.currentWeapon.type == typeWrench || entity.currentWeapon.type == typeMelee){
             isCorrectItem = true;
         }
         return isCorrectItem;
     }
     public void playSE(){
-        gp.playSE(15);
+        gp.playSE(18);
 
     }
     public InteractiveTile getDestroyedForm(){
-        InteractiveTile tile = new IT_BrokenBox(gp,worldX/gp.tileSize,worldY/gp.tileSize);
+        InteractiveTile tile = new IT_BrokenVase(gp,worldX/gp.tileSize,worldY/gp.tileSize);
         checkDrop();
         return tile;
 
@@ -73,3 +73,4 @@ public class IT_Box extends InteractiveTile{
 
     }
 }
+

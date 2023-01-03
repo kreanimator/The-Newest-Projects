@@ -52,7 +52,13 @@ public class KeyHandler implements KeyListener {
         else if (gp.gameState == gp.charState) {
                 charState(key);
         }
+        else if (gp.gameState == gp.optionsState) {
+            optionsState(key);
+        }
     }
+
+
+
     public void titleState(int key){
         if (gp.ui.titleScreenState == 0) {
             if (key == KeyEvent.VK_UP || key == KeyEvent.VK_W) {
@@ -156,7 +162,7 @@ public class KeyHandler implements KeyListener {
 //                spacePressed = true;
 //            }
         if (key == KeyEvent.VK_ESCAPE) {
-            System.exit(1);
+            gp.gameState = gp.optionsState;
         }
     }
     public void pauseState(int key){
@@ -203,6 +209,70 @@ public class KeyHandler implements KeyListener {
         if (key == KeyEvent.VK_E || key == KeyEvent.VK_ENTER) {
            gp.player.selectItem();
            gp.playSE(10);
+        }
+    }
+    private void optionsState(int key) {
+        if (key == KeyEvent.VK_ESCAPE) {
+            gp.gameState = gp.playState;
+        }
+        if (key == KeyEvent.VK_ENTER) {
+            ePressed = true;
+        }
+        int maxCommandNumber = 0;
+        switch (gp.ui.subState) {
+            case 0:
+                maxCommandNumber = 5;break;
+            case 3:
+                maxCommandNumber = 1;break;
+//            case 1: maxCommandNumber =5;
+        }
+        if (key == KeyEvent.VK_W || key == KeyEvent.VK_UP) {
+            gp.ui.commandNumber--;
+            gp.playSE(9);
+            if (gp.ui.commandNumber < 0) {
+                gp.ui.commandNumber = maxCommandNumber;
+            }
+
+        }
+        if (key == KeyEvent.VK_S || key == KeyEvent.VK_DOWN) {
+            gp.ui.commandNumber++;
+            gp.playSE(9);
+            if (gp.ui.commandNumber > maxCommandNumber) {
+                gp.ui.commandNumber = 0;
+            }
+        }
+        if (key == KeyEvent.VK_A || key == KeyEvent.VK_LEFT) {
+            if (gp.ui.subState == 0) {
+                if(gp.ui.commandNumber ==1 && gp.music.volumeScale > 0){
+                    gp.music.volumeScale--;
+                    gp.music.checkVolume();
+                    gp.playSE(9);
+                }
+                if(gp.ui.commandNumber ==2 && gp.se.volumeScale > 0){
+                    gp.se.volumeScale--;
+                    gp.playSE(9);
+
+                }
+
+            }
+        }
+
+
+        if (key == KeyEvent.VK_D || key == KeyEvent.VK_RIGHT) {
+            if (gp.ui.subState == 0) {
+                if(gp.ui.commandNumber ==1 && gp.music.volumeScale < 5){
+                    gp.music.volumeScale++;
+                    gp.music.checkVolume();
+                    gp.playSE(9);
+
+                }
+                if(gp.ui.commandNumber ==2 && gp.se.volumeScale < 5){
+                    gp.se.volumeScale++;
+                    gp.playSE(9);
+
+                }
+
+            }
         }
     }
 

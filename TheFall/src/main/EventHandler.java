@@ -11,7 +11,7 @@ public class EventHandler {
     EventRect[][] eventRect;
     int previousEventX,previousEventY;
     boolean canTouchEvent = true;
-    public Tiles[] tiles = new Tiles[100];
+
 
     public EventHandler(GamePanel gp) {
         this.gp = gp;
@@ -45,20 +45,13 @@ public class EventHandler {
         int yDistance = Math.abs(gp.player.worldY - previousEventY);
 
         int distance = Math.max(xDistance,yDistance);
-//        int tileNum1,tileNum2;
-//        int playerRow = gp.player.worldY/gp.tileSize;
-//        int playerCol = gp.player.worldX/gp.tileSize;
 
+
+        //TOXIC DAMAGE
         if(distance > gp.tileSize){
             canTouchEvent =true;
         }
         if(canTouchEvent) {
-//            tileNum1 = gp.tileM.mapTileNum[playerRow][playerCol];
-//            //tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
-//            if (gp.tileM.tiles[tileNum1].event){
-//                toxicDamage(gp.dialogState);
-//                gp.playSE(17);
-//            }
 
             if (hit(29, 82, "any")) {
                 toxicDamage(gp.dialogState);

@@ -78,14 +78,14 @@ public class Punk extends Entity {
 
 
         }
-        int i = new Random().nextInt(100)+1;
-        if(i > 99 && !projectiles.alive && shotAvailableCounter == 30){
-            projectiles.set(worldX,worldY,direction,true,this);
-            gp.projectilesList.add(projectiles);
-            gp.playSE(12);
-            shotAvailableCounter = 0;
-
-        }
+//        int i = new Random().nextInt(100)+1;
+//        if(i > 99 && !projectiles.alive && shotAvailableCounter == 30){
+//            projectiles.set(worldX,worldY,direction,true,this);
+//            gp.projectilesList.add(projectiles);
+//            gp.playSE(12);
+//            shotAvailableCounter = 0;
+//
+//        }
     }
     public void damageReaction(){
         actionLockCounter = 0;
