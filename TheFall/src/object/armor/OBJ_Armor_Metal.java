@@ -7,6 +7,7 @@ public class OBJ_Armor_Metal extends Entity {
     public OBJ_Armor_Metal(GamePanel gp) {
         super(gp);
         type = typeArmor;
+        price = 2000;
         name = "Metal armor";
         down1 = setup("objects/metalArmor",gp.tileSize,gp.tileSize);
         defenseValue = 5;

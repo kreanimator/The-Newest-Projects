@@ -5,6 +5,7 @@ import javax.swing.*;
 public class Main {
 
     public static JFrame window;
+
     public static void main(String[] args) {
         window = new JFrame();
         window.setUndecorated(true);
@@ -12,8 +13,10 @@ public class Main {
         window.setResizable(false);
 
         GamePanel gamePanel = new GamePanel();
-
         window.add(gamePanel);
+
+        gamePanel.config.loadConfig();
+
         window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);

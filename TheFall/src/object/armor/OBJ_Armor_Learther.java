@@ -7,6 +7,7 @@ public class OBJ_Armor_Learther extends Entity {
     public OBJ_Armor_Learther(GamePanel gp) {
         super(gp);
         type = typeArmor;
+        price = 200;
         name = "Leather armor";
         down1 = setup("objects/leatherArmor",gp.tileSize,gp.tileSize);
         defenseValue = 1;

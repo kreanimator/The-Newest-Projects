@@ -22,8 +22,8 @@ public class Projectiles extends  Entity{
         if(user == gp.player){
             int enemyIndex = gp.cDetector.checkEntity(this,gp.enemy);
             if(enemyIndex != 999){
-                gp.player.damageEnemy(enemyIndex,attack);
-                generateParticle(user.projectiles,gp.enemy[enemyIndex]);
+                gp.player.damageEnemy(enemyIndex,attack, currentWeapon.knockBackPower);
+                generateParticle(user.projectiles,gp.enemy[gp.currentMap][enemyIndex]);
                 alive = false;
             }
 
@@ -61,9 +61,11 @@ public class Projectiles extends  Entity{
 
         }
     public boolean haveResource(Entity user){
-        boolean haveResource = false;
-        return haveResource;
-
+        return false;
+    }
+    public boolean action(Entity user){
+        boolean action = false;
+        return action;
     }
     public void subtractResource(Entity user){
         if(user.currentWeapon.type == typePistol) {

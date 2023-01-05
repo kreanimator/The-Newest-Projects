@@ -10,8 +10,10 @@ public class OBJ_Melee_Bat_normal extends Entity {
         super(gp);
         type = typeMelee;
         name = "Wooden Bat";
+        price = 100;
         down1 = setup("objects/bat",gp.tileSize,gp.tileSize);
         attackValue = 3;
+        knockBackPower =0;
         description = "[" + name + "]\nAttack value: " + attackValue + "\nAn ordinary baseball bat";
         attackArea.width = 36;
         attackArea.height = 36;

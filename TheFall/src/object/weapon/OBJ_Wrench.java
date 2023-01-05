@@ -9,9 +9,11 @@ public class OBJ_Wrench extends Entity {
     public OBJ_Wrench(GamePanel gp) {
         super(gp);
         type = typeWrench;
+        price = 1000;
         name = "Wrench";
         down1 = setup("objects/wrench",gp.tileSize,gp.tileSize);
         attackValue = 6;
+        knockBackPower = 10;
         description = "[" + name + "]\nAttack value: " + attackValue + "\nOld rusty wrench.\n Dangerous as a weapon.\n Can brake some objects.";
         attackArea.width = 36;
         attackArea.height = 36;

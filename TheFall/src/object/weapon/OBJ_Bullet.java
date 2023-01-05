@@ -17,6 +17,7 @@ public class OBJ_Bullet extends Projectiles {
         speed = 10;
         maxHP = 80;
         life = maxHP;
+        knockBackPower = 0;
         attack = 3;
         useCost = 1;
         alive = false;
@@ -25,7 +26,6 @@ public class OBJ_Bullet extends Projectiles {
 
 
     }
-
 
 
     public void getImage(){
@@ -40,21 +40,18 @@ public class OBJ_Bullet extends Projectiles {
     }
 
     public boolean haveResource(Entity user){
-        boolean haveResource = false;
-        if(user.pistolAmmo >= useCost || user.shotgunAmmo >= useCost){
+        boolean haveResource =false;
+        if(user.pistolAmmo >= useCost){
             haveResource = true;
         }
         return haveResource;
 
     }
     public void subtractResource(Entity user){
-        if(user.currentWeapon.type == typePistol) {
+
             user.pistolAmmo -= useCost;
         }
-        if(user.currentWeapon.type == typeShotgun) {
-            user.shotgunAmmo -= useCost;
-        }
-    }
+
     public Color getParticleColor(){
         Color color = new Color(220, 1, 44);
         return color;

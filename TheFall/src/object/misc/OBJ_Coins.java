@@ -21,10 +21,11 @@ public class OBJ_Coins extends Entity {
         description = "[" + name + "]\nSome old rusty coins. May be valuable.";
 
     }
-    public void use (Entity entity){
+    public boolean use (Entity entity){
         gp.playSE(3);
         gp.ui.addMessage("Coin " + value);
         gp.player.coin += value;
+        return true;
 
     }
 }

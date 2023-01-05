@@ -17,6 +17,9 @@ public class InteractiveTile extends Entity {
         boolean isCorrectItem = false;
         return isCorrectItem;
     }
+    public void action(){
+
+    }
     public void update(){
             if(invincible){
                 invincibleCounter++;
