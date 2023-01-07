@@ -1,15 +1,15 @@
 package entity;
 
-import main.EntityGenerator;
 import main.GamePanel;
 import main.KeyHandler;
 import object.armor.OBJ_Armor_Learther;
-import object.armor.OBJ_BarrelShield;
 import object.armor.OBJ_Shield;
-import object.misc.*;
+import object.misc.OBJ_Flashlight;
+import object.misc.OBJ_Key;
+import object.misc.OBJ_KeyCard;
 import object.projectiles.OBJ_Bullet;
 import object.projectiles.OBJ_ShotgunBullet;
-import object.weapon.*;
+import object.weapon.OBJ_Melee_Bat_normal;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -48,10 +48,12 @@ public class Player extends Entity {
     public void setDefaultValues() {
 
 
-        worldX = gp.tileSize * 26;
-        worldY = gp.tileSize * 82;
-//        worldX = gp.tileSize * 2;
+//        worldX = gp.tileSize * 26; //First map
+//        worldY = gp.tileSize * 82;
+//        worldX = gp.tileSize * 2; //Second map
 //        worldY = gp.tileSize * 47;
+        worldX = gp.tileSize * 2; //third map
+        worldY = gp.tileSize * 46;
         defaultSpeed = 4;
         speed = defaultSpeed;
 
@@ -86,8 +88,8 @@ public class Player extends Entity {
         inventory.add(currentWeapon);
         inventory.add(currentArmor);
         inventory.add(currentShield);
-        inventory.add(new OBJ_BarrelShield(gp));
-//        inventory.add(new OBJ_Key(gp));
+//        inventory.add(new OBJ_BarrelShield(gp));
+       inventory.add(new OBJ_Key(gp));
 //        inventory.add(new OBJ_Wrench(gp));
 //        inventory.add(new OBJ_Shotgun(gp));
 //        inventory.add(new OBJ_Pistol(gp));
@@ -96,7 +98,7 @@ public class Player extends Entity {
 //        inventory.add(new OBJ_Ammo_Shotgun(gp));
 //        inventory.add(new OBJ_Ammo_Shotgun(gp));
 //        inventory.add(new OBJ_Lockpick(gp));
-//        inventory.add(new OBJ_KeyCard(gp));
+        inventory.add(new OBJ_KeyCard(gp));
        inventory.add(new OBJ_Flashlight(gp));
 
     }

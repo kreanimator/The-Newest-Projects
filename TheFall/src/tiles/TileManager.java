@@ -26,6 +26,7 @@ public class TileManager {
         getTileImage();
         loadMap("/resources/maps/world1.txt", 0);
         loadMap("/resources/maps/cave.txt", 1);
+        loadMap("/resources/maps/bunker1.txt", 2);
     }
 
     public void getTileImage() {
@@ -111,7 +112,7 @@ public class TileManager {
         setup(77, "76bridge", false);
         setup(78, "77bridge", false);
         setup(79, "78wall", true);
-        setup(80, "79ladderup", false);
+        setup(80, "79ladderdown", false);
         setup(81, "80stalactite", true);
         setup(82, "81mushrooms", false);
         setup(83, "82greencrystals", false);
@@ -122,8 +123,56 @@ public class TileManager {
         setup(88, "87campfire", false);
         setup(89, "88campfire", false);
         setup(90, "89campfire", false);
-        setup(91, "90campfire", false);
-        setup(92, "91campfire", true);
+        setup(91, "89campfire1", false);
+        setup(92, "89campfire2", true);
+        setup(93, "89ladderupright", false);
+        setup(94, "89ladderupleft", false);
+        setup(95, "907bunkerfence", true);
+        setup(96, "908bunkerfence", true);
+        setup(97, "909bunkerfence", true);
+        setup(98, "910bunkerfence", true);
+        setup(99, "911bunkerwall", true);
+        setup(100, "911bunkerwater", true);
+        setup(101, "912bunkerwall", true);
+        setup(102, "912bunkerwaterhsu", true);
+        setup(103, "913bunkerfloor", true);
+        setup(104, "913bunkerwaterhsr", true);
+        setup(105, "914bunkerfloor", true);
+        setup(106, "914bunkerwatersh", true);
+        setup(107, "915bunkerfloor", true);
+        setup(108, "915bunkerwall", true);
+        setup(109, "916bunkerfloor", true);
+        setup(110, "916bunkerwall", true);
+        setup(111, "917bunkerfence", true);
+        setup(112, "917bunkerfloor", true);
+        setup(113, "918bunkerfloor", true);
+        setup(114, "94bunkerfloor", false);
+        setup(115, "95bunkerfcl", true);
+        setup(116, "96bunkerfcr", true);
+        setup(117, "97bunkerfl", false);
+        setup(118, "98bunkerfr", false);
+        setup(119, "99bunkerwall", true);
+        setup(120, "waf", false);
+        setup(121, "waf2", false);
+        setup(122, "wah", false);
+        setup(123, "wak", true);
+        setup(124, "wal", true);
+        setup(125, "wall1", true);
+        setup(126, "wall2", true);
+        setup(127, "wall3", true);
+        setup(128, "wall4", true);
+        setup(129, "wb", true);
+        setup(130, "wb2", true);
+        setup(131, "wc", true);
+        setup(132, "wc1", true);
+        setup(133, "wc3", true);
+        setup(134, "wh", true);
+        setup(135, "wl", true);
+        setup(136, "wr", false);
+        setup(137, "wt", true);
+        setup(138, "wt1", true);
+
+
 
     }
 

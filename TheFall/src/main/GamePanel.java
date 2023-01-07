@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxWorldCol = 100;
     public final int maxWorldRow = 100;
     public final int maxMap = 10;
-    public int currentMap = 0;
+    public int currentMap = 2;
     //FOR FULL SCREEN
 
     int screenWidth2 = screenWidth;
@@ -64,7 +64,7 @@ public class GamePanel extends JPanel implements Runnable {
     //ENTITY AND OBJECTS
     public Player player = new Player(this, keyH);
     public Entity[][] obj = new Entity[maxMap][100];
-    public Entity[][] npc = new Entity[maxMap][10];
+    public Entity[][] npc = new Entity[maxMap][20];
     public Entity[][] enemy = new Entity[maxMap][40];
     public InteractiveTile[][] iTile = new InteractiveTile[maxMap][50];
     public Entity[][] projectile = new Entity[maxMap][20];

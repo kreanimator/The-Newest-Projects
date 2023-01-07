@@ -15,6 +15,7 @@ public class OBJ_KeyCard extends Entity {
         value = 1;
         down1 = setup("objects/keycard",gp.tileSize,gp.tileSize);
         description = "[" + name + "]\nAn old bunker key card.";
+        setDialogue();
     }
     public void setDialogue(){
         dialogues[0][0] =  "You use the " + name + "and opened a bunker!";

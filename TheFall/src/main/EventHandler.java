@@ -219,8 +219,8 @@ public class EventHandler {
             if (hit(0,79, 86, "any")) {toxicDamage(gp.dialogState);gp.playSE(17);}
             if (hit(0,75, 87, "any")) {toxicDamage(gp.dialogState);gp.playSE(17);}
            // if (hit(0,17,68,"any")){savePoint(gp.dialogState);}
-            else if (hit(0,85, 16, "any")) {transition(1,2,47);gp.stopMusic();gp.playMusic(22);}
-            else if (hit(1, 2, 47, "any")) {transition(0,85,16);gp.stopMusic();gp.playMusic(0);}
+            else if (hit(0,85, 16, "any")) {transition(1,1,47);gp.stopMusic();gp.playMusic(22);}
+            else if (hit(1, 1, 47, "any")) {transition(0,85,16);gp.stopMusic();gp.playMusic(0);}
 
         }
 

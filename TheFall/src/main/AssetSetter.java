@@ -5,10 +5,7 @@ import entity.NPC_Ghoul;
 import entity.NPC_Nick;
 import object.armor.OBJ_Armor_Learther;
 import object.armor.OBJ_Armor_Metal;
-import object.exterior.OBJ_CampFire;
-import object.exterior.OBJ_Door;
-import object.exterior.OBJ_GarbageTrunk;
-import object.exterior.OBJ_Locker;
+import object.exterior.*;
 import object.interior.*;
 import object.misc.OBJ_Flashlight;
 import object.misc.OBJ_HPPack;
@@ -185,6 +182,10 @@ public class AssetSetter {
         gp.obj[mapNum][i].setLoot(new OBJ_HPPack(gp));
         gp.obj[mapNum][i].worldX = gp.tileSize * 54;
         gp.obj[mapNum][i].worldY = gp.tileSize * 13;
+        i++;
+        gp.obj[mapNum][i] = new OBJ_BunkerDoor(gp);
+        gp.obj[mapNum][i].worldX = gp.tileSize * 85;
+        gp.obj[mapNum][i].worldY = gp.tileSize * 16;
 
     }
 

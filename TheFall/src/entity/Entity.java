@@ -764,7 +764,7 @@ public class Entity {
         int row = nextWorldY / gp.tileSize;
 
         for (int i = 0; i < target[1].length; i++) {
-            if (target[i] != null) {
+            if (target[gp.currentMap][i] != null) {
                 if (target[gp.currentMap][i].getCol() == col &&
                         target[gp.currentMap][i].getRow() == row &&
                         target[gp.currentMap][i].name.equals(targetName)) {
