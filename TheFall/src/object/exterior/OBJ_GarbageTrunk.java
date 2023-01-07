@@ -6,14 +6,13 @@ import main.GamePanel;
 public class OBJ_GarbageTrunk extends Entity {
 
         GamePanel gp;
-        Entity loot;
-        boolean opened = false;
-    public OBJ_GarbageTrunk(GamePanel gp, Entity loot) {
+    public final static String objName = "GarbageTrunk";
+
+    public OBJ_GarbageTrunk(GamePanel gp) {
         super(gp);
         this.gp = gp;
-        this.loot = loot;
         type = typeObstacle;
-        name = "GarbageTrunk";
+        name = objName;
         image = setup("objects/interactiveobjects/garbageTrunk",gp.tileSize,gp.tileSize);
         image2 = setup("objects/interactiveobjects/garbageTrunkopened",gp.tileSize,gp.tileSize);
         down1 = image;
@@ -26,6 +25,9 @@ public class OBJ_GarbageTrunk extends Entity {
         solidAreaDefaultY = solidArea.y;
 
 
+    }
+    public void setLoot(Entity loot) {
+        this.loot = loot;
     }
 
     public void interact(){

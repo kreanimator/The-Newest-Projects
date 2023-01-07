@@ -6,6 +6,7 @@ import main.GamePanel;
 public class OBJ_Ammo_Shotgun extends Entity {
 
     GamePanel gp;
+    public final static String objName = "Shotgun shell";
 
     public OBJ_Ammo_Shotgun(GamePanel gp) {
         super(gp);
@@ -13,15 +14,16 @@ public class OBJ_Ammo_Shotgun extends Entity {
         this.gp = gp;
         type = typeConsumable;
         stackable = true;
-        name = "Shotgun shell";
+        name = objName;
         value = 6;
         down1 = setup("objects/shotgunShell",gp.tileSize,gp.tileSize);
         description = "[" + name + "]\n12 mm shotgun ammo.";
     }
-
+    public void setDialogue(){
+        dialogues[0][0] = "You used " + name + "\n You got " + value + " more shells.";;
+    }
     public boolean use (Entity entity){
-        gp.gameState = gp.dialogState;
-        gp.ui.currentDialogue = "You used " + name + "\n You got " + value + " more shells.";
+        startDialogue(this,0);
         entity.shotgunAmmo += value;
         if ( gp.player.shotgunAmmo > gp.player.maxAmmo){
             gp.player.shotgunAmmo = gp.player.maxAmmo;

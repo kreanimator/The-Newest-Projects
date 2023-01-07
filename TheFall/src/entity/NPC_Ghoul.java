@@ -8,7 +8,7 @@ import object.weapon.OBJ_Ammo_Shotgun;
 import object.weapon.OBJ_Pistol;
 import object.weapon.OBJ_Shotgun;
 
-import java.util.Random;
+
 
 public class NPC_Ghoul extends Entity{
     public NPC_Ghoul(GamePanel gp) {
@@ -64,14 +64,19 @@ public class NPC_Ghoul extends Entity{
 //        }
     }
     public void setDialogue(){
-        dialogues[0] = " Please don't hit me! I know I can look ugly, but I'm not dangerous, " +
+        dialogues[0][1] = " Please don't hit me! I know I can look ugly, but I'm not dangerous, " +
                 "I just live here...\nI am a ghoul... Old ghoul named Daniel....\nI have some items for sale if you wish." +
                 "\nSometimes I steal some stuff from these punks... hehehe...";
+        dialogues [1][0] = "Come again hehehe...";
+        dialogues [2][0]= "You have no enough money!";
+        dialogues [3][0] = "Inventory is full!";
+        dialogues [4][0] = "You cannot sell an equipped item!";
+
 
 
     }
     public void speak(){
-        super.speak();
+        npcReactionToAction();
         gp.gameState = gp.tradeState;
         gp.ui.npc = this;
     }

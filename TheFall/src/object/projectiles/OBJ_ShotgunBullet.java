@@ -1,4 +1,4 @@
-package object.weapon;
+package object.projectiles;
 
 import entity.Entity;
 import entity.Projectiles;
@@ -7,6 +7,7 @@ import main.GamePanel;
 import java.awt.*;
 
 public class OBJ_ShotgunBullet extends Projectiles {
+    public final static String objName = "ShotgunBullet";
 
 
         GamePanel gp;
@@ -14,11 +15,11 @@ public class OBJ_ShotgunBullet extends Projectiles {
             super(gp);
             this.gp = gp;
 
-            name = "ShotgunBullet";
+            name = objName;
             speed = 10;
             maxHP = 80;
             life = maxHP;
-            knockBackPower = 0;
+            knockBackPower = 5;
             attack = 5;
             useCost = 1;
             alive = false;

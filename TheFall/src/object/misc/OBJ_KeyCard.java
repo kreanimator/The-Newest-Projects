@@ -6,25 +6,30 @@ import main.GamePanel;
 public class OBJ_KeyCard extends Entity {
 
     GamePanel gp;
+    public final static String objName = "Key Card";
     public OBJ_KeyCard(GamePanel gp) {
         super(gp);
         this.gp = gp;
         type = typeConsumable;
-        name = "Key Card";
+        name = objName;
         value = 1;
         down1 = setup("objects/keycard",gp.tileSize,gp.tileSize);
         description = "[" + name + "]\nAn old bunker key card.";
     }
+    public void setDialogue(){
+        dialogues[0][0] =  "You use the " + name + "and opened a bunker!";
+        dialogues [1][0] = "What the hell are you doing?";
+    }
     public boolean use (Entity entity){
-        int objectIndex = getDetected(entity, gp.obj, "Locker");
+        int objectIndex = getDetected(entity, gp.obj, "Bunker Door");
 
         if (objectIndex != 999){
-            gp.ui.currentDialogue = "You use the " + name + "and opened a bunker!";
+            startDialogue(this,0);
             gp.obj[gp.currentMap][objectIndex] = null;
             gp.playSE(6);
             return true;
         }else {
-            gp.ui.currentDialogue = "What the hell are you doing?";
+            startDialogue(this,1);
             return false;
         }
 

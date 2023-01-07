@@ -5,19 +5,18 @@ import main.GamePanel;
 
 public class OBJ_Locker extends Entity {
 
-        GamePanel gp;
-        Entity loot;
-        boolean opened = false;
+    GamePanel gp;
+    public final static String objName = "Locker";
 
 
-    public OBJ_Locker(GamePanel gp, Entity loot) {
+
+    public OBJ_Locker(GamePanel gp) {
         super(gp);
         this.gp = gp;
-        this.loot = loot;
         type = typeObstacle;
-        name = "Locker";
-        image = setup("objects/interactiveobjects/locker",gp.tileSize,gp.tileSize);
-        image2 = setup("objects/interactiveobjects/lockeropened",gp.tileSize,gp.tileSize);
+        name = objName;
+        image = setup("objects/interactiveobjects/locker", gp.tileSize, gp.tileSize);
+        image2 = setup("objects/interactiveobjects/lockeropened", gp.tileSize, gp.tileSize);
         down1 = image;
         collision = true;
         solidArea.x = 0;
@@ -27,29 +26,31 @@ public class OBJ_Locker extends Entity {
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
-
     }
 
-    public void interact(){
+    public void setLoot(Entity loot) {
+        this.loot = loot;
+        setDialogue();
+    }
+    public void setDialogue(){
+        dialogues[0][0] = "You opened a locker and find a " + loot.name +" !";
+        dialogues[1][0] = "You cannot carry anymore";
+        dialogues[2][0] = "It's empty! ";
 
-        gp.gameState = gp.dialogState;
-        gp.ui.currentDialogue = "You need a key to open this!";
-        if(!opened){
+    }
+    public void interact() {
+        if (!opened) {
             gp.playSE(6);
-            StringBuilder sb = new StringBuilder();
-            sb.append("You opened a locker and find a ").append(loot.name).append("!");
-            if(!gp.player.canObtainItem(loot)){
-                sb.append("You cannot carry any more....");
-            }
-            else {
 
+            if (!gp.player.canObtainItem(loot)) {
+            startDialogue(this,1);
+            } else {
                 down1 = image2;
                 opened = true;
             }
-            gp.ui.currentDialogue = sb.toString();
-        }
-        else {
-            gp.ui.currentDialogue = "It's empty! ";
+            startDialogue(this,0);
+        } else {
+            startDialogue(this,2);
         }
     }
 }

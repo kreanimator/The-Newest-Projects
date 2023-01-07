@@ -83,16 +83,26 @@ public class PathFinder {
             if(gp.tileM.tiles[tileNum].collision){
                 node[col][row].solid = true;
         }
+
             //CHECK INTERACTIVE TILES
 
             for(int i = 0; i < gp.iTile[1].length; i ++){
                 if(gp.iTile[gp.currentMap][i] != null && gp.iTile[gp.currentMap][i].destructible){
                     int itCol = gp.iTile[gp.currentMap][i].worldX/gp.tileSize;
                     int itCRow = gp.iTile[gp.currentMap][i].worldY/gp.tileSize;
-
                     node[itCol][itCRow].solid =true;
                 }
+
             }
+
+            //CHECK OBJECTS IS REDUNDANT FOR THIS MOMENT
+//            for(int i = 0; i < gp.iTile[1].length; i ++) {
+//                if (gp.obj[gp.currentMap][i] != null) {
+//                    int itCol = gp.obj[gp.currentMap][i].worldX / gp.tileSize;
+//                    int itCRow = gp.obj[gp.currentMap][i].worldY / gp.tileSize;
+//                    node[itCol][itCRow].solid = true;
+//                }
+//            }
             //SET COST
 
             getCost(node[col][row]);

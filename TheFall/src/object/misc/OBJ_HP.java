@@ -5,10 +5,10 @@ import main.GamePanel;
 
 public class OBJ_HP extends Entity {
 
-
+public final static String objName = "HP";
     public OBJ_HP(GamePanel gp) {
         super(gp);
-        name = "HP";
+        name = objName;
 
         image = setup("hpbar/0",gp.tileSize-10,gp.tileSize-10);
         image2 = setup("hpbar/2",gp.tileSize-10,gp.tileSize-10);

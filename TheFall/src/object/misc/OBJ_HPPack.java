@@ -5,6 +5,7 @@ import main.GamePanel;
 
 public class OBJ_HPPack extends Entity {
     GamePanel gp;
+    public final static String objName = "HP Pack";
 
 
     public OBJ_HPPack(GamePanel gp) {
@@ -12,17 +13,19 @@ public class OBJ_HPPack extends Entity {
         this.gp = gp;
         price =150;
         type = typeConsumable;
-        name = "HP Pack";
+        name = objName;
         value = 5;
         stackable = true;
         down1 = setup("objects/hppack",gp.tileSize,gp.tileSize);
         description = "[" + name + "]\nRestores some amount of HP.";
+        setDialogue();
+    }
+    public void setDialogue(){
+        dialogues[0][0] = "You used" + name + "\nYou restored " + value + " HP.";
     }
     public boolean use (Entity entity){
-        gp.gameState = gp.dialogState;
-        gp.ui.currentDialogue = "You used" + name + "\nYou restored " + value + " HP.";
+        startDialogue(this,0);
         entity.life += value;
-
         gp.playSE(11);
         return true;
 

@@ -1,5 +1,6 @@
 package main;
 
+import entity.Entity;
 import tiles.TileManager;
 import tiles.Tiles;
 
@@ -9,6 +10,7 @@ public class EventHandler {
 
     GamePanel gp;
     EventRect[][][] eventRect;
+    Entity gameMaster;
     int previousEventX,previousEventY;
     boolean canTouchEvent = true;
     int tempMap,tempCol,tempRow;
@@ -16,6 +18,7 @@ public class EventHandler {
 
     public EventHandler(GamePanel gp) {
         this.gp = gp;
+        gameMaster = new Entity(gp);
         eventRect = new EventRect[gp.maxMap][gp.maxWorldCol][gp.maxWorldRow];
         int map = 0;
         int col = 0;
@@ -40,7 +43,12 @@ public class EventHandler {
                 }
             }
         }
+        setDialogue();
 
+    }
+    public void setDialogue(){
+        gameMaster.dialogues[0][0] =  "You got toxic damage";
+        gameMaster.dialogues[1][0] =  "Your progress has been saved!";
     }
 
     public void checkEvent() {
@@ -210,6 +218,7 @@ public class EventHandler {
             if (hit(0,78, 86, "any")) {toxicDamage(gp.dialogState);gp.playSE(17);}
             if (hit(0,79, 86, "any")) {toxicDamage(gp.dialogState);gp.playSE(17);}
             if (hit(0,75, 87, "any")) {toxicDamage(gp.dialogState);gp.playSE(17);}
+           // if (hit(0,17,68,"any")){savePoint(gp.dialogState);}
             else if (hit(0,85, 16, "any")) {transition(1,2,47);gp.stopMusic();gp.playMusic(22);}
             else if (hit(1, 2, 47, "any")) {transition(0,85,16);gp.stopMusic();gp.playMusic(0);}
 
@@ -225,10 +234,20 @@ public class EventHandler {
         canTouchEvent = false;
 
     }
+    public void savePoint(int gameState){
+        if(gp.keyH.ePressed){
+            gp.gameState = gameState;
+            gp.player.attackCanceled = true;
+            gameMaster.startDialogue(gameMaster,1);
+            gp.player.life = gp.player.maxHP;
+            //gp.aSetter.setEnemy();
+            gp.saveLoad.save();
+            }
+    }
 
     public void toxicDamage(int gameState){
         gp.gameState = gameState;
-        gp.ui.currentDialogue = "You got toxic damage";
+        gameMaster.startDialogue(gameMaster,0);
         gp.player.life -=1;
         canTouchEvent = false;
 

@@ -2,10 +2,8 @@ package tile_interactive;
 
 import entity.Entity;
 import main.GamePanel;
-import object.misc.OBJ_Coins;
+import object.misc.OBJ_Money;
 import object.misc.OBJ_HPPack;
-import object.weapon.OBJ_Ammo_Pistol;
-import object.weapon.OBJ_Ammo_Shotgun;
 
 import java.awt.*;
 import java.util.Random;
@@ -64,7 +62,7 @@ public class IT_Box extends InteractiveTile{
         //SET THE CRATE DROP
 
         if (i <50){
-            dropItem(new OBJ_Coins(gp));
+            dropItem(new OBJ_Money(gp));
         }
         if (i >=50 && i < 100){
             dropItem(new OBJ_HPPack(gp));

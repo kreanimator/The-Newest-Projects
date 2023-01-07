@@ -23,40 +23,46 @@ public class CollisionDetector {
         int entityBottomRow = entityBottomWorldY/gp.tileSize;
 
         int tileNum1,tileNum2;
+        //Temporal direction when it is knockbacked
+        String direction = entity.direction;
 
-        switch (entity.direction){
-            case "up":
-                entityTopRow = (entityTopWorldY - (int) entity.speed)/gp.tileSize;
+        if(entity.knockBack){
+            direction = entity.knockbackDirection;
+        }
+
+        switch (direction) {
+            case "up" -> {
+                entityTopRow = (entityTopWorldY - (int) entity.speed) / gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityTopRow];
-                if(gp.tileM.tiles[tileNum1].collision || gp.tileM.tiles[tileNum2].collision){
+                if (gp.tileM.tiles[tileNum1].collision || gp.tileM.tiles[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
-                break;
-            case "down":
-                entityBottomRow = (entityBottomWorldY + (int)entity.speed)/gp.tileSize;
+            }
+            case "down" -> {
+                entityBottomRow = (entityBottomWorldY + (int) entity.speed) / gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityBottomRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityBottomRow];
-                if(gp.tileM.tiles[tileNum1].collision || gp.tileM.tiles[tileNum2].collision){
+                if (gp.tileM.tiles[tileNum1].collision || gp.tileM.tiles[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
-                break;
-            case "left":
-                entityLeftCol = (entityLeftWorldX - (int)entity.speed)/gp.tileSize;
+            }
+            case "left" -> {
+                entityLeftCol = (entityLeftWorldX - (int) entity.speed) / gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityLeftCol][entityBottomRow];
-                if(gp.tileM.tiles[tileNum1].collision || gp.tileM.tiles[tileNum2].collision){
+                if (gp.tileM.tiles[tileNum1].collision || gp.tileM.tiles[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
-                break;
-            case "right":
-                entityRightCol = (entityRightWorldX + (int)entity.speed)/gp.tileSize;
+            }
+            case "right" -> {
+                entityRightCol = (entityRightWorldX + (int) entity.speed) / gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[gp.currentMap][entityRightCol][entityBottomRow];
-                if(gp.tileM.tiles[tileNum1].collision || gp.tileM.tiles[tileNum2].collision){
+                if (gp.tileM.tiles[tileNum1].collision || gp.tileM.tiles[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
-                break;
+            }
         }
     }
     public int checkObject(Entity entity, boolean player){
@@ -135,6 +141,11 @@ public class CollisionDetector {
     //NPC OR MONSTER
     public int checkEntity(Entity entity, Entity [][] target){
         int index =999;
+        String direction = entity.direction;
+
+        if(entity.knockBack){
+            direction = entity.knockbackDirection;
+        }
 
         for (int i =0; i < target[1].length; i++){
 
@@ -147,7 +158,7 @@ public class CollisionDetector {
                 target[gp.currentMap][i].solidArea.x = target[gp.currentMap][i].worldX + target[gp.currentMap][i].solidArea.x;
                 target[gp.currentMap][i].solidArea.y = target[gp.currentMap][i].worldY + target[gp.currentMap][i].solidArea.y;
 
-                switch (entity.direction) {
+                switch (direction) {
                     case "up" -> {entity.solidArea.y -= entity.speed;}
                     case "down" -> {entity.solidArea.y += entity.speed;}
                     case "left" -> {entity.solidArea.x -= entity.speed;}

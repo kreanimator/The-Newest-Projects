@@ -22,7 +22,7 @@ public class Projectiles extends  Entity{
         if(user == gp.player){
             int enemyIndex = gp.cDetector.checkEntity(this,gp.enemy);
             if(enemyIndex != 999){
-                gp.player.damageEnemy(enemyIndex,attack, currentWeapon.knockBackPower);
+                gp.player.damageEnemy(enemyIndex,this,attack, knockBackPower);
                 generateParticle(user.projectiles,gp.enemy[gp.currentMap][enemyIndex]);
                 alive = false;
             }
