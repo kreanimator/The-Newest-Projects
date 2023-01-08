@@ -65,7 +65,7 @@ public class GreenSlime extends Entity {
             //Check stop chasing
             checkStopChasing(gp.player, 15, 100);
         } else {
-            getRandomDirection();
+            getRandomDirection(100);
         }
     }
 

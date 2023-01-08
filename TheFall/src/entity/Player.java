@@ -9,7 +9,9 @@ import object.misc.OBJ_Key;
 import object.misc.OBJ_KeyCard;
 import object.projectiles.OBJ_Bullet;
 import object.projectiles.OBJ_ShotgunBullet;
+import object.weapon.OBJ_Ammo_Shotgun;
 import object.weapon.OBJ_Melee_Bat_normal;
+import object.weapon.OBJ_Shotgun;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -52,8 +54,11 @@ public class Player extends Entity {
 //        worldY = gp.tileSize * 82;
 //        worldX = gp.tileSize * 2; //Second map
 //        worldY = gp.tileSize * 47;
-        worldX = gp.tileSize * 2; //third map
-        worldY = gp.tileSize * 46;
+//        worldX = gp.tileSize * 2; //third map
+//        worldY = gp.tileSize * 46;
+        worldX = gp.tileSize * 4; //boss map
+        worldY = gp.tileSize * 40;
+       // setDefaultPositions();
         defaultSpeed = 4;
         speed = defaultSpeed;
 
@@ -91,12 +96,13 @@ public class Player extends Entity {
 //        inventory.add(new OBJ_BarrelShield(gp));
        inventory.add(new OBJ_Key(gp));
 //        inventory.add(new OBJ_Wrench(gp));
-//        inventory.add(new OBJ_Shotgun(gp));
+        inventory.add(new OBJ_Shotgun(gp));
 //        inventory.add(new OBJ_Pistol(gp));
 //        inventory.add(new OBJ_Armor_Metal(gp));
 //        inventory.add(new OBJ_Ammo_Pistol(gp));
-//        inventory.add(new OBJ_Ammo_Shotgun(gp));
-//        inventory.add(new OBJ_Ammo_Shotgun(gp));
+        inventory.add(new OBJ_Ammo_Shotgun(gp));
+       inventory.add(new OBJ_Ammo_Shotgun(gp));
+        inventory.add(new OBJ_Ammo_Shotgun(gp));
 //        inventory.add(new OBJ_Lockpick(gp));
         inventory.add(new OBJ_KeyCard(gp));
        inventory.add(new OBJ_Flashlight(gp));
@@ -104,6 +110,8 @@ public class Player extends Entity {
     }
 
     public void setDefaultPositions() {
+
+        //gp.currentMap = 3;
         worldX = gp.tileSize * 26;
         worldY = gp.tileSize * 82;
         direction = "down";
@@ -399,11 +407,13 @@ public class Player extends Entity {
         if (life > maxHP) {
             life = maxHP;
         }
+        if(!keyH.godModeOn){
         if (life <= 0) {
             gp.gameState = gp.gameOverState;
             gp.ui.commandNumber = -1;
             gp.stopMusic();
             gp.playSE(19);
+        }
         }
 
     }
@@ -484,13 +494,14 @@ public class Player extends Entity {
     }
 
     public void interactNPC(int i) {
+        if (i != 999) {
         if (gp.keyH.ePressed) {
-            if (i != 999) {
+
                 attackCanceled = true;
                 gp.npc[gp.currentMap][i].speak();
             }
-
-        }
+            gp.npc[gp.currentMap][i].move(direction);
+    }
     }
 
     private void contactEnemy(int i) {

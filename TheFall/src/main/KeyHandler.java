@@ -11,6 +11,7 @@ public class KeyHandler implements KeyListener {
     //DEBUG
 
     boolean checkDrawTime = false;
+    public boolean godModeOn = false;
     int debugCounter =0;
 
     public KeyHandler(GamePanel gp) {
@@ -164,11 +165,22 @@ public class KeyHandler implements KeyListener {
         if (key == KeyEvent.VK_C) {
             gp.gameState = gp.charState;
         }
+        //DEBUG
         if (key == KeyEvent.VK_L) {
             if (!checkDrawTime) {
                 checkDrawTime = true;
             } else if (checkDrawTime) {
                 checkDrawTime =false;
+            }
+        }
+        //GODMODE
+        if (key == KeyEvent.VK_K) {
+            if (!godModeOn) {
+                godModeOn = true;
+                System.out.println(godModeOn);
+            } else if (checkDrawTime) {
+                godModeOn = false;
+                System.out.println(godModeOn);
             }
 
 

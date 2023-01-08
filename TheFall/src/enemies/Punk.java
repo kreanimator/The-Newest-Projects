@@ -103,7 +103,7 @@ public class Punk extends Entity {
         else {
             //Check if it starts chasing
             checkStartChasing(gp.player, 5, 50);
-            getRandomDirection();
+            getRandomDirection(50);
 
         }
         //Check if it attacks

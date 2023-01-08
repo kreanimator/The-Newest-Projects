@@ -81,7 +81,7 @@ public class Ghoul extends Entity {
 
             if (gp.eManager.lighting.nightOn) {
 
-                getRandomDirection();
+                getRandomDirection(100);
                 speed = 2;
 
             }

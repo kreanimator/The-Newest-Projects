@@ -82,7 +82,7 @@ public class Spider extends Entity {
             checkStartChasing(gp.player, 5, 50);
 
 
-                getRandomDirection();
+                getRandomDirection(20);
 
             }
         }

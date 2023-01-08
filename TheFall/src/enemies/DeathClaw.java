@@ -86,7 +86,7 @@ public class DeathClaw extends Entity {
             checkStartChasing(gp.player, 10, 100);
             speed = 4;
 
-            getRandomDirection();
+            getRandomDirection(100);
         }
     }
 

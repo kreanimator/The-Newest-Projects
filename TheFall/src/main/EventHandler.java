@@ -219,15 +219,18 @@ public class EventHandler {
             if (hit(0,79, 86, "any")) {toxicDamage(gp.dialogState);gp.playSE(17);}
             if (hit(0,75, 87, "any")) {toxicDamage(gp.dialogState);gp.playSE(17);}
            // if (hit(0,17,68,"any")){savePoint(gp.dialogState);}
-            else if (hit(0,85, 16, "any")) {transition(1,1,47);gp.stopMusic();gp.playMusic(22);}
-            else if (hit(1, 1, 47, "any")) {transition(0,85,16);gp.stopMusic();gp.playMusic(0);}
+            else if (hit(0,85, 16, "any")) {transition(1,1,47,gp.cave);gp.stopMusic();gp.playMusic(22);}
+            else if (hit(1, 1, 47, "any")) {transition(0,85,16,gp.outside);gp.stopMusic();gp.playMusic(0);}
+            else if (hit(1, 91, 48, "any")) {transition(2,1,46,gp.bunker);gp.stopMusic();gp.playMusic(27);}
+            else if (hit(2, 1, 46, "any")) {transition(1,91,48,gp.cave);gp.stopMusic();gp.playMusic(22);}
 
         }
 
     }
 
-    private void transition(int map,int col, int row ) {
+    private void transition(int map,int col, int row,int area ) {
         gp.gameState = gp.transitionState;
+        gp.nextArea = area;
         tempMap = map;
         tempCol = col;
         tempRow = row;

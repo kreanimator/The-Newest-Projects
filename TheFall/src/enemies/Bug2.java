@@ -62,7 +62,7 @@ public class Bug2 extends Entity {
             //Check stop chasing
             checkStopChasing(gp.player, 15, 100);
         } else {
-            getRandomDirection();
+            getRandomDirection(50);
         }
     }
 

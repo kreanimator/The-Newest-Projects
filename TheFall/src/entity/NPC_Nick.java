@@ -5,10 +5,12 @@ import main.GamePanel;
 public class NPC_Nick extends Entity {
     boolean questStarted = false;
     boolean finishedPath = true;
+    public static final String npcName = "Nick";
 
     public NPC_Nick(GamePanel gp) {
         super(gp);
         direction = "down";
+        name = npcName;
         speed = defaultSpeed;
         solidArea.x = 6;
         solidArea.y = 16;

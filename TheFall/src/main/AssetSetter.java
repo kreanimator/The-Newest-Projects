@@ -1,8 +1,10 @@
 package main;
 
 import enemies.*;
+import entity.NPC_BigRock;
 import entity.NPC_Ghoul;
 import entity.NPC_Nick;
+import entity.NPC_Patient;
 import object.armor.OBJ_Armor_Learther;
 import object.armor.OBJ_Armor_Metal;
 import object.exterior.*;
@@ -16,6 +18,7 @@ import object.weapon.OBJ_Melee_Bat_normal;
 import object.weapon.OBJ_Pistol;
 import object.weapon.OBJ_Wrench;
 import tile_interactive.IT_Box;
+import tile_interactive.IT_MetalPlate;
 import tile_interactive.IT_Vase;
 
 public class AssetSetter {
@@ -186,6 +189,17 @@ public class AssetSetter {
         gp.obj[mapNum][i] = new OBJ_BunkerDoor(gp);
         gp.obj[mapNum][i].worldX = gp.tileSize * 85;
         gp.obj[mapNum][i].worldY = gp.tileSize * 16;
+        mapNum = 1;
+        i=0;
+        gp.obj[mapNum][i] = new OBJ_IronDoor(gp);
+        gp.obj[mapNum][i].worldX = gp.tileSize * 89;
+        gp.obj[mapNum][i].worldY = gp.tileSize * 48;
+        i++;
+        mapNum = 2;
+        i=0;
+        gp.obj[mapNum][i] = new OBJ_IronDoor(gp);
+        gp.obj[mapNum][i].worldX = gp.tileSize * 98;
+        gp.obj[mapNum][i].worldY = gp.tileSize * 57;
 
     }
 
@@ -223,14 +237,20 @@ public class AssetSetter {
         gp.iTile[mapNum][i] = new IT_Box(gp,46,13);
         i++;
         gp.iTile[mapNum][i] = new IT_Box(gp,46,14);
-        i++;
 
         mapNum = 1;
+        i=0;
         gp.iTile[mapNum][i] = new IT_Vase(gp,16,41);
         i++;
         gp.iTile[mapNum][i] = new IT_Vase(gp,17,41);
         i++;
         gp.iTile[mapNum][i] = new IT_Vase(gp,18,41);
+        i++;
+        gp.iTile[mapNum][i] = new IT_MetalPlate(gp,11,12);
+        i++;
+        gp.iTile[mapNum][i] = new IT_MetalPlate(gp,34,84);
+        i++;
+        gp.iTile[mapNum][i] = new IT_MetalPlate(gp,87,59);
     }
     public void setNPC() {
         int mapNum = 0;
@@ -238,15 +258,175 @@ public class AssetSetter {
         gp.npc[mapNum][i] = new NPC_Nick(gp);
         gp.npc[mapNum][i].worldX = gp.tileSize * 26;
         gp.npc[mapNum][i].worldY = gp.tileSize * 79;
-//        i++;
+
 //        gp.npc[mapNum][i] = new OBJ_CampFire(gp);
 //        gp.npc[mapNum][i].worldX = gp.tileSize * 25;
 //        gp.npc[mapNum][i].worldY = gp.tileSize * 79;
 
         mapNum = 1;
-        gp.npc[mapNum][0] = new NPC_Ghoul(gp);
-        gp.npc[mapNum][0].worldX = gp.tileSize * 14;
-        gp.npc[mapNum][0].worldY = gp.tileSize * 41;
+        i=0;
+        gp.npc[mapNum][i] = new NPC_Ghoul(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 14;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 41;
+        i++;
+        gp.npc[mapNum][i] = new NPC_BigRock(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 80;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 56;
+        i++;
+        gp.npc[mapNum][i] = new NPC_BigRock(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 6;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 17;
+        i++;
+        gp.npc[mapNum][i] = new NPC_BigRock(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 29;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 80;
+        mapNum = 3;
+        i=0;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 4;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 57;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 4;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 54;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 4;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 51;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 4;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 48;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 7;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 57;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 7;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 54;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 7;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 51;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 7;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 48;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 10;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 57;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 10;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 54;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 10;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 51;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 10;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 48;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 13;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 57;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 13;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 54;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 13;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 51;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 13;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 48;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 16;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 57;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 16;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 54;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 16;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 51;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 16;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 48;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 19;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 57;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 19;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 54;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 19;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 51;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 19;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 48;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 22;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 57;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 22;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 54;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 22;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 51;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 22;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 48;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 25;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 57;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 25;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 54;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 25;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 51;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 25;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 48;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 28;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 57;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 28;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 54;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 28;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 51;
+        i++;
+        gp.npc[mapNum][i] = new NPC_Patient(gp);
+        gp.npc[mapNum][i].worldX = gp.tileSize * 28;
+        gp.npc[mapNum][i].worldY = gp.tileSize * 48;
+
+
     }
 
     public void setEnemy() {
@@ -312,8 +492,9 @@ public class AssetSetter {
         gp.enemy[mapNum][i] = new DeathClaw(gp);
         gp.enemy[mapNum][i].worldX = gp.tileSize * 29;
         gp.enemy[mapNum][i].worldY = gp.tileSize * 48;
-        i++;
+
         mapNum =1;
+        i=0;
         gp.enemy[mapNum][i] = new Spider(gp);
         gp.enemy[mapNum][i].worldX = gp.tileSize * 35;
         gp.enemy[mapNum][i].worldY = gp.tileSize * 79;
@@ -330,6 +511,13 @@ public class AssetSetter {
         gp.enemy[mapNum][i] = new Bug3(gp);
         gp.enemy[mapNum][i].worldX = gp.tileSize * 15;
         gp.enemy[mapNum][i].worldY = gp.tileSize * 14;
+
+        mapNum =3;
+        i=0;
+        gp.enemy[mapNum][i] = new SlimeBoss(gp);
+        gp.enemy[mapNum][i].worldX = gp.tileSize * 59;
+        gp.enemy[mapNum][i].worldY = gp.tileSize * 45;
+
 
 
     }

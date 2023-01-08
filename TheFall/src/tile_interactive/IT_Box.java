@@ -11,9 +11,11 @@ import java.util.Random;
 public class IT_Box extends InteractiveTile{
 
     GamePanel gp;
+    public static final String itName = "Box";
     public IT_Box(GamePanel gp , int col, int row) {
         super(gp,col,row);
         this.gp = gp;
+        name = itName;
 
         life = 3;
 

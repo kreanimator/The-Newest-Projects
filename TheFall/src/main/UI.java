@@ -82,6 +82,7 @@ public class UI {
         //PLAY STATE
         if (gp.gameState == gp.playState) {
             drawplayerlife();
+            drawEnemyLife();
             drawPlayerAmmo();
             drawMessage();
 
@@ -270,6 +271,44 @@ public class UI {
             i++;
             x += gp.tileSize - 10;
         }
+    }
+    public void drawEnemyLife(){
+        //Enemy HP bar
+
+        for(int i = 0; i < gp.enemy[1].length; i++){
+            Entity enemy = gp.enemy[gp.currentMap][i];
+            if(enemy != null && enemy.inCamera()){
+                if ( enemy.hpBarOn && !enemy.boss) {
+
+                    double oneScale = (double) gp.tileSize / enemy.maxHP;
+                    double hpBarValue = oneScale * enemy.life;
+                    g2.setColor(new Color(35, 35, 35));
+                    g2.fillRect(enemy.getScreenX()- 1, enemy.getScreenY() - 16, gp.tileSize + 2, 12);
+                    g2.setColor(new Color(255, 0, 30));
+                    g2.fillRect(enemy.getScreenX(), enemy.getScreenY() - 15, (int) hpBarValue, 10);
+                    enemy.hpBarCounter++;
+                    if (enemy.hpBarCounter > 600) {
+                        enemy.hpBarCounter = 0;
+                        enemy.hpBarOn = false;
+                    }
+                } else if (enemy.boss) {
+                    double oneScale = (double) gp.tileSize *8/ enemy.maxHP;
+                    double hpBarValue = oneScale * enemy.life;
+
+                    int x = gp.screenWidth/2 - gp.tileSize*4;
+                    int y = gp.tileSize * 10;
+                    g2.setColor(new Color(35, 35, 35));
+                    g2.fillRect(x- 1, y - 1, gp.tileSize * 8 + 2, 22);
+                    g2.setColor(new Color(255, 0, 30));
+                    g2.fillRect(x, y, (int) hpBarValue, 20);
+                    g2.setFont(g2.getFont().deriveFont(Font.BOLD,20f));
+                    g2.setColor(Color.WHITE);
+                    g2.drawString(enemy.name,x+4, y -10);
+
+                }
+            }
+        }
+
     }
 
     public void drawPlayerAmmo() {
@@ -907,6 +946,7 @@ public class UI {
             g2.drawString(">", textX - 25, textY);
             if (gp.keyH.ePressed) {
                 subState = 0;
+                gp.stopMusic();
                 gp.gameState = gp.titleState;
                 gp.resetGame(true);
             }
@@ -941,6 +981,7 @@ public class UI {
             gp.player.worldY = gp.tileSize * gp.eHandler.tempRow;
             gp.eHandler.previousEventX = gp.player.worldX;
             gp.eHandler.previousEventY = gp.player.worldY;
+            gp.changeArea();
         }
     }
 

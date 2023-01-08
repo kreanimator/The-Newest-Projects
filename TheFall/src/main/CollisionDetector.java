@@ -68,6 +68,11 @@ public class CollisionDetector {
     public int checkObject(Entity entity, boolean player){
 
         int index =999;
+        String direction = entity.direction;
+
+        if(entity.knockBack){
+            direction = entity.knockbackDirection;
+        }
 
         for (int i =0; i < gp.obj[1].length; i++){
 
@@ -80,7 +85,7 @@ public class CollisionDetector {
                 gp.obj[gp.currentMap][i].solidArea.x = gp.obj[gp.currentMap][i].worldX + gp.obj[gp.currentMap][i].solidArea.x;
                 gp.obj[gp.currentMap][i].solidArea.y = gp.obj[gp.currentMap][i].worldY + gp.obj[gp.currentMap][i].solidArea.y;
 
-                switch (entity.direction) {
+                switch (direction) {
                     case "up" -> {
                         entity.solidArea.y -= entity.speed;
                         if (entity.solidArea.intersects(gp.obj[gp.currentMap][i].solidArea)) {

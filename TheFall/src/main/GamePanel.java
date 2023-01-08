@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxWorldCol = 100;
     public final int maxWorldRow = 100;
     public final int maxMap = 10;
-    public int currentMap = 2;
+    public int currentMap = 3;
     //FOR FULL SCREEN
 
     int screenWidth2 = screenWidth;
@@ -64,8 +64,8 @@ public class GamePanel extends JPanel implements Runnable {
     //ENTITY AND OBJECTS
     public Player player = new Player(this, keyH);
     public Entity[][] obj = new Entity[maxMap][100];
-    public Entity[][] npc = new Entity[maxMap][20];
-    public Entity[][] enemy = new Entity[maxMap][40];
+    public Entity[][] npc = new Entity[maxMap][100];
+    public Entity[][] enemy = new Entity[maxMap][100];
     public InteractiveTile[][] iTile = new InteractiveTile[maxMap][50];
     public Entity[][] projectile = new Entity[maxMap][20];
     //    public ArrayList <Entity> projectilesList = new ArrayList<>();
@@ -87,6 +87,16 @@ public class GamePanel extends JPanel implements Runnable {
     public final int sleepState = 9;
     public final int mapState = 10;
 
+    //AREA
+
+    public int currentArea;
+    public int nextArea;
+    public final int outside = 50;
+    public final int indoor = 51;
+    public final int cave = 52;
+    public final int bunker = 53;
+
+
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
@@ -105,6 +115,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         // playMusic(0);
         gameState = titleState;
+        currentArea = outside;
         if (fullScreenOn) {
             setFullScreen();
         }
@@ -113,6 +124,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void resetGame(boolean restart) {
+        //currentArea = outside;
         player.setDefaultPositions();
         player.restoreStatus();
         aSetter.setNPC();
@@ -364,5 +376,23 @@ public class GamePanel extends JPanel implements Runnable {
     public void playSE(int i) {
         se.setFile(i);
         se.play();
+    }
+    public void changeArea(){
+
+//        if(nextArea != currentArea){
+//            stopMusic();
+//            if(nextArea == outside){
+//                playSE(0);
+//            }
+//            if(nextArea == cave){
+//                playSE(22);
+//            }
+//            if(nextArea == outside){
+//                playSE(27);
+//            }
+//        }
+
+        currentArea = nextArea;
+        aSetter.setEnemy();
     }
 }

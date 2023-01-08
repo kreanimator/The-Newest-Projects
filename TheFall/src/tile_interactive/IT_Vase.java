@@ -11,9 +11,11 @@ import java.util.Random;
 public class IT_Vase extends InteractiveTile{
 
     GamePanel gp;
+    public static final String itName = "Vase";
     public IT_Vase(GamePanel gp , int col, int row) {
         super(gp,col,row);
         this.gp = gp;
+        name = itName;
 
         life = 1;
 

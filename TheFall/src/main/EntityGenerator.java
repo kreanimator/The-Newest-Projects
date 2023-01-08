@@ -1,16 +1,11 @@
 package main;
 
 import entity.Entity;
-import object.armor.OBJ_Armor_Learther;
-import object.armor.OBJ_Armor_Metal;
-import object.armor.OBJ_BarrelShield;
-import object.armor.OBJ_Shield;
+import object.armor.*;
 import object.exterior.*;
 import object.interior.*;
 import object.misc.*;
-import object.projectiles.OBJ_Acid;
-import object.projectiles.OBJ_Bullet;
-import object.projectiles.OBJ_ShotgunBullet;
+import object.projectiles.*;
 import object.weapon.*;
 
 public class EntityGenerator {
@@ -30,6 +25,7 @@ public class EntityGenerator {
             case OBJ_CampFire.objName -> new OBJ_CampFire(gp);
             case OBJ_Door.objName-> new OBJ_Door(gp);
             case OBJ_GarbageTrunk.objName -> new OBJ_GarbageTrunk(gp);
+            case OBJ_IronDoor.objName -> new OBJ_IronDoor(gp);
             case OBJ_Locker.objName -> new OBJ_Locker(gp);
             case OBJ_Bed.objName-> new OBJ_Bed(gp);
             case OBJ_Bookshelf.objName -> new OBJ_Bookshelf(gp);

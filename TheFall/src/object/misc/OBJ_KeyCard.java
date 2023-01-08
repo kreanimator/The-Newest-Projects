@@ -18,7 +18,7 @@ public class OBJ_KeyCard extends Entity {
         setDialogue();
     }
     public void setDialogue(){
-        dialogues[0][0] =  "You use the " + name + "and opened a bunker!";
+        dialogues[0][0] =  "You use the " + name + "and opened a bunker! \nWow it is dark out there, you'd better find a flashlight!";
         dialogues [1][0] = "What the hell are you doing?";
     }
     public boolean use (Entity entity){
@@ -27,10 +27,11 @@ public class OBJ_KeyCard extends Entity {
         if (objectIndex != 999){
             startDialogue(this,0);
             gp.obj[gp.currentMap][objectIndex] = null;
-            gp.playSE(6);
+            gp.playSE(28);
             return true;
         }else {
             startDialogue(this,1);
+            gp.playSE(6);
             return false;
         }
 
