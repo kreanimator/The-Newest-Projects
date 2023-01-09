@@ -81,7 +81,8 @@ public class Player extends Entity {
         defense = getDefense();
         maxHP = 6;
         life = maxHP;
-        maxAmmo = 10;
+        maxPistolAmmo = 10;
+        maxShotgunAmmo = 6;
         pistolAmmo = 5;
         shotgunAmmo = 3;
 
@@ -97,7 +98,7 @@ public class Player extends Entity {
         inventory.add(currentArmor);
         inventory.add(currentShield);
 //        inventory.add(new OBJ_BarrelShield(gp));
-       inventory.add(new OBJ_Key(gp));
+//       inventory.add(new OBJ_Key(gp));
 //        inventory.add(new OBJ_Wrench(gp));
         inventory.add(new OBJ_Shotgun(gp));
 //        inventory.add(new OBJ_Pistol(gp));
@@ -105,10 +106,10 @@ public class Player extends Entity {
 //        inventory.add(new OBJ_Ammo_Pistol(gp));
         inventory.add(new OBJ_Ammo_Shotgun(gp));
        inventory.add(new OBJ_Ammo_Shotgun(gp));
-        inventory.add(new OBJ_Ammo_Shotgun(gp));
+//        inventory.add(new OBJ_Ammo_Shotgun(gp));
 //        inventory.add(new OBJ_Lockpick(gp));
-        inventory.add(new OBJ_KeyCard(gp));
-       inventory.add(new OBJ_Flashlight(gp));
+//        inventory.add(new OBJ_KeyCard(gp));
+//       inventory.add(new OBJ_Flashlight(gp));
 
     }
 
@@ -218,8 +219,6 @@ public class Player extends Entity {
     public void update() {
         if (knockBack) {
             gp.cDetector.checkTile(this);
-
-
             // CHECK OBJECT COLLISION
            gp.cDetector.checkObject(this, true);
 
@@ -363,15 +362,10 @@ public class Player extends Entity {
             }
         }
         if (gp.keyH.shotKeyPressed && !projectiles.alive && shotAvailableCounter == 30
-                && projectiles.haveResource(this)) {
+                && projectiles.haveResource(this) && !attackCanceled) {
+            attacking = true;
             //SET DEFAULT BULLET POSITION
             projectiles.set(worldX, worldY, direction, true, this);
-//            if (currentWeapon.type == typePistol) {
-//                projectiles.attack = 5;
-//            }
-//            if (currentWeapon.type == typeShotgun) {
-//                projectiles.attack = 8;
-//            }
             //SUBTRACT THE COST
             projectiles.subtractResource(this);
 
@@ -408,11 +402,11 @@ public class Player extends Entity {
         if (shotAvailableCounter < 30) {
             shotAvailableCounter++;
         }
-        if (pistolAmmo > maxAmmo) {
-            pistolAmmo = maxAmmo;
+        if (pistolAmmo > maxPistolAmmo) {
+            pistolAmmo = maxPistolAmmo;
         }
-        if (shotgunAmmo > maxAmmo) {
-            shotgunAmmo = maxAmmo;
+        if (shotgunAmmo > maxShotgunAmmo) {
+            shotgunAmmo = maxShotgunAmmo;
         }
         if (life > maxHP) {
             life = maxHP;
@@ -425,8 +419,6 @@ public class Player extends Entity {
             gp.playSE(19);
         }
         }
-
-
     }
 
     public int getDefense() {
@@ -507,7 +499,6 @@ public class Player extends Entity {
     public void interactNPC(int i) {
         if (i != 999) {
         if (gp.keyH.ePressed) {
-
                 attackCanceled = true;
                 gp.npc[gp.currentMap][i].speak();
             }

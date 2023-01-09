@@ -33,7 +33,8 @@ public class SaveLoad {
             dt.level = gp.player.level;
             dt.maxLife = gp.player.maxHP;
             dt.life = gp.player.life;
-            dt.maxAmmo = gp.player.maxAmmo;
+            dt.maxPistolAmmo = gp.player.maxPistolAmmo;
+            dt.maxShotgunAmmo = gp.player.maxShotgunAmmo;
             dt.pistolAmmo = gp.player.pistolAmmo;
             dt.shotgunAmmo = gp.player.shotgunAmmo;
             dt.strength = gp.player.strength;
@@ -99,6 +100,8 @@ public class SaveLoad {
             gp.player.level = ds.level;
             gp.player.maxHP = ds.maxLife;
             gp.player.life = ds.life;
+            gp.player.maxPistolAmmo = ds.maxPistolAmmo;
+            gp.player.maxShotgunAmmo = ds.maxShotgunAmmo;
             gp.player.pistolAmmo = ds.pistolAmmo;
             gp.player.shotgunAmmo = ds.shotgunAmmo;
             gp.player.strength =ds.strength;

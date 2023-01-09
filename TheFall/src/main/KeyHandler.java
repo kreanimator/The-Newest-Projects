@@ -1,5 +1,13 @@
 package main;
 
+import object.armor.OBJ_BarrelShield;
+import object.misc.OBJ_Flashlight;
+import object.misc.OBJ_HPPack;
+import object.misc.OBJ_Tent;
+import object.weapon.OBJ_Ammo_Pistol;
+import object.weapon.OBJ_Pistol;
+import object.weapon.OBJ_Wrench;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -62,6 +70,10 @@ public class KeyHandler implements KeyListener {
         else if (gp.gameState == gp.mapState) {
             mapState(key);
         }
+        //QUEST STATE
+        else if (gp.gameState == gp.questState){
+            questState(key);
+        }
     }
 
 
@@ -116,17 +128,30 @@ public class KeyHandler implements KeyListener {
                     gp.gameState = gp.playState;
                     gp.ui.titleScreenState =0;
                     gp.playMusic(0);
+                    //GUNSLINGER
+                    gp.player.inventory.add(new OBJ_Pistol(gp));
+                    gp.player.inventory.add(new OBJ_Ammo_Pistol(gp));
+                    gp.player.strength = 2;
                 }
                 if (gp.ui.commandNumber == 1) {
                     gp.gameState = gp.playState;
                     gp.ui.titleScreenState =0;
                     gp.playMusic(0);
+                    //SURVIVOR
+                    gp.player.inventory.add(new OBJ_Tent(gp));
+                    gp.player.inventory.add(new OBJ_Flashlight(gp));
+                    gp.player.inventory.add(new OBJ_HPPack(gp));
+                    gp.player.maxHP = 8;
 
                 }
                 if (gp.ui.commandNumber == 2) {
                     gp.gameState = gp.playState;
                     gp.ui.titleScreenState =0;
                     gp.playMusic(0);
+                    //HARVESTER
+                    gp.player.inventory.add(new OBJ_BarrelShield(gp));
+                    gp.player.inventory.add(new OBJ_Wrench(gp));
+                    gp.player.dexterity = 2;
 
                 }
                 if (gp.ui.commandNumber == 3) {
@@ -155,6 +180,9 @@ public class KeyHandler implements KeyListener {
         }
         if (key == KeyEvent.VK_P) {
             gp.gameState = gp.pauseState;
+        }
+        if (key == KeyEvent.VK_J) {
+            gp.gameState = gp.questState;
         }
         if (key == KeyEvent.VK_E) {
             ePressed = true;
@@ -414,7 +442,11 @@ public class KeyHandler implements KeyListener {
         }
     }
 
-
+    private void questState(int key) {
+        if (key == KeyEvent.VK_J) {
+            gp.gameState = gp.playState;
+        }
+    }
     @Override
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();

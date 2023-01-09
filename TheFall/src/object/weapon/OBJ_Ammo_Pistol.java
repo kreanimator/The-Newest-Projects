@@ -27,8 +27,8 @@ public class OBJ_Ammo_Pistol extends Entity {
     public boolean use (Entity entity){
         startDialogue(this,0);
         entity.pistolAmmo += value;
-        if ( gp.player.pistolAmmo > gp.player.maxAmmo){
-            gp.player.pistolAmmo = gp.player.maxAmmo;
+        if ( gp.player.pistolAmmo > gp.player.maxPistolAmmo){
+            gp.player.pistolAmmo = gp.player.maxPistolAmmo;
         }
         gp.playSE(10);
         return true;

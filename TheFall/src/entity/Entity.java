@@ -70,7 +70,8 @@ public class Entity {
     public int maxHP;
     public int life;
     public int defaultSpeed;
-    public int maxAmmo;
+    public int maxPistolAmmo;
+    public int maxShotgunAmmo;
     public int pistolAmmo;
     public int shotgunAmmo;
     public int level;

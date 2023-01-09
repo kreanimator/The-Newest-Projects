@@ -33,6 +33,8 @@ public class AssetSetter {
     }
 
     public void setObject() {
+
+        //LEVEL 1
         int mapNum = 0;
         int i =0;
         gp.obj[mapNum][i] = new OBJ_Door(gp);
@@ -190,6 +192,9 @@ public class AssetSetter {
         gp.obj[mapNum][i] = new OBJ_BunkerDoor(gp);
         gp.obj[mapNum][i].worldX = gp.tileSize * 85;
         gp.obj[mapNum][i].worldY = gp.tileSize * 16;
+
+
+        //LEVEL 2
         mapNum =1;
         i=0;
         gp.obj[mapNum][i] = new OBJ_IronDoor(gp);
@@ -199,6 +204,9 @@ public class AssetSetter {
         gp.obj[mapNum][i] = new OBJ_CampFire(gp);
         gp.obj[mapNum][i].worldX = gp.tileSize * 3;
         gp.obj[mapNum][i].worldY = gp.tileSize * 48;
+
+
+        //LEVEL 3
         mapNum = 2;
         i=0;
         gp.obj[mapNum][i] = new OBJ_IronDoor(gp);
@@ -207,8 +215,11 @@ public class AssetSetter {
         i++;
         gp.obj[mapNum][i] = new OBJ_Locker(gp);
         gp.obj[mapNum][i].setLoot(new OBJ_HPPack(gp));
-        gp.obj[mapNum][i].worldX = gp.tileSize * 13;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 39;
+        gp.obj[mapNum][i].worldX = gp.tileSize * 10;
+        gp.obj[mapNum][i].worldY = gp.tileSize * 44;
+
+
+        //LEVEL 4
         mapNum = 3;
         i=0;
         gp.obj[mapNum][i] = new OBJ_IronDoor(gp);

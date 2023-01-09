@@ -12,7 +12,8 @@ public class DataStorage implements Serializable {
     int level;
     int maxLife;
     int life;
-    int maxAmmo;
+    int maxPistolAmmo;
+    int maxShotgunAmmo;
     int pistolAmmo;
     int shotgunAmmo;
     int strength;

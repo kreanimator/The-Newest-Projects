@@ -6,18 +6,20 @@ import object.misc.OBJ_Money;
 import object.weapon.OBJ_Ammo_Pistol;
 import object.weapon.OBJ_Ammo_Shotgun;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class UI {
 
     GamePanel gp;
     Graphics2D g2;
     public Font myFont;
-    BufferedImage hpfull, hphalf, hpblank, pistolAmmo, shotgunAmmo, coin;
+    BufferedImage hpfull, hphalf, hpblank, pistolAmmo, shotgunAmmo, coin,background;
     public String currentDialogue = "";
 
     public boolean messageOn = false;
@@ -121,7 +123,12 @@ public class UI {
         if (gp.gameState == gp.sleepState) {
             drawSleepScreen();
         }
+        //QUEST STATE
+        if (gp.gameState == gp.questState) {
+            drawQuestScreen();
+        }
     }
+
 
 
     private void drawInventoryScreen(Entity entity, boolean cursor) {
@@ -297,13 +304,14 @@ public class UI {
 
                     int x = gp.screenWidth/2 - gp.tileSize*4;
                     int y = gp.tileSize * 10;
+                    g2.setColor(Color.WHITE);
+                    g2.drawString(enemy.name,x+4, y -10);
                     g2.setColor(new Color(35, 35, 35));
                     g2.fillRect(x- 1, y - 1, gp.tileSize * 8 + 2, 22);
                     g2.setColor(new Color(255, 0, 30));
                     g2.fillRect(x, y, (int) hpBarValue, 20);
                     g2.setFont(g2.getFont().deriveFont(Font.BOLD,20f));
-                    g2.setColor(Color.WHITE);
-                    g2.drawString(enemy.name,x+4, y -10);
+
 
                 }
             }
@@ -322,10 +330,12 @@ public class UI {
         if (gp.player.currentWeapon.type == gp.player.typePistol) {
             g2.drawImage(pistolAmmo, 10, y - 30, gp.tileSize, gp.tileSize, null);
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20f));
+            g2.setColor(Color.WHITE);
             g2.drawString(pistolammo, x * 2, y);
         }
         if (gp.player.currentWeapon.type == gp.player.typeShotgun) {
             g2.drawImage(shotgunAmmo, 10, y - 30, gp.tileSize, gp.tileSize, null);
+            g2.setColor(Color.WHITE);
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20f));
             g2.drawString(shotgunammo, x * 2, y);
 
@@ -356,6 +366,12 @@ public class UI {
 
 
     private void drawTitleScreen() {
+        try{
+            background = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/resources/background.png")));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        g2.drawImage(background,0,0,gp.screenWidth,gp.screenHeight,null);
         if (titleScreenState == 0) {
             //TITLE NAME
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 80f));
@@ -372,9 +388,9 @@ public class UI {
 
             //IMAGE
 
-            x = gp.screenWidth / 2 - (gp.tileSize / 2);
+            //x = gp.screenWidth / 2 - (gp.tileSize / 2);
             y += gp.tileSize * 2;
-            g2.drawImage(gp.player.down1, x, y, gp.tileSize, gp.tileSize, null);
+            //g2.drawImage(gp.player.down1, x, y, gp.tileSize, gp.tileSize, null);
 
             //MENU
             //NEW GAME
@@ -445,8 +461,8 @@ public class UI {
                 g2.drawString(">", x - gp.tileSize, y);
             }
 
-            //HACKER
-            text = "HACKER";
+            //SURVIVOR
+            text = "SURVIVOR";
             x = getXforCenteredText(text);
             y += gp.tileSize * 2;
             g2.setColor(Color.DARK_GRAY);
@@ -457,9 +473,9 @@ public class UI {
                 g2.drawString(">", x - gp.tileSize, y);
             }
 
-            //ASSASIN
+            //HARVESTER
 
-            text = "ASSASIN";
+            text = "HARVESTER";
             x = getXforCenteredText(text);
             y += gp.tileSize * 2;
             g2.setColor(Color.DARK_GRAY);
@@ -719,6 +735,19 @@ public class UI {
         }
         gp.keyH.ePressed = false;
     }
+    private void drawQuestScreen() {
+        g2.setColor(Color.WHITE);
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20f));
+
+        //SUB WINDOW
+        int frameX = gp.tileSize * 6;
+        int frameY = gp.tileSize;
+        int frameWidth = gp.tileSize * 8;
+        int frameHeight = gp.tileSize * 10;
+
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+    }
+
 
 
     public void options_top(int frameX, int frameY) {
