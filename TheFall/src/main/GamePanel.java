@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxWorldCol = 100;
     public final int maxWorldRow = 100;
     public final int maxMap = 10;
-    public int currentMap = 3;
+    public int currentMap = 0;
     //FOR FULL SCREEN
 
     int screenWidth2 = screenWidth;
@@ -64,10 +64,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     //ENTITY AND OBJECTS
     public Player player = new Player(this, keyH);
-    public Entity[][] obj = new Entity[maxMap][100];
+    public Entity[][] obj = new Entity[maxMap][200];
     public Entity[][] npc = new Entity[maxMap][100];
-    public Entity[][] enemy = new Entity[maxMap][100];
-    public InteractiveTile[][] iTile = new InteractiveTile[maxMap][50];
+    public Entity[][] enemy = new Entity[maxMap][200];
+    public InteractiveTile[][] iTile = new InteractiveTile[maxMap][200];
     public Entity[][] projectile = new Entity[maxMap][20];
     //    public ArrayList <Entity> projectilesList = new ArrayList<>();
     public ArrayList<Entity> particleList = new ArrayList<>();
@@ -100,6 +100,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int indoor = 51;
     public final int cave = 52;
     public final int bunker = 53;
+    public int currentMusic;
 
 
     public GamePanel() {
@@ -353,10 +354,11 @@ public class GamePanel extends JPanel implements Runnable {
             eManager.draw(g2);
 
             //CUTSCENE MANAGER
-            cutSceneManager.draw(g2);
+
 
             //UI
             ui.draw(g2);
+            cutSceneManager.draw(g2);
         }
 
         if (keyH.checkDrawTime) {
@@ -378,6 +380,17 @@ public class GamePanel extends JPanel implements Runnable {
         music.setFile(i);
         music.play();
         music.loop();
+    }
+    public int getCurrentMusic(){
+        if (currentArea == outside){
+            currentMusic = 0;
+        } else if (currentArea == cave) {
+            currentMusic = 22;
+        }else if (currentArea == bunker) {
+            currentMusic = 27;
+        }
+        return currentMusic;
+
     }
 
     public void stopMusic() {

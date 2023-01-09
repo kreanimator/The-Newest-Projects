@@ -23,6 +23,8 @@ public class DataStorage implements Serializable {
     int worldX;
     int worldY;
     int currentMap;
+    int currentArea;
+    int currentMusic;
     //Player inventory
 
     ArrayList <String> itemNames = new ArrayList<>();

@@ -44,10 +44,10 @@ public class DeathClaw extends Entity {
 
     }
 
-    public void update() {
-        super.update();
-
-    }
+//    public void update() {
+//        super.update();
+//
+//    }
 
     public void getImage() {
         up1 = setup("enemies/deathclaw/up1", gp.tileSize , gp.tileSize );
@@ -74,19 +74,26 @@ public class DeathClaw extends Entity {
     }
 
     public void setAction() {
-
+        //Check if stops chasing
         if (onPath) {
             //Check if stops chasing
-            checkStopChasing(gp.player, 15, 2);
+            checkStopChasing(gp.player, 15, 50);
             //Search the direction
-            searchPath(getGoalCol(gp.player), getGoalCRow(gp.player));
-
-        } else {
-            //Check if it starts chasing
-            checkStartChasing(gp.player, 10, 100);
             speed = 4;
+            searchPath(getGoalCol(gp.player), getGoalCRow(gp.player));
+            //Shoots
+            //checkShoot(100, 30, 12);
+        }
+        else {
+            //Check if it starts chasing
+            checkStartChasing(gp.player, 5, 50);
+            getRandomDirection(50);
+        }
+        //Check if it attacks
 
-            getRandomDirection(100);
+
+        if(!attacking){
+            checkAttacking(30,gp.tileSize*4,gp.tileSize);
         }
     }
 

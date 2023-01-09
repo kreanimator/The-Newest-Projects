@@ -7,23 +7,23 @@ import object.misc.OBJ_Money;
 import object.weapon.OBJ_Ammo_Pistol;
 import object.weapon.OBJ_Ammo_Shotgun;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Ghoul extends Entity {
 
     GamePanel gp;
 
-
+    public static final String enName = "Ghoul";
     public Ghoul(GamePanel gp) {
         super(gp);
         this.gp = gp;
         type = typeEnemy;
-        name = "Ghoul";
+        name = enName;
 
         defaultSpeed = 0;
         speed = defaultSpeed;
         maxHP = 10;
-        sleep = true;
         life = maxHP;
         attack = 5;
         defense = 2;
@@ -65,30 +65,33 @@ public class Ghoul extends Entity {
     public void setAction() {
 
         if (onPath) {
-            speed =1;
-            sleep = false;
+            speed = 1;
             if (gp.eManager.lighting.dayState == gp.eManager.lighting.night) {
                 speed = 3;
             }
             //Check if stops chasing
             checkStopChasing(gp.player, 15, 100);
 
+            if(!onPath && gp.eManager.lighting.dayState == gp.eManager.lighting.day){
+                speed = 0;
+            }
             //Search the direction
             searchPath(getGoalCol(gp.player), getGoalCRow(gp.player));
 
-        }
-        else {
+        } else {
             //Check if it starts chasing
             checkStartChasing(gp.player, 5, 50);
 
             if (gp.eManager.lighting.dayState == gp.eManager.lighting.night) {
-                sleep = false;
                 getRandomDirection(100);
                 speed = 2;
-
+            }
+            if (gp.eManager.lighting.dayState == gp.eManager.lighting.day) {
+                speed = 0;
             }
         }
     }
+
 
     public void damageReaction() {
         sleep = false;

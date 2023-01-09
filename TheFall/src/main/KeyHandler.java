@@ -40,7 +40,7 @@ public class KeyHandler implements KeyListener {
             pauseState(key);
         }
         //DIALOGUE STATE
-        else if (gp.gameState == gp.dialogState) {
+        else if (gp.gameState == gp.dialogState || gp.gameState == gp.cutSceneState) {
             dialogueState(key);
         }
         //CHARACTER STATE
@@ -90,7 +90,7 @@ public class KeyHandler implements KeyListener {
                     //Load game
                     gp.saveLoad.load();
                     gp.gameState = gp.playState;
-                    gp.playMusic(0);
+                    gp.playMusic(gp.getCurrentMusic());
                 }
                 if (gp.ui.commandNumber == 2) {
                     System.exit(1);
@@ -221,6 +221,7 @@ public class KeyHandler implements KeyListener {
 
         if (key == KeyEvent.VK_E || key == KeyEvent.VK_ENTER) {
            gp.player.selectItem();
+
            gp.playSE(10);
         }
         playerInventory(key);

@@ -1,14 +1,16 @@
 package enemies;
 
+import data.Progress;
 import entity.Entity;
 import main.GamePanel;
+import object.exterior.OBJ_IronDoor;
 import object.misc.OBJ_HPPack;
 import object.misc.OBJ_Money;
 import object.projectiles.OBJ_Acid;
-import object.projectiles.OBJ_Bullet;
 import object.weapon.OBJ_Ammo_Pistol;
 import object.weapon.OBJ_Ammo_Shotgun;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class SlimeBoss extends Entity {
@@ -18,9 +20,12 @@ public class SlimeBoss extends Entity {
 
     public SlimeBoss(GamePanel gp) {
         super(gp);
+
         this.gp = gp;
+
         type = typeEnemy;
         name = enName;
+        direction = "left";
 
         defaultSpeed = 2;
         speed = defaultSpeed;
@@ -49,6 +54,7 @@ public class SlimeBoss extends Entity {
         motion3Duration = 50;
         getImage();
         getAtkImage();
+        setDialogue();
 
     }
 
@@ -130,6 +136,17 @@ public class SlimeBoss extends Entity {
     }
 
     public void checkDrop() {
+        gp.bossBattleOn = false;
+        Progress.slimeBossDefeated = true;
+        gp.stopMusic();
+        gp.playMusic(27);
+
+        for (int i = 0; i < gp.obj[1].length;i++){
+            if (gp.obj[gp.currentMap][i] != null && Objects.equals(gp.obj[gp.currentMap][i].name, OBJ_IronDoor.objName)){
+                gp.playSE(28);
+                gp.obj[gp.currentMap][i] = null;
+            }
+        }
         int i = new Random().nextInt(100) + 1;
         //SET THE MONSTER DROP
         if (i < 25) {
@@ -147,4 +164,5 @@ public class SlimeBoss extends Entity {
 
     }
 }
+
 

@@ -1,5 +1,6 @@
 package main;
 
+import data.Progress;
 import entity.Entity;
 import tiles.TileManager;
 import tiles.Tiles;
@@ -223,7 +224,7 @@ public class EventHandler {
             else if (hit(1, 1, 47, "any")) {transition(0,85,16,gp.outside);gp.stopMusic();gp.playMusic(0);}
             else if (hit(1, 91, 48, "any")) {transition(2,1,46,gp.bunker);gp.stopMusic();gp.playMusic(27);}
             else if (hit(2, 1, 46, "any")) {transition(1,91,48,gp.cave);gp.stopMusic();gp.playMusic(22);}
-            else if (hit(3, 31, 46, "any")) {slimeBoss();gp.stopMusic();gp.playMusic(30);}
+            else if (hit(3, 31, 46, "any")) {slimeBoss();}
 
 
         }
@@ -285,7 +286,7 @@ public class EventHandler {
 
     }
     public void slimeBoss(){
-        if(!gp.bossBattleOn){
+        if(!gp.bossBattleOn && !Progress.slimeBossDefeated){
             gp.gameState = gp.cutSceneState;
             gp.cutSceneManager.sceneNum = gp.cutSceneManager.slimeBoss;
         }

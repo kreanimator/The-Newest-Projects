@@ -43,11 +43,6 @@ public class Punk extends Entity {
         motion3Duration = 60;
         getImage();
         getAtkImage();
-
-
-
-
-
     }
 
     public void getImage() {

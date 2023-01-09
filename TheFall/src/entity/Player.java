@@ -24,6 +24,7 @@ public class Player extends Entity {
     public final int screenY;
     public boolean attackCanceled = false;
     public boolean updateLight = false;
+    int standCounter = 0;
 
 
     public Player(GamePanel gp, KeyHandler keyH) {
@@ -35,12 +36,14 @@ public class Player extends Entity {
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
 
         solidArea = new Rectangle();
-        solidArea.x = 21;
+        solidArea.x = 12;
         solidArea.y = 21;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        solidArea.width = gp.tileSize / 2;
-        solidArea.height = gp.tileSize / 2;
+        solidArea.width = 32;
+        solidArea.height = 32;
+//        solidArea.width = gp.tileSize / 2;
+//        solidArea.height = gp.tileSize / 2;
 
 
         setDefaultValues();
@@ -50,14 +53,14 @@ public class Player extends Entity {
     public void setDefaultValues() {
 
 
-//        worldX = gp.tileSize * 26; //First map
-//        worldY = gp.tileSize * 82;
+        worldX = gp.tileSize * 26; //First map
+        worldY = gp.tileSize * 82;
 //        worldX = gp.tileSize * 2; //Second map
 //        worldY = gp.tileSize * 47;
 //        worldX = gp.tileSize * 2; //third map
 //        worldY = gp.tileSize * 46;
-        worldX = gp.tileSize * 4; //boss map
-        worldY = gp.tileSize * 40;
+//        worldX = gp.tileSize * 4; //boss map
+//        worldY = gp.tileSize * 40;
        // setDefaultPositions();
         defaultSpeed = 4;
         speed = defaultSpeed;
@@ -352,6 +355,13 @@ public class Player extends Entity {
 //            guarding = false;
 //            guardCounter = 0;
         }
+        else {
+            standCounter ++;
+            if(standCounter == 13) {
+                spriteNumber = 2;
+                standCounter = 0;
+            }
+        }
         if (gp.keyH.shotKeyPressed && !projectiles.alive && shotAvailableCounter == 30
                 && projectiles.haveResource(this)) {
             //SET DEFAULT BULLET POSITION
@@ -415,6 +425,7 @@ public class Player extends Entity {
             gp.playSE(19);
         }
         }
+
 
     }
 
@@ -780,6 +791,9 @@ public class Player extends Entity {
         }
         if(drawing) {
             g2.drawImage(image, tempScreenX, tempScreenY, null);
+            //CHECK SOLID AREA
+//            g2.setColor(Color.RED);
+//            g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
         }
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
     }

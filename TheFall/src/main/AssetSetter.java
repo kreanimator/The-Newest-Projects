@@ -1,5 +1,6 @@
 package main;
 
+import data.Progress;
 import enemies.*;
 import entity.NPC_BigRock;
 import entity.NPC_Ghoul;
@@ -189,7 +190,7 @@ public class AssetSetter {
         gp.obj[mapNum][i] = new OBJ_BunkerDoor(gp);
         gp.obj[mapNum][i].worldX = gp.tileSize * 85;
         gp.obj[mapNum][i].worldY = gp.tileSize * 16;
-        mapNum = 1;
+        mapNum =1;
         i=0;
         gp.obj[mapNum][i] = new OBJ_IronDoor(gp);
         gp.obj[mapNum][i].worldX = gp.tileSize * 89;
@@ -198,17 +199,26 @@ public class AssetSetter {
         gp.obj[mapNum][i] = new OBJ_CampFire(gp);
         gp.obj[mapNum][i].worldX = gp.tileSize * 3;
         gp.obj[mapNum][i].worldY = gp.tileSize * 48;
-        i++;
         mapNum = 2;
         i=0;
         gp.obj[mapNum][i] = new OBJ_IronDoor(gp);
         gp.obj[mapNum][i].worldX = gp.tileSize * 98;
         gp.obj[mapNum][i].worldY = gp.tileSize * 57;
+        i++;
+        gp.obj[mapNum][i] = new OBJ_Locker(gp);
+        gp.obj[mapNum][i].setLoot(new OBJ_HPPack(gp));
+        gp.obj[mapNum][i].worldX = gp.tileSize * 13;
+        gp.obj[mapNum][i].worldY = gp.tileSize * 39;
         mapNum = 3;
         i=0;
         gp.obj[mapNum][i] = new OBJ_IronDoor(gp);
         gp.obj[mapNum][i].worldX = gp.tileSize * 98;
         gp.obj[mapNum][i].worldY = gp.tileSize * 48;
+        i++;
+        gp.obj[mapNum][i] = new OBJ_Locker(gp);
+        gp.obj[mapNum][i].setLoot(new OBJ_HPPack(gp));
+        gp.obj[mapNum][i].worldX = gp.tileSize * 13;
+        gp.obj[mapNum][i].worldY = gp.tileSize * 39;
 
     }
 
@@ -439,6 +449,9 @@ public class AssetSetter {
     }
 
     public void setEnemy() {
+
+
+        //LEVEL 1
         int mapNum = 0;
         int i = 0;
         gp.enemy[mapNum][i] = new GreenSlime(gp);
@@ -498,9 +511,30 @@ public class AssetSetter {
         gp.enemy[mapNum][i].worldX = gp.tileSize * 75;
         gp.enemy[mapNum][i].worldY = gp.tileSize * 46;
         i++;
+        gp.enemy[mapNum][i] = new Ghoul(gp);
+        gp.enemy[mapNum][i].worldX = gp.tileSize * 69;
+        gp.enemy[mapNum][i].worldY = gp.tileSize * 40;
+        i++;
+        gp.enemy[mapNum][i] = new Ghoul(gp);
+        gp.enemy[mapNum][i].worldX = gp.tileSize * 78;
+        gp.enemy[mapNum][i].worldY = gp.tileSize * 50;
+        i++;
+        gp.enemy[mapNum][i] = new Ghoul(gp);
+        gp.enemy[mapNum][i].worldX = gp.tileSize * 69;
+        gp.enemy[mapNum][i].worldY = gp.tileSize * 50;
+        i++;
+        gp.enemy[mapNum][i] = new Ghoul(gp);
+        gp.enemy[mapNum][i].worldX = gp.tileSize * 70;
+        gp.enemy[mapNum][i].worldY = gp.tileSize * 43;
+        i++;
         gp.enemy[mapNum][i] = new DeathClaw(gp);
         gp.enemy[mapNum][i].worldX = gp.tileSize * 29;
         gp.enemy[mapNum][i].worldY = gp.tileSize * 48;
+
+
+
+
+        //LEVEL2
 
         mapNum =1;
         i=0;
@@ -523,9 +557,11 @@ public class AssetSetter {
 
         mapNum =3;
         i=0;
-        gp.enemy[mapNum][i] = new SlimeBoss(gp);
-        gp.enemy[mapNum][i].worldX = gp.tileSize * 59;
-        gp.enemy[mapNum][i].worldY = gp.tileSize * 45;
+        if(!Progress.slimeBossDefeated) {
+            gp.enemy[mapNum][i] = new SlimeBoss(gp);
+            gp.enemy[mapNum][i].worldX = gp.tileSize * 52;
+            gp.enemy[mapNum][i].worldY = gp.tileSize * 44;
+        }
 
 
 

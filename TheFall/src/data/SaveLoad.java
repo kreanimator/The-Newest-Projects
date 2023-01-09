@@ -44,6 +44,7 @@ public class SaveLoad {
             dt.worldX = gp.player.worldX;
             dt.worldY = gp.player.worldY;
             dt.currentMap = gp.currentMap;
+            dt.currentArea = gp.currentArea;
 
             //Player inventory
 
@@ -108,6 +109,7 @@ public class SaveLoad {
             gp.player.worldX = ds.worldX;
             gp.player.worldY = ds.worldY;
             gp.currentMap = ds.currentMap;
+            gp.currentArea = ds.currentArea;
 
             //PLAYER INVENTORY
 

@@ -520,7 +520,7 @@ public class UI {
             if(gp.keyH.ePressed){
                 charIndex = 0;
                 combinedText = "";
-                if(gp.gameState == gp.dialogState){
+                if(gp.gameState == gp.dialogState || gp.gameState == gp.cutSceneState){
                     npc.dialogueIndex++;
                     gp.keyH.ePressed = false;
                 }
@@ -530,6 +530,9 @@ public class UI {
             npc.dialogueIndex = 0;
             if(gp.gameState == gp.dialogState){
                 gp.gameState = gp.playState;
+            }
+            if(gp.gameState == gp.cutSceneState){
+                gp.cutSceneManager.scenePhase++;
             }
         }
 
