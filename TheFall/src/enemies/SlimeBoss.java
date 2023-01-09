@@ -31,6 +31,7 @@ public class SlimeBoss extends Entity {
         defense = 4;
         exp = 300;
         projectiles = new OBJ_Acid(gp);
+        sleep = true;
 
         int size =gp.tileSize*5;
 
@@ -89,6 +90,12 @@ public class SlimeBoss extends Entity {
         atkright3 = setup("bosses/slimeboss/attack/right3", bossSize*2 , bossSize  );
 
     }
+    public void setDialogue(){
+        dialogues[0][0] = "Umbgkh.... Freeeeeeeeesh meeeat.....";
+        dialogues[0][1] = "Your .... blmrkh....kiiiind..... created.....me....\n And it were your mistake....";
+        dialogues[0][2] = "Prepare to be the part of great entity....\n your way finishes here....";
+
+    }
 
     public void setAction() {
 
@@ -116,20 +123,15 @@ public class SlimeBoss extends Entity {
 
     public void damageReaction() {
         actionLockCounter = 0;
-
-
     }
 
     public void playSE() {
         gp.playSE(7);
-
     }
 
     public void checkDrop() {
         int i = new Random().nextInt(100) + 1;
-
         //SET THE MONSTER DROP
-
         if (i < 25) {
             dropItem(new OBJ_Money(gp));
         }

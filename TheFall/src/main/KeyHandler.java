@@ -185,13 +185,13 @@ public class KeyHandler implements KeyListener {
 
 
         }
-        if (key == KeyEvent.VK_R) {
-           switch (gp.currentMap){
-               case 0: gp.tileM.loadMap("/resources/maps/world1.txt",0);break;
-               case 1: gp.tileM.loadMap("/resources/maps/cave.txt",1);break;
-           }
-
-        }
+//        if (key == KeyEvent.VK_R) {
+//           switch (gp.currentMap){
+//               case 0: gp.tileM.loadMap("/resources/maps/world1.txt",0);break;
+//               case 1: gp.tileM.loadMap("/resources/maps/cave.txt",1);break;
+//           }
+//
+//        }
         if (key == KeyEvent.VK_ESCAPE) {
             gp.gameState = gp.optionsState;
         }

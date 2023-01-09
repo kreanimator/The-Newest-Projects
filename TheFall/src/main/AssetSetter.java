@@ -195,11 +195,20 @@ public class AssetSetter {
         gp.obj[mapNum][i].worldX = gp.tileSize * 89;
         gp.obj[mapNum][i].worldY = gp.tileSize * 48;
         i++;
+        gp.obj[mapNum][i] = new OBJ_CampFire(gp);
+        gp.obj[mapNum][i].worldX = gp.tileSize * 3;
+        gp.obj[mapNum][i].worldY = gp.tileSize * 48;
+        i++;
         mapNum = 2;
         i=0;
         gp.obj[mapNum][i] = new OBJ_IronDoor(gp);
         gp.obj[mapNum][i].worldX = gp.tileSize * 98;
         gp.obj[mapNum][i].worldY = gp.tileSize * 57;
+        mapNum = 3;
+        i=0;
+        gp.obj[mapNum][i] = new OBJ_IronDoor(gp);
+        gp.obj[mapNum][i].worldX = gp.tileSize * 98;
+        gp.obj[mapNum][i].worldY = gp.tileSize * 48;
 
     }
 

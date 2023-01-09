@@ -778,7 +778,9 @@ public class Player extends Entity {
             }
 
         }
-        g2.drawImage(image, tempScreenX, tempScreenY, null);
+        if(drawing) {
+            g2.drawImage(image, tempScreenX, tempScreenY, null);
+        }
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
     }
 

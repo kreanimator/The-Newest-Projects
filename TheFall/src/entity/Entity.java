@@ -25,6 +25,7 @@ public class Entity {
     public String[][] dialogues = new String[20][20];
     public Entity attacker;
     public Entity linkedEntity;
+    public boolean temp = false;
 
     //STATE
     public int worldX, worldY;
@@ -47,6 +48,8 @@ public class Entity {
     public Entity loot;
     public boolean opened = false;
     public boolean inRage = false;
+    public boolean sleep = false;
+    public boolean drawing = true;
 
 
     //COUNTER
@@ -245,72 +248,74 @@ public class Entity {
     }
 
     public void update() {
-        if (knockBack) {
-            checkCollision();
-            if (collisionOn) {
-                knockBackCounter = 0;
-                knockBack = false;
-                speed = defaultSpeed;
+        if (!sleep) {
+            if (knockBack) {
+                checkCollision();
+                if (collisionOn) {
+                    knockBackCounter = 0;
+                    knockBack = false;
+                    speed = defaultSpeed;
+                } else {
+                    switch (knockbackDirection) {
+                        case "up" -> worldY -= speed;
+                        case "down" -> worldY += speed;
+                        case "left" -> worldX -= speed;
+                        case "right" -> worldX += speed;
+                    }
+
+                }
+                knockBackCounter++;
+                if (knockBackCounter == 10) {
+                    knockBackCounter = 0;
+                    knockBack = false;
+                    speed = defaultSpeed;
+
+                } else if (attacking) {
+                    attacking();
+                }
+
             } else {
-                switch (knockbackDirection) {
-                    case "up" -> worldY -= speed;
-                    case "down" -> worldY += speed;
-                    case "left" -> worldX -= speed;
-                    case "right" -> worldX += speed;
+                setAction();
+                checkCollision();
+
+                //IF COLLISION IS FALSE, ENTITY CAN MOVE
+
+                if (!collisionOn) {
+                    switch (direction) {
+                        case "up" -> worldY -= speed;
+                        case "down" -> worldY += speed;
+                        case "left" -> worldX -= speed;
+                        case "right" -> worldX += speed;
+                    }
                 }
-
-            }
-            knockBackCounter++;
-            if (knockBackCounter == 10) {
-                knockBackCounter = 0;
-                knockBack = false;
-                speed = defaultSpeed;
-
-            } else if (attacking) {
-                attacking();
-            }
-
-        } else {
-            setAction();
-            checkCollision();
-
-            //IF COLLISION IS FALSE, ENTITY CAN MOVE
-
-            if (!collisionOn) {
-                switch (direction) {
-                    case "up" -> worldY -= speed;
-                    case "down" -> worldY += speed;
-                    case "left" -> worldX -= speed;
-                    case "right" -> worldX += speed;
+                spriteCounter++;
+                if (spriteCounter > 12) {
+                    if (spriteNumber == 1) {
+                        spriteNumber = 2;
+                    } else if (spriteNumber == 2) {
+                        spriteNumber = 3;
+                    } else if (spriteNumber == 3) {
+                        spriteNumber = 1;
+                    }
+                    spriteCounter = 0;
                 }
-            }
-            spriteCounter++;
-            if (spriteCounter > 12) {
-                if (spriteNumber == 1) {
-                    spriteNumber = 2;
-                } else if (spriteNumber == 2) {
-                    spriteNumber = 3;
-                } else if (spriteNumber == 3) {
-                    spriteNumber = 1;
+                if (invincible) {
+                    invincibleCounter++;
+                    if (invincibleCounter > 40) {
+                        invincible = false;
+                        invincibleCounter = 0;
+                    }
                 }
-                spriteCounter = 0;
-            }
-            if (invincible) {
-                invincibleCounter++;
-                if (invincibleCounter > 40) {
-                    invincible = false;
-                    invincibleCounter = 0;
+                if (shotAvailableCounter < 30) {
+                    shotAvailableCounter++;
                 }
             }
-            if (shotAvailableCounter < 30) {
-                shotAvailableCounter++;
-            }
-        }
-        if (offBalance) {
-            offBalanceCounter++;
-            if (offBalanceCounter > 60) {
-                offBalance = false;
-                offBalanceCounter = 0;
+            if (offBalance) {
+                offBalanceCounter++;
+                if (offBalanceCounter > 60) {
+                    offBalance = false;
+                    offBalanceCounter = 0;
+                }
             }
         }
     }

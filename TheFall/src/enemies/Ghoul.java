@@ -23,6 +23,7 @@ public class Ghoul extends Entity {
         defaultSpeed = 0;
         speed = defaultSpeed;
         maxHP = 10;
+        sleep = true;
         life = maxHP;
         attack = 5;
         defense = 2;
@@ -65,7 +66,8 @@ public class Ghoul extends Entity {
 
         if (onPath) {
             speed =1;
-            if (gp.eManager.lighting.nightOn) {
+            sleep = false;
+            if (gp.eManager.lighting.dayState == gp.eManager.lighting.night) {
                 speed = 3;
             }
             //Check if stops chasing
@@ -79,8 +81,8 @@ public class Ghoul extends Entity {
             //Check if it starts chasing
             checkStartChasing(gp.player, 5, 50);
 
-            if (gp.eManager.lighting.nightOn) {
-
+            if (gp.eManager.lighting.dayState == gp.eManager.lighting.night) {
+                sleep = false;
                 getRandomDirection(100);
                 speed = 2;
 
@@ -89,6 +91,7 @@ public class Ghoul extends Entity {
     }
 
     public void damageReaction() {
+        sleep = false;
         actionLockCounter = 0;
         direction = gp.player.direction;
     }

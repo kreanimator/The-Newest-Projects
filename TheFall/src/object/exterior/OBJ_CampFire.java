@@ -11,9 +11,11 @@ public class OBJ_CampFire extends Entity {
         super(gp);
         this.gp = gp;
         name = objName;
+        speed = 0;
         direction = "down";
-        type = typeLight;
+        type = typeObstacle;
         lightRadius = 300;
+        collision = true;
         getImage();
         setAction();
 
@@ -28,30 +30,28 @@ public class OBJ_CampFire extends Entity {
 
     public void getImage() {
 
-        down1 = setup("objects/campfire/down1",gp.tileSize ,gp.tileSize );
-        down2 = setup("objects/campfire/down2",gp.tileSize ,gp.tileSize );
-        down3 = setup("objects/campfire/down3",gp.tileSize ,gp.tileSize );
+        down1 = setup("objects/campfire/down1", gp.tileSize, gp.tileSize);
+        down2 = setup("objects/campfire/down2", gp.tileSize, gp.tileSize);
+        down3 = setup("objects/campfire/down3", gp.tileSize, gp.tileSize);
+        up1 = setup("objects/campfire/down1", gp.tileSize, gp.tileSize);
+        up2 = setup("objects/campfire/down2", gp.tileSize, gp.tileSize);
+        up3 = setup("objects/campfire/down3", gp.tileSize, gp.tileSize);
+        left1 = setup("objects/campfire/down1", gp.tileSize, gp.tileSize);
+        left2 = setup("objects/campfire/down2", gp.tileSize, gp.tileSize);
+        left3 = setup("objects/campfire/down3", gp.tileSize, gp.tileSize);
+        right1 = setup("objects/campfire/down1", gp.tileSize, gp.tileSize);
+        right2 = setup("objects/campfire/down2", gp.tileSize, gp.tileSize);
+        right3 = setup("objects/campfire/down3", gp.tileSize, gp.tileSize);
 
     }
-    public void setAction(){
+
+    public void setAction() {
 
     }
+
     public void update() {
 
-        spriteCounter++;
-
-        if (spriteCounter > 12) {
-            if (spriteNumber == 1) {
-                spriteNumber = 2;
-            } else if (spriteNumber == 2) {
-                spriteNumber = 3;
-            } else if (spriteNumber ==3) {
-                spriteNumber = 1;
-            }
-            spriteCounter = 0;
-
-        }
     }
-    }
+}
 
 
