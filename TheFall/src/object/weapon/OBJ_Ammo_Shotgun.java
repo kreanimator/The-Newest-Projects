@@ -16,7 +16,7 @@ public class OBJ_Ammo_Shotgun extends Entity {
         stackable = true;
         name = objName;
         value = 6;
-        down1 = setup("objects/shotgunShell",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/shotgunShell",gp.tileSize/2,gp.tileSize/2);
         description = "[" + name + "]\n12 mm shotgun ammo.";
     }
     public void setDialogue(){

@@ -18,7 +18,7 @@ public class OBJ_Money extends Entity {
         type = typePickupOnly;
         value = rand.nextInt(5,100);
         name = objName;
-        down1 = setup("objects/money",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/money",gp.tileSize/2,gp.tileSize/2);
         description = "[" + name + "]\nSome old prewar money. May be valuable.";
 
     }

@@ -23,10 +23,10 @@ public class Bug1 extends Entity {
         defense = 0;
         exp = 10;
 
-        solidArea.x = 3;
-        solidArea.y = 18;
-        solidArea.width = 42;
-        solidArea.height = 30;
+        solidArea.x = 0;
+        solidArea.y = 0;
+        solidArea.width = 24;
+        solidArea.height = 24;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         getImage();
@@ -36,21 +36,22 @@ public class Bug1 extends Entity {
     }
 
     public void getImage() {
-        up1 = setup("enemies/bug1/up1", gp.tileSize - 10, gp.tileSize - 10);
-        up2 = setup("enemies/bug1/up2", gp.tileSize - 10, gp.tileSize - 10);
-        up3 = setup("enemies/bug1/up3", gp.tileSize - 10, gp.tileSize - 10);
+        int size = gp.tileSize - 20;
+        up1 = setup("enemies/bug1/up1", size, size);
+        up2 = setup("enemies/bug1/up2", size, size);
+        up3 = setup("enemies/bug1/up3", size, size);
 
-        down1 = setup("enemies/bug1/down1", gp.tileSize - 10, gp.tileSize - 10);
-        down2 = setup("enemies/bug1/down3", gp.tileSize - 10, gp.tileSize - 10);
-        down3 = setup("enemies/bug1/down2", gp.tileSize - 10, gp.tileSize - 10);
+        down1 = setup("enemies/bug1/down1", size, size);
+        down2 = setup("enemies/bug1/down3", size, size);
+        down3 = setup("enemies/bug1/down2", size, size);
 
-        left1 = setup("enemies/bug1/left1", gp.tileSize - 10, gp.tileSize - 10);
-        left2 = setup("enemies/bug1/left2", gp.tileSize - 10, gp.tileSize - 10);
-        left3 = setup("enemies/bug1/left3", gp.tileSize - 10, gp.tileSize - 10);
+        left1 = setup("enemies/bug1/left1", size, size);
+        left2 = setup("enemies/bug1/left2", size, size);
+        left3 = setup("enemies/bug1/left3", size, size);
 
-        right1 = setup("enemies/bug1/right1", gp.tileSize - 10, gp.tileSize - 10);
-        right2 = setup("enemies/bug1/right2", gp.tileSize - 10, gp.tileSize - 10);
-        right3 = setup("enemies/bug1/right3", gp.tileSize - 10, gp.tileSize - 10);
+        right1 = setup("enemies/bug1/right1", size, size);
+        right2 = setup("enemies/bug1/right2", size, size);
+        right3 = setup("enemies/bug1/right3", size, size);
 
     }
 

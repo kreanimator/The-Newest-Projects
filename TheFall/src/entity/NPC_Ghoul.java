@@ -16,17 +16,19 @@ public class NPC_Ghoul extends Entity{
         super(gp);
         direction = "down";
         name = npcName;
-        getImage();
-        setDialogue();
-        setItems();
 
-        solidArea.x = 6;
+
+        solidArea.x = 14;
         solidArea.y = 16;
-        solidArea.width = 32;
+        solidArea.width = 24;
         solidArea.height = 32;
 
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
+
+        getImage();
+        setDialogue();
+        setItems();
     }
     public void getImage() {
         up1 = setup("npc/oldghoul/down1",gp.tileSize ,gp.tileSize );
@@ -43,30 +45,8 @@ public class NPC_Ghoul extends Entity{
         right3 = setup("npc/oldghoul/right3",gp.tileSize ,gp.tileSize );
     }
 
-    public void setAction() {
-//
-//        actionLockCounter++;
-//        if (actionLockCounter == 120) {
-//            Random random = new Random();
-//            int i = random.nextInt(100) + 1; // pick up a number from 1 to 100
-//
-//            if (i <= 25) {
-//                direction = "up";
-//            }
-//            if (i > 25 && i <= 50) {
-//                direction = "down";
-//            }
-//            if (i > 50 && i <= 75) {
-//                direction = "left";
-//            }
-//            if (i > 75) {
-//                direction = "right";
-//            }
-//            actionLockCounter =0;
-//        }
-    }
     public void setDialogue(){
-        dialogues[0][1] = " Please don't hit me! I know I can look ugly, but I'm not dangerous, " +
+        dialogues[0][0] = " Please don't hit me! I know I can look ugly, but I'm not dangerous, " +
                 "I just live here...\nI am a ghoul... Old ghoul named Daniel....\nI have some items for sale if you wish." +
                 "\nSometimes I steal some stuff from these punks... hehehe...";
         dialogues [1][0] = "Come again hehehe...";

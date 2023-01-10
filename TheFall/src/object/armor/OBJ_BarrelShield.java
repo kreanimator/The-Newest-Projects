@@ -11,7 +11,7 @@ public class OBJ_BarrelShield extends Entity {
         type = typeShield;
         price = 2000;
         name = objName;
-        down1 = setup("objects/barrelshield",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/barrelshield",gp.tileSize/2,gp.tileSize/2);
         defenseValue = 3;
         description = "[" + name + "]\nDefense value: " + defenseValue + "\nStrong shield \n Made of half a barrel";
     }

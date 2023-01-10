@@ -15,8 +15,8 @@ public class OBJ_Ammo_Pistol extends Entity {
         stackable = true;
         name = objName;
         value = 10;
-        down1 = setup("objects/10mm",gp.tileSize,gp.tileSize);
-        image = setup("objects/10mm",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/10mm",gp.tileSize/2,gp.tileSize/2);
+        image = setup("objects/10mm",gp.tileSize/2,gp.tileSize/2);
         description = "[" + name + "]\n10 mm pistol ammo.";
 
 

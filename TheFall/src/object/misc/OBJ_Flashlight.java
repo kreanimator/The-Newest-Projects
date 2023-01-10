@@ -10,7 +10,7 @@ public class OBJ_Flashlight extends Entity {
         super(gp);
         type = typeLight;
         name = objName;
-        down1 = setup("objects/flashlight",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/flashlight",gp.tileSize/2,gp.tileSize/2);
         description = "[FlashLight]\nLights your way\nEven in absolute darkness";
         price = 200;
         lightRadius = 400;

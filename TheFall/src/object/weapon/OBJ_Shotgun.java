@@ -11,8 +11,8 @@ public class OBJ_Shotgun extends Entity {
         type = typeShotgun;
         price = 3000;
         name = objName;
-        down1 = setup("objects/shotgun",gp.tileSize,gp.tileSize);
-        image = setup("objects/shotgun",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/shotgun",gp.tileSize/2,gp.tileSize/2);
+        image = setup("objects/shotgun",gp.tileSize/2,gp.tileSize/2);
         attackValue = 10;
         knockBackPower = 10;
         description = "[" + name + "]\nAttack value: " + attackValue + "\nOld good shotgun...";

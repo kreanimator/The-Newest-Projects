@@ -10,7 +10,7 @@ public class OBJ_Pistol extends Entity {
         type = typePistol;
         price = 1500;
         name = objName;
-        down1 = setup("objects/pistol",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/pistol",gp.tileSize/2,gp.tileSize/2);
         attackValue = 5;
         knockBackPower = 0;
         description = "[" + name + "]\nAttack value: " + attackValue + "\nStandard 10mm pistol.";

@@ -26,10 +26,10 @@ public class GreenSlime extends Entity {
         defense = 0;
         exp = 10;
 
-        solidArea.x = 3;
+        solidArea.x = 9;
         solidArea.y = 18;
-        solidArea.width = 42;
-        solidArea.height = 30;
+        solidArea.width = 16;
+        solidArea.height = 16;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         getImage();
@@ -43,17 +43,17 @@ public class GreenSlime extends Entity {
         up2 = setup("enemies/slime/2", gp.tileSize - 10, gp.tileSize - 10);
         up3 = setup("enemies/slime/3", gp.tileSize - 10, gp.tileSize - 10);
 
-        down1 = setup("enemies/slime/1", gp.tileSize - 10, gp.tileSize - 10);
-        down2 = setup("enemies/slime/2", gp.tileSize - 10, gp.tileSize - 10);
-        down3 = setup("enemies/slime/3", gp.tileSize - 10, gp.tileSize - 10);
+        down1 = setup("enemies/slime/4", gp.tileSize - 10, gp.tileSize - 10);
+        down2 = setup("enemies/slime/5", gp.tileSize - 10, gp.tileSize - 10);
+        down3 = setup("enemies/slime/6", gp.tileSize - 10, gp.tileSize - 10);
 
         left1 = setup("enemies/slime/1", gp.tileSize - 10, gp.tileSize - 10);
         left2 = setup("enemies/slime/2", gp.tileSize - 10, gp.tileSize - 10);
         left3 = setup("enemies/slime/3", gp.tileSize - 10, gp.tileSize - 10);
 
-        right1 = setup("enemies/slime/1", gp.tileSize - 10, gp.tileSize - 10);
-        right2 = setup("enemies/slime/2", gp.tileSize - 10, gp.tileSize - 10);
-        right3 = setup("enemies/slime/3", gp.tileSize - 10, gp.tileSize - 10);
+        right1 = setup("enemies/slime/4", gp.tileSize - 10, gp.tileSize - 10);
+        right2 = setup("enemies/slime/5", gp.tileSize - 10, gp.tileSize - 10);
+        right3 = setup("enemies/slime/6", gp.tileSize - 10, gp.tileSize - 10);
 
     }
 

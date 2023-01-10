@@ -5,18 +5,18 @@ import main.GamePanel;
 
 import java.awt.*;
 
-public class OBJ_Wrench extends Entity {
+public class OBJ_Crowbar extends Entity {
 
     public final static String objName = "Wrench";
-    public OBJ_Wrench(GamePanel gp) {
+    public OBJ_Crowbar(GamePanel gp) {
         super(gp);
-        type = typeWrench;
+        type = typeCrowbar;
         price = 1000;
         name = objName;
-        down1 = setup("objects/wrench",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/crowbar",gp.tileSize/2,gp.tileSize/2);
         attackValue = 6;
         knockBackPower = 10;
-        description = "[" + name + "]\nAttack value: " + attackValue + "\nOld rusty wrench.\n Dangerous as a weapon.\n Can brake some objects.";
+        description = "[" + name + "]\nAttack value: " + attackValue + "\nOld rusty crowbar.\n Dangerous as a weapon.\n Can brake some objects.";
         attackArea.width = 36;
         attackArea.height = 36;
         motion1Duration = 10;

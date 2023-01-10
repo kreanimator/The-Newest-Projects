@@ -12,7 +12,7 @@ public class OBJ_Melee_Bat_normal extends Entity {
         type = typeMelee;
         name = objName;
         price = 100;
-        down1 = setup("objects/bat",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/bat",gp.tileSize/2,gp.tileSize/2);
         attackValue = 3;
         knockBackPower =2;
 

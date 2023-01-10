@@ -6,7 +6,7 @@ import object.misc.OBJ_HPPack;
 import object.misc.OBJ_Tent;
 import object.weapon.OBJ_Ammo_Pistol;
 import object.weapon.OBJ_Pistol;
-import object.weapon.OBJ_Wrench;
+import object.weapon.OBJ_Crowbar;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -150,7 +150,7 @@ public class KeyHandler implements KeyListener {
                     gp.playMusic(0);
                     //HARVESTER
                     gp.player.inventory.add(new OBJ_BarrelShield(gp));
-                    gp.player.inventory.add(new OBJ_Wrench(gp));
+                    gp.player.inventory.add(new OBJ_Crowbar(gp));
                     gp.player.dexterity = 2;
 
                 }

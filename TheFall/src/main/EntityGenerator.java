@@ -49,7 +49,7 @@ public class EntityGenerator {
             case OBJ_Melee_Bat_normal.objName-> new OBJ_Melee_Bat_normal(gp);
             case OBJ_Pistol.objName -> new OBJ_Pistol(gp);
             case OBJ_Shotgun.objName -> new OBJ_Shotgun(gp);
-            case OBJ_Wrench.objName -> new OBJ_Wrench(gp);
+            case OBJ_Crowbar.objName -> new OBJ_Crowbar(gp);
 
             default -> null;
         };

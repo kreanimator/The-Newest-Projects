@@ -27,7 +27,7 @@ public class IT_Vase extends InteractiveTile{
     }
     public boolean isCorrectItem(Entity entity){
         boolean isCorrectItem = false;
-        if(entity.currentWeapon.type == typeWrench || entity.currentWeapon.type == typeMelee){
+        if(entity.currentWeapon.type == typeCrowbar || entity.currentWeapon.type == typeMelee){
             isCorrectItem = true;
         }
         return isCorrectItem;

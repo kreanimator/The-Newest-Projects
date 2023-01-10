@@ -13,7 +13,7 @@ public class OBJ_KeyCard extends Entity {
         type = typeConsumable;
         name = objName;
         value = 1;
-        down1 = setup("objects/keycard",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/keycard",gp.tileSize/2,gp.tileSize/2);
         description = "[" + name + "]\nAn old bunker key card.";
         setDialogue();
     }

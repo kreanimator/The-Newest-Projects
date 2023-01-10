@@ -108,8 +108,8 @@ public class Player extends Entity {
        inventory.add(new OBJ_Ammo_Shotgun(gp));
 //        inventory.add(new OBJ_Ammo_Shotgun(gp));
 //        inventory.add(new OBJ_Lockpick(gp));
-//        inventory.add(new OBJ_KeyCard(gp));
-//       inventory.add(new OBJ_Flashlight(gp));
+        inventory.add(new OBJ_KeyCard(gp));
+       inventory.add(new OBJ_Flashlight(gp));
 
     }
 
@@ -165,20 +165,7 @@ public class Player extends Entity {
             atkright3 = setup("player/attack/atkright3", (gp.tileSize * 2), gp.tileSize);
 
         }
-        if (currentWeapon.type == typeWrench) {
-            atkup1 = setup("player/attack/atkwrenchup1", gp.tileSize, (gp.tileSize * 2));
-            atkup2 = setup("player/attack/atkwrenchup2", gp.tileSize, (gp.tileSize * 2));
-            atkup3 = setup("player/attack/atkwrenchup3", gp.tileSize, (gp.tileSize * 2));
-            atkdown1 = setup("player/attack/atkwrenchdown1", gp.tileSize, (gp.tileSize * 2));
-            atkdown2 = setup("player/attack/atkwrenchdown2", gp.tileSize, (gp.tileSize * 2));
-            atkdown3 = setup("player/attack/atkwrenchdown3", gp.tileSize, (gp.tileSize * 2));
-            atkleft1 = setup("player/attack/atkwrenchleft1", (gp.tileSize * 2), gp.tileSize);
-            atkleft2 = setup("player/attack/atkwrenchleft2", (gp.tileSize * 2), gp.tileSize);
-            atkleft3 = setup("player/attack/atkwrenchleft3", (gp.tileSize * 2), gp.tileSize);
-            atkright1 = setup("player/attack/atkwrenchright1", (gp.tileSize * 2), gp.tileSize);
-            atkright2 = setup("player/attack/atkwrenchright2", (gp.tileSize * 2), gp.tileSize);
-            atkright3 = setup("player/attack/atkwrenchright3", (gp.tileSize * 2), gp.tileSize);
-        }
+
 //        if (currentWeapon.type == typePistol) {
 //            atkup1 = setup("player/rangedAttack/pistolup1", gp.tileSize, (gp.tileSize * 2));
 //            atkup2 = setup("player/rangedAttack/pistolup2", gp.tileSize, (gp.tileSize * 2));
@@ -329,7 +316,7 @@ public class Player extends Entity {
             }
 
             if (keyH.ePressed && !attackCanceled) {
-                if (currentWeapon.type == typeMelee || currentWeapon.type == typeWrench) {
+                if (currentWeapon.type == typeMelee || currentWeapon.type == typeCrowbar) {
                     gp.playSE(4);
                     attacking = true;
                     spriteCounter++;
@@ -605,7 +592,7 @@ public class Player extends Entity {
         int itemIndex = gp.ui.getItemIndex(gp.ui.playerSlotCol, gp.ui.playerSlotRow);
         if (itemIndex < inventory.size()) {
             Entity selectedItem = inventory.get(itemIndex);
-            if (selectedItem.type == typeMelee || selectedItem.type == typeWrench) {
+            if (selectedItem.type == typeMelee || selectedItem.type == typeCrowbar) {
                 currentWeapon = selectedItem;
                 attack = getAttack();
                 getAtkImage();

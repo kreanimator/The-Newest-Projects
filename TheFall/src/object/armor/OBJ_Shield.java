@@ -11,7 +11,7 @@ public class OBJ_Shield extends Entity {
         type = typeShield;
         price = 200;
         name = objName;
-        down1 = setup("objects/shield",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/shield",gp.tileSize/2,gp.tileSize/2);
         defenseValue = 1;
         description = "[" + name + "]\nDefense value: " + defenseValue + "\nSimple shield \n Made of garbage";
     }

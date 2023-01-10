@@ -16,7 +16,7 @@ public class OBJ_HPPack extends Entity {
         name = objName;
         value = 5;
         stackable = true;
-        down1 = setup("objects/hppack",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/hppack",gp.tileSize/2,gp.tileSize/2);
         description = "[" + name + "]\nRestores some amount of HP.";
         setDialogue();
     }

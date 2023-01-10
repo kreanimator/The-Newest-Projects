@@ -14,7 +14,7 @@ public class OBJ_Lockpick extends Entity {
         name = objName;
         value = 1;
         stackable = true;
-        down1 = setup("objects/lockpick",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/lockpick",gp.tileSize/2,gp.tileSize/2);
         description = "[" + name + "]\nAllows to open one door";
         setDialogue();
     }

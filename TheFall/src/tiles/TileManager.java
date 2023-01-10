@@ -172,6 +172,23 @@ public class TileManager {
         setup(136, "wr", false);
         setup(137, "wt", true);
         setup(138, "wt1", true);
+        setup(139, "wt2", true);
+        setup(140, "wt3", true);
+        setup(141, "wt4", true);
+        setup(142, "wt5", true);
+        setup(143, "wt6", true);
+        setup(144, "wt7", true);
+        setup(145, "wt8", true);
+        setup(146, "wt9", true);
+        setup(147, "wt91", true);
+        setup(148, "wt911", true);
+        setup(149, "wt93", true);
+        setup(150, "wt94", true);
+        setup(151, "wt95", true);
+        setup(152, "wt96", true);
+        setup(153, "wt97", true);
+        setup(154, "wt98", true);
+        setup(155, "wt99", true);
 
 
 

@@ -27,7 +27,7 @@ public class IT_Box extends InteractiveTile{
     }
     public boolean isCorrectItem(Entity entity){
         boolean isCorrectItem = false;
-        if(entity.currentWeapon.type == typeWrench){
+        if(entity.currentWeapon.type == typeCrowbar){
             isCorrectItem = true;
         }
         return isCorrectItem;

@@ -113,7 +113,7 @@ public class Entity {
     public final int typeNPC = 1;
     public final int typeEnemy = 2;
     public final int typeMelee = 3;
-    public final int typeWrench = 4;
+    public final int typeCrowbar = 4;
     public final int typePistol = 5;
     public final int typeShotgun = 6;
     public final int typeArmor = 7;

@@ -10,7 +10,7 @@ public class OBJ_Armor_Learther extends Entity {
         type = typeArmor;
         price = 200;
         name = objName;
-        down1 = setup("objects/leatherArmor",gp.tileSize,gp.tileSize);
+        down1 = setup("objects/leatherArmor",gp.tileSize/2,gp.tileSize/2);
         defenseValue = 1;
         description = "[" + name + "]\nDefense value: " + defenseValue + "\nBasic leather armor.\nBefore a great war \nyou might be cool in it.";
     }

@@ -33,7 +33,7 @@ public class Spider extends Entity {
 
 
         solidArea.x = 3;
-        solidArea.y = 18;
+        solidArea.y = 10;
         solidArea.width = 42;
         solidArea.height = 30;
         solidAreaDefaultX = solidArea.x;

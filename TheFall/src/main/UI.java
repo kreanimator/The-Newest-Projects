@@ -176,7 +176,7 @@ public class UI {
                 g2.setColor(new Color(227, 176, 21));
                 g2.fillRoundRect(slotX, slotY, gp.tileSize, gp.tileSize, 10, 10);
             }
-            g2.drawImage(entity.inventory.get(i).down1, slotX, slotY, null);
+            g2.drawImage(entity.inventory.get(i).down1, slotX, slotY,gp.tileSize,gp.tileSize, null);
 
             //DISPLAY THE AMOUNT
 
@@ -659,9 +659,9 @@ public class UI {
         textY += lineHeight;
 
 
-        g2.drawImage(gp.player.currentWeapon.down1, tailX - gp.tileSize, textY - 15, null);
+        g2.drawImage(gp.player.currentWeapon.down1, tailX - gp.tileSize, textY - 15,gp.tileSize,gp.tileSize, null);
         textY += gp.tileSize;
-        g2.drawImage(gp.player.currentArmor.down1, tailX - gp.tileSize, textY - 15, null);
+        g2.drawImage(gp.player.currentArmor.down1, tailX - gp.tileSize, textY - 15,gp.tileSize,gp.tileSize, null);
     }
 
     private void drawGameOverScreen() {
