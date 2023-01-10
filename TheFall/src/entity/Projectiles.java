@@ -21,7 +21,7 @@ public class Projectiles extends  Entity{
         public void update(){
 
         if(user == gp.player){
-            gp.cDetector.checkTile(this);
+            //gp.cDetector.checkTile(this);
             int enemyIndex = gp.cDetector.checkEntity(this,gp.enemy);
             if(enemyIndex != 999){
                 gp.player.damageEnemy(enemyIndex,this,attack, knockBackPower);

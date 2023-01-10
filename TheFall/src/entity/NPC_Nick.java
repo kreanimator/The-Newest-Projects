@@ -12,9 +12,9 @@ public class NPC_Nick extends Entity {
         direction = "down";
         name = npcName;
         speed = defaultSpeed;
-        solidArea.x = 6;
+        solidArea.x = 14;
         solidArea.y = 16;
-        solidArea.width = 32;
+        solidArea.width = 24;
         solidArea.height = 32;
 
         solidAreaDefaultX = solidArea.x;

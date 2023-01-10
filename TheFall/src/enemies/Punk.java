@@ -29,10 +29,10 @@ public class Punk extends Entity {
         exp = 15;
         projectiles = new OBJ_Bullet(gp);
 
-        solidArea.x = 3;
-        solidArea.y = 18;
-        solidArea.width = 42;
-        solidArea.height = 30;
+        solidArea.x = 14;
+        solidArea.y = 16;
+        solidArea.width = 24;
+        solidArea.height = 32;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         attackArea.width = 48;

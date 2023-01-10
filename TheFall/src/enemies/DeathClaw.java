@@ -25,16 +25,18 @@ public class DeathClaw extends Entity {
         attack = 6;
         defense = 4;
         exp = 150;
+        int size = gp.tileSize *2;
 
-        solidArea.x = 3;
-        solidArea.y = 18;
-        solidArea.width = 42;
-        solidArea.height = 30;
+        solidArea.x = 12;
+        solidArea.y = 36;
+        solidArea.width = gp.tileSize -10;
+        solidArea.height = gp.tileSize -10;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
-        attackArea.width = 48;
-        attackArea.height = 48;
+        attackArea.width = 48 * 2;
+        attackArea.height = 48 * 2;
+        knockBackPower = 5;
         motion1Duration = 10;
         motion2Duration = 30;
         motion3Duration = 50;
@@ -50,21 +52,22 @@ public class DeathClaw extends Entity {
 //    }
 
     public void getImage() {
-        up1 = setup("enemies/deathclaw/up1", gp.tileSize , gp.tileSize );
-        up2 = setup("enemies/deathclaw/up2", gp.tileSize , gp.tileSize );
-        up3 = setup("enemies/deathclaw/up3", gp.tileSize , gp.tileSize );
+        int size = gp.tileSize + (gp.tileSize/2);
+        up1 = setup("enemies/deathclaw/up1", size, size );
+        up2 = setup("enemies/deathclaw/up2",size, size );
+        up3 = setup("enemies/deathclaw/up3", size, size );
 
-        down1 = setup("enemies/deathclaw/down1", gp.tileSize , gp.tileSize );
-        down2 = setup("enemies/deathclaw/down2", gp.tileSize , gp.tileSize );
-        down3 = setup("enemies/deathclaw/down3", gp.tileSize , gp.tileSize );
+        down1 = setup("enemies/deathclaw/down1", size, size );
+        down2 = setup("enemies/deathclaw/down2", size, size);
+        down3 = setup("enemies/deathclaw/down3", size, size );
 
-        left1 = setup("enemies/deathclaw/left1", gp.tileSize , gp.tileSize );
-        left2 = setup("enemies/deathclaw/left2", gp.tileSize , gp.tileSize );
-        left3 = setup("enemies/deathclaw/left3", gp.tileSize , gp.tileSize );
+        left1 = setup("enemies/deathclaw/left1", size, size );
+        left2 = setup("enemies/deathclaw/left2", size, size );
+        left3 = setup("enemies/deathclaw/left3", size, size );
 
-        right1 = setup("enemies/deathclaw/right1", gp.tileSize , gp.tileSize );
-        right2 = setup("enemies/deathclaw/right2", gp.tileSize , gp.tileSize );
-        right3 = setup("enemies/deathclaw/right3", gp.tileSize , gp.tileSize );
+        right1 = setup("enemies/deathclaw/right1", size, size );
+        right2 = setup("enemies/deathclaw/right2", size, size );
+        right3 = setup("enemies/deathclaw/right3", size, size );
 
     }
 

@@ -770,6 +770,10 @@ public class Entity {
             }
 
             g2.drawImage(image, tempScreenX, tempScreenY, null);
+
+            //CHECK SOLID AREA
+            g2.setColor(Color.RED);
+            g2.drawRect(getScreenX() + solidArea.x, getScreenY() + solidArea.y, solidArea.width, solidArea.height);
         }
             changeAlpha(g2, 1f);
 

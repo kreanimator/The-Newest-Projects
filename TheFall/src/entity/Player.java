@@ -36,11 +36,11 @@ public class Player extends Entity {
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
 
         solidArea = new Rectangle();
-        solidArea.x = 12;
-        solidArea.y = 21;
+        solidArea.x = 14;
+        solidArea.y = 16;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        solidArea.width = 32;
+        solidArea.width = 24;
         solidArea.height = 32;
 //        solidArea.width = gp.tileSize / 2;
 //        solidArea.height = gp.tileSize / 2;
@@ -179,34 +179,34 @@ public class Player extends Entity {
             atkright2 = setup("player/attack/atkwrenchright2", (gp.tileSize * 2), gp.tileSize);
             atkright3 = setup("player/attack/atkwrenchright3", (gp.tileSize * 2), gp.tileSize);
         }
-        if (currentWeapon.type == typePistol) {
-            atkup1 = setup("player/rangedAttack/pistolup1", gp.tileSize, (gp.tileSize * 2));
-            atkup2 = setup("player/rangedAttack/pistolup2", gp.tileSize, (gp.tileSize * 2));
-            atkup3 = setup("player/rangedAttack/pistolup3", gp.tileSize, (gp.tileSize * 2));
-            atkdown1 = setup("player/rangedAttack/pistoldown1", gp.tileSize, (gp.tileSize * 2));
-            atkdown2 = setup("player/rangedAttack/pistoldown2", gp.tileSize, (gp.tileSize * 2));
-            atkdown3 = setup("player/rangedAttack/pistoldown3", gp.tileSize, (gp.tileSize * 2));
-            atkleft1 = setup("player/rangedAttack/pistolleft1", (gp.tileSize * 2), gp.tileSize);
-            atkleft2 = setup("player/rangedAttack/pistolleft2", (gp.tileSize * 2), gp.tileSize);
-            atkleft3 = setup("player/rangedAttack/pistolleft3", (gp.tileSize * 2), gp.tileSize);
-            atkright1 = setup("player/rangedAttack/pistolright1", (gp.tileSize * 2), gp.tileSize);
-            atkright2 = setup("player/rangedAttack/pistolright2", (gp.tileSize * 2), gp.tileSize);
-            atkright3 = setup("player/rangedAttack/pistolright3", (gp.tileSize * 2), gp.tileSize);
-        }
-        if (currentWeapon.type == typeShotgun) {
-            atkup1 = setup("player/rangedAttack/shotgunup1", gp.tileSize, (gp.tileSize * 2));
-            atkup2 = setup("player/rangedAttack/shotgunup2", gp.tileSize, (gp.tileSize * 2));
-            atkup3 = setup("player/rangedAttack/shotgunup3", gp.tileSize, (gp.tileSize * 2));
-            atkdown1 = setup("player/rangedAttack/shotgundown1", gp.tileSize, (gp.tileSize * 2));
-            atkdown2 = setup("player/rangedAttack/shotgundown2", gp.tileSize, (gp.tileSize * 2));
-            atkdown3 = setup("player/rangedAttack/shotgundown3", gp.tileSize, (gp.tileSize * 2));
-            atkleft1 = setup("player/rangedAttack/shotgunleft1", (gp.tileSize * 2), gp.tileSize);
-            atkleft2 = setup("player/rangedAttack/shotgunleft2", (gp.tileSize * 2), gp.tileSize);
-            atkleft3 = setup("player/rangedAttack/shotgunleft3", (gp.tileSize * 2), gp.tileSize);
-            atkright1 = setup("player/rangedAttack/shotgunright1", (gp.tileSize * 2), gp.tileSize);
-            atkright2 = setup("player/rangedAttack/shotgunright2", (gp.tileSize * 2), gp.tileSize);
-            atkright3 = setup("player/rangedAttack/shotgunright3", (gp.tileSize * 2), gp.tileSize);
-        }
+//        if (currentWeapon.type == typePistol) {
+//            atkup1 = setup("player/rangedAttack/pistolup1", gp.tileSize, (gp.tileSize * 2));
+//            atkup2 = setup("player/rangedAttack/pistolup2", gp.tileSize, (gp.tileSize * 2));
+//            atkup3 = setup("player/rangedAttack/pistolup3", gp.tileSize, (gp.tileSize * 2));
+//            atkdown1 = setup("player/rangedAttack/pistoldown1", gp.tileSize, (gp.tileSize * 2));
+//            atkdown2 = setup("player/rangedAttack/pistoldown2", gp.tileSize, (gp.tileSize * 2));
+//            atkdown3 = setup("player/rangedAttack/pistoldown3", gp.tileSize, (gp.tileSize * 2));
+//            atkleft1 = setup("player/rangedAttack/pistolleft1", (gp.tileSize * 2), gp.tileSize);
+//            atkleft2 = setup("player/rangedAttack/pistolleft2", (gp.tileSize * 2), gp.tileSize);
+//            atkleft3 = setup("player/rangedAttack/pistolleft3", (gp.tileSize * 2), gp.tileSize);
+//            atkright1 = setup("player/rangedAttack/pistolright1", (gp.tileSize * 2), gp.tileSize);
+//            atkright2 = setup("player/rangedAttack/pistolright2", (gp.tileSize * 2), gp.tileSize);
+//            atkright3 = setup("player/rangedAttack/pistolright3", (gp.tileSize * 2), gp.tileSize);
+//        }
+//        if (currentWeapon.type == typeShotgun) {
+//            atkup1 = setup("player/rangedAttack/shotgunup1", gp.tileSize, (gp.tileSize * 2));
+//            atkup2 = setup("player/rangedAttack/shotgunup2", gp.tileSize, (gp.tileSize * 2));
+//            atkup3 = setup("player/rangedAttack/shotgunup3", gp.tileSize, (gp.tileSize * 2));
+//            atkdown1 = setup("player/rangedAttack/shotgundown1", gp.tileSize, (gp.tileSize * 2));
+//            atkdown2 = setup("player/rangedAttack/shotgundown2", gp.tileSize, (gp.tileSize * 2));
+//            atkdown3 = setup("player/rangedAttack/shotgundown3", gp.tileSize, (gp.tileSize * 2));
+//            atkleft1 = setup("player/rangedAttack/shotgunleft1", (gp.tileSize * 2), gp.tileSize);
+//            atkleft2 = setup("player/rangedAttack/shotgunleft2", (gp.tileSize * 2), gp.tileSize);
+//            atkleft3 = setup("player/rangedAttack/shotgunleft3", (gp.tileSize * 2), gp.tileSize);
+//            atkright1 = setup("player/rangedAttack/shotgunright1", (gp.tileSize * 2), gp.tileSize);
+//            atkright2 = setup("player/rangedAttack/shotgunright2", (gp.tileSize * 2), gp.tileSize);
+//            atkright3 = setup("player/rangedAttack/shotgunright3", (gp.tileSize * 2), gp.tileSize);
+//        }
     }
     public void getGuardImage(){
         guardDown = setup("player/guard/down", gp.tileSize, gp.tileSize);
@@ -783,8 +783,8 @@ public class Player extends Entity {
         if(drawing) {
             g2.drawImage(image, tempScreenX, tempScreenY, null);
             //CHECK SOLID AREA
-//            g2.setColor(Color.RED);
-//            g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
+            g2.setColor(Color.RED);
+            g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);
         }
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
     }
