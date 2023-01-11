@@ -64,9 +64,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     //ENTITY AND OBJECTS
     public Player player = new Player(this, keyH);
-    public Entity[][] obj = new Entity[maxMap][200];
-    public Entity[][] npc = new Entity[maxMap][100];
-    public Entity[][] enemy = new Entity[maxMap][200];
+    public Entity[][] obj = new Entity[maxMap][500];
+    public Entity[][] npc = new Entity[maxMap][500];
+    public Entity[][] enemy = new Entity[maxMap][500];
     public InteractiveTile[][] iTile = new InteractiveTile[maxMap][200];
     public Entity[][] projectile = new Entity[maxMap][20];
     //    public ArrayList <Entity> projectilesList = new ArrayList<>();
@@ -114,7 +114,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setUpGame() {
         aSetter.setObject();
-        aSetter.setBuildings();
         aSetter.setNPC();
         eManager.setup();
         aSetter.setEnemy();

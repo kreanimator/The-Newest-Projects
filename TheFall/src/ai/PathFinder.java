@@ -95,14 +95,14 @@ public class PathFinder {
 
             }
 
-            //CHECK OBJECTS IS REDUNDANT FOR THIS MOMENT
-            for(int i = 0; i < gp.obj[1].length; i ++) {
-                if (gp.obj[gp.currentMap][i] != null) {
-                    int itCol = gp.obj[gp.currentMap][i].worldX / gp.tileSize;
-                    int itCRow = gp.obj[gp.currentMap][i].worldY / gp.tileSize;
-                    node[itCol][itCRow].solid = true;
-                }
-            }
+//            //CHECK OBJECTS IS REDUNDANT FOR THIS MOMENT
+//            for(int i = 0; i < gp.obj[1].length; i ++) {
+//                if (gp.obj[gp.currentMap][i] != null) {
+//                    int itCol = gp.obj[gp.currentMap][i].worldX / gp.tileSize;
+//                    int itCRow = gp.obj[gp.currentMap][i].worldY / gp.tileSize;
+//                    node[itCol][itCRow].solid = true;
+//                }
+//            }
             //SET COST
 
             getCost(node[col][row]);

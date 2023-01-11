@@ -19,9 +19,9 @@ public class WL_RuinedWall extends Entity {
         getImage();
         setAction();
 
-        solidArea.x = 24;
+        solidArea.x = 0;
         solidArea.y = 48;
-        solidArea.width = gp.tileSize * 10;
+        solidArea.width = gp.tileSize * 11;
         solidArea.height = 12;
 
         solidAreaDefaultX = solidArea.x;

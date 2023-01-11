@@ -1,13 +1,13 @@
-package object.walls;
+package object.barrels;
 
 import entity.Entity;
 import main.GamePanel;
 
-public class WL_Barn2 extends Entity {
+public class OBJ_ToxicBarrels5 extends Entity {
     GamePanel gp;
-    public final static String objName = "Barn2";
+    public final static String objName = "ToxicBarrels5";
 
-    public WL_Barn2(GamePanel gp) {
+    public OBJ_ToxicBarrels5(GamePanel gp) {
         super(gp);
         this.gp = gp;
         name = objName;
@@ -19,20 +19,21 @@ public class WL_Barn2 extends Entity {
         getImage();
         setAction();
 
-        solidArea.x = 0;
-        solidArea.y = 48;
-        solidArea.width = gp.tileSize * 11;
-        solidArea.height = 12;
+        solidArea.x = 6;
+        solidArea.y = gp.tileSize-24;
+        solidArea.width = gp.tileSize+12;
+        solidArea.height = gp.tileSize;
 
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
     }
 
     public void getImage() {
-        int height = (gp.tileSize*2)-24 ;
-        int width = gp.tileSize * 11;
+        int width = gp.tileSize +24;
+        int height = gp.tileSize +24;
 
-        down1 = setup("tiles/wall/barn2", width, height);
+        down1 = setup("tiles/exterior/toxic_barrels5", width, height);
+
 
     }
 
