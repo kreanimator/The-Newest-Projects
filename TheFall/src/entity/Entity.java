@@ -681,9 +681,9 @@ public class Entity {
 
     public boolean inCamera() {
         boolean inCamera = false;
-        if (worldX + gp.tileSize * 5 > gp.player.worldX - gp.player.screenX &&
+        if (worldX + gp.tileSize * 16 > gp.player.worldX+gp.tileSize - gp.player.screenX &&
                 worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                worldY + gp.tileSize * 5 > gp.player.worldY - gp.player.screenY &&
+                worldY + gp.tileSize * 16 > gp.player.worldY - gp.player.screenY &&
                 worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
             inCamera = true;
         }
@@ -754,10 +754,6 @@ public class Entity {
                     }
                 }
             }
-
-
-
-
 
             if (invincible) {
                 hpBarOn = true;

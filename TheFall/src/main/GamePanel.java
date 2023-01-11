@@ -114,6 +114,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setUpGame() {
         aSetter.setObject();
+        aSetter.setBuildings();
         aSetter.setNPC();
         eManager.setup();
         aSetter.setEnemy();
