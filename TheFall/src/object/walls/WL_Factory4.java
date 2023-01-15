@@ -2,13 +2,14 @@ package object.walls;
 
 import entity.Entity;
 import main.GamePanel;
+import object.Object;
 
-public class WL_Factory4 extends Entity {
+public class WL_Factory4 extends Object {
     GamePanel gp;
     public final static String objName = "Factory4";
 
-    public WL_Factory4(GamePanel gp) {
-        super(gp);
+    public WL_Factory4(GamePanel gp, int col, int row) {
+        super(gp, col , row);
         this.gp = gp;
         name = objName;
         speed = 0;

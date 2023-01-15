@@ -8,10 +8,10 @@ import tile_interactive.InteractiveTile;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class NPC_BigRock extends Entity {
+public class NPC_BigRock extends NPC {
     public final static String npcName = "Big rock";
-    public NPC_BigRock(GamePanel gp) {
-        super(gp);
+    public NPC_BigRock(GamePanel gp, int col, int row) {
+        super(gp,col,row);
         name = npcName;
         direction = "down";
         defaultSpeed = 4;

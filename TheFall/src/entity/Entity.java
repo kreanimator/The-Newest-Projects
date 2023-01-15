@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class Entity {
 
-    GamePanel gp;
+    public GamePanel gp;
     public BufferedImage image, image2, image3, image4, image5;
     public BufferedImage up1, up2, up3, down1, down2, down3, left1, left2, left3, right1, right2, right3;
     public BufferedImage atkup1, atkup2, atkup3, atkdown1, atkdown2, atkdown3, atkleft1, atkleft2,
@@ -126,6 +126,10 @@ public class Entity {
 
     public Entity(GamePanel gp) {
         this.gp = gp;
+
+    }
+    public Entity() {
+
     }
     public int getScreenX(){
         int screenX = worldX - gp.player.worldX + gp.player.screenX;

@@ -2,13 +2,14 @@ package object.walls;
 
 import entity.Entity;
 import main.GamePanel;
+import object.Object;
 
-public class WL_BrickBD extends Entity {
+public class WL_BrickBD extends Object {
     GamePanel gp;
     public final static String objName = "BrickBD";
 
-    public WL_BrickBD(GamePanel gp) {
-        super(gp);
+    public WL_BrickBD(GamePanel gp, int col, int row) {
+        super(gp, col, row);
         this.gp = gp;
         name = objName;
         speed = 0;

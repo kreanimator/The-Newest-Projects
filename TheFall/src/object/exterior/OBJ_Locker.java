@@ -15,14 +15,16 @@ public class OBJ_Locker extends Entity {
         this.gp = gp;
         type = typeObstacle;
         name = objName;
-        image = setup("objects/interactiveobjects/locker", gp.tileSize, gp.tileSize);
-        image2 = setup("objects/interactiveobjects/lockeropened", gp.tileSize, gp.tileSize);
+        int height = gp.tileSize*2;
+        int width = gp.tileSize+12;
+        image = setup("objects/interactiveobjects/locker", width, height);
+        image2 = setup("objects/interactiveobjects/lockeropened", width, height);
         down1 = image;
         collision = true;
-        solidArea.x = 0;
-        solidArea.y = 16;
-        solidArea.width = 48;
-        solidArea.height = 32;
+        solidArea.x = 18;
+        solidArea.y = 48;
+        solidArea.width = 24;
+        solidArea.height = 36;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 

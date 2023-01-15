@@ -2,16 +2,17 @@ package object.exterior;
 
 import entity.Entity;
 import main.GamePanel;
+import object.Object;
 
 
-public class OBJ_Door extends Entity {
+public class OBJ_Door extends Object {
 
     GamePanel gp;
     public final static String objName = "Door";
     boolean opened = false;
 
-    public OBJ_Door(GamePanel gp) {
-        super(gp);
+    public OBJ_Door(GamePanel gp, int col, int row) {
+        super(gp,col,row);
         int height = (gp.tileSize*2)-30 ;
         int width = gp.tileSize+15;
 

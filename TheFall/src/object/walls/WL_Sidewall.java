@@ -2,13 +2,14 @@ package object.walls;
 
 import entity.Entity;
 import main.GamePanel;
+import object.Object;
 
-public class WL_Sidewall extends Entity {
+public class WL_Sidewall extends Object {
     GamePanel gp;
     public final static String objName = "Sidewall";
 
-    public WL_Sidewall(GamePanel gp) {
-        super(gp);
+    public WL_Sidewall(GamePanel gp, int col,int row) {
+        super(gp,col,row);
         this.gp = gp;
         name = objName;
         speed = 0;

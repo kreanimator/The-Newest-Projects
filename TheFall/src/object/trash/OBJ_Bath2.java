@@ -2,13 +2,14 @@ package object.trash;
 
 import entity.Entity;
 import main.GamePanel;
+import object.Object;
 
-public class OBJ_Bath2 extends Entity {
+public class OBJ_Bath2 extends Object {
     GamePanel gp;
     public final static String objName = "Bath2";
 
-    public OBJ_Bath2(GamePanel gp) {
-        super(gp);
+    public OBJ_Bath2(GamePanel gp,int col,int row) {
+        super(gp,col,row);
         this.gp = gp;
         name = objName;
         speed = 0;

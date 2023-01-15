@@ -2,14 +2,15 @@ package object.walls;
 
 import entity.Entity;
 import main.GamePanel;
+import object.Object;
 
-public class WL_Oldwall2 extends Entity {
+public class WL_Oldwall2 extends Object {
 
     GamePanel gp;
     public final static String objName = "Oldwall2";
 
-    public WL_Oldwall2(GamePanel gp) {
-        super(gp);
+    public WL_Oldwall2(GamePanel gp, int col, int row) {
+        super(gp, col , row);
         this.gp = gp;
         name = objName;
         speed = 0;

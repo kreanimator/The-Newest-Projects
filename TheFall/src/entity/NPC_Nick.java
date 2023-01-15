@@ -2,20 +2,24 @@ package entity;
 
 import main.GamePanel;
 
-public class NPC_Nick extends Entity {
+import java.util.Random;
+
+public class NPC_Nick extends NPC{
     boolean questStarted = false;
     boolean finishedPath = true;
     public static final String npcName = "Nick";
 
-    public NPC_Nick(GamePanel gp) {
-        super(gp);
+    public NPC_Nick(GamePanel gp,int col, int row) {
+        super(gp,col,row);
         direction = "down";
         name = npcName;
+        defaultSpeed = 1;
         speed = defaultSpeed;
         solidArea.x = 14;
         solidArea.y = 16;
         solidArea.width = 24;
         solidArea.height = 32;
+        onPath = true;
 
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
@@ -40,61 +44,49 @@ public class NPC_Nick extends Entity {
     }
 
     public void setAction() {
-        if (onPath) {
-            int goalCol = 37;
-            int goalRow = 84;
-//            int goalCol = (gp.player.worldX + gp.player.solidArea.x)/gp.tileSize;
-//            int goalRow = (gp.player.worldY + gp.player.solidArea.y)/gp.tileSize;
-            searchPath(goalCol, goalRow);
-            finishedPath = true;
-            speed = 1;
-
-        } else {
-//            actionLockCounter++;
-//            if (actionLockCounter == 120) {
-//                Random random = new Random();
-//                int i = random.nextInt(100) + 1; // pick up a number from 1 to 100
+//        if (onPath) {
+//            int goalCol = 32;
+//            int goalRow = 84;
+////            int goalCol = (gp.player.worldX + gp.player.solidArea.x)/gp.tileSize;
+////            int goalRow = (gp.player.worldY + gp.player.solidArea.y)/gp.tileSize;
+//            searchPath(goalCol, goalRow);
+//            finishedPath = true;
+//            speed = 1;
 //
-//                if (i <= 25) {
-//                    direction = "up";
-//                }
-//                if (i > 25 && i <= 50) {
-//                    direction = "down";
-//                }
-//                if (i > 50 && i <= 75) {
-//                    direction = "left";
-//                }
-//                if (i > 75) {
-//                    direction = "right";
-//                }
-//                actionLockCounter = 0;
-//            }
+//        } else {
+            actionLockCounter++;
+            if (actionLockCounter == 240) {
+                Random random = new Random();
+                int i = random.nextInt(100) + 1; // pick up a number from 1 to 100
+
+                if (i <= 25) {
+                    direction = "up";
+                }
+                if (i > 25 && i <= 50) {
+                    direction = "down";
+                }
+                if (i > 50 && i <= 75) {
+                    direction = "left";
+                }
+                if (i > 75) {
+                    direction = "right";
+                }
+                actionLockCounter = 0;
+            }
         }
-    }
+//    }
 
     public void setDialogue() {
         dialogues[0][0] = "Hey, you woke up ! That's Amazing!";
-        dialogues[0][1] = "I found you after the storm you almost dying";
-        dialogues[0][2] = "Unfortunately tour boat broke into pieces";
-        dialogues[0][3] = "Follow me and I'll explain you everything";
+        dialogues[0][1] = "I found outside almost dying";
+        dialogues[0][2] = "Feel yourself like home, you may take everything if you'll need";
+        dialogues[0][3] = "I tell you everything, but could you do me a favor?";
 
-        dialogues[1][0] = " This is a big strange island inhabitant with scary creatures and sick bustards...";
-        dialogues[1][1] = "But I think I know the way....";
-        dialogues[1][2] = "There is a door at north east...";
+        dialogues[1][0] = " There are a lot of bugs on the field near my house, please make them disappear...";
 
 
-//            dialogues[0][0] = " Hey! You wake up! Amazing! Follow me \nI'll explain everything to you later....";
-//
-//        if(!onPath){
-//            dialogues[1][1] = "So, I found you on the beach after this storm... \n I think you will die, but you're a strong one" +
-//                    "\n So, it's a weird square Island inhabited with a scary creatures and bustards.\n" +
-//                    "This is my house fill free to take everything you need then return to me...";
-//            if (!questStarted) {
-//                dialogues[2][2] = "Can you help with one task? \n There are a lot of punks in the buildings to the north." +
-//                        "\n Bring me their tag's and I'll help you to find the way out of here!";
-//                questStarted = true;
-//
-//            }
+
+
     }
 
 
@@ -107,7 +99,7 @@ public class NPC_Nick extends Entity {
 //            dialogueSet = 0;
             dialogueSet--;
         }
-        onPath = true;
+//        onPath = true;
     }
 }
 

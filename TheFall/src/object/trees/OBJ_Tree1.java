@@ -1,18 +1,19 @@
-package entity.trees;
+package object.trees;
 
 
 import entity.Entity;
+import entity.NPC;
 import main.GamePanel;
 
 
 
-public class Tree1 extends Entity {
+public class OBJ_Tree1 extends NPC {
     GamePanel gp;
     public static final String objName = "Tree1";
 
 
-    public Tree1(GamePanel gp) {
-        super(gp);
+    public OBJ_Tree1(GamePanel gp, int col, int row) {
+        super(gp,col,row);
         this.gp = gp;
         name = objName;
         speed = 0;
@@ -22,8 +23,6 @@ public class Tree1 extends Entity {
 
         getImage();
         setAction();
-
-
 
         solidArea.x = gp.tileSize+12;
         solidArea.y = gp.tileSize +24;
@@ -37,12 +36,13 @@ public class Tree1 extends Entity {
     public void getImage() {
         int width= gp.tileSize *3;
         int height = gp.tileSize * 4;
-        up1 = setup("tiles/trees/tree1/1",width,height );
-        up2= setup("tiles/trees/tree1/2",width,height );
-        up3 = setup("tiles/trees/tree1/3",width,height );
-        down1 = setup("tiles/trees/tree1/4",width,height );
-        down2 = setup("tiles/trees/tree1/5",width,height );
-        down3 = setup("tiles/trees/tree1/6",width,height );
+
+        down1 = setup("tiles/trees/tree1/1",width,height );
+        down2 = setup("tiles/trees/tree1/2",width,height );
+        down3 = setup("tiles/trees/tree1/3",width,height );
+        up1 = setup("tiles/trees/tree1/4",width,height );
+        up2= setup("tiles/trees/tree1/5",width,height );
+        up3 = setup("tiles/trees/tree1/6",width,height );
         left1 = setup("tiles/trees/tree1/7",width,height );
         left2 = setup("tiles/trees/tree1/8",width,height );
         left3 = setup("tiles/trees/tree1/9",width,height );

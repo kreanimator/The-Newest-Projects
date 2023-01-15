@@ -10,10 +10,10 @@ import object.weapon.OBJ_Shotgun;
 
 
 
-public class NPC_Ghoul extends Entity{
+public class NPC_Ghoul extends NPC{
     public static final String npcName = "Daniel the Ghoul";
-    public NPC_Ghoul(GamePanel gp) {
-        super(gp);
+    public NPC_Ghoul(GamePanel gp,int col, int row) {
+        super(gp,col,row);
         direction = "down";
         name = npcName;
 

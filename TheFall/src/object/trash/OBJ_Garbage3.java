@@ -1,15 +1,15 @@
-package object.walls;
+package object.trash;
 
 import entity.Entity;
 import main.GamePanel;
 import object.Object;
 
-public class WL_Oldwall extends Object {
+public class OBJ_Garbage3 extends Object {
     GamePanel gp;
-    public final static String objName = "Oldwall";
+    public final static String objName = "Garbage3";
 
-    public WL_Oldwall(GamePanel gp,int col, int row) {
-        super(gp,col , row);
+    public OBJ_Garbage3(GamePanel gp, int col,int row) {
+        super(gp,col,row);
         this.gp = gp;
         name = objName;
         speed = 0;
@@ -20,20 +20,20 @@ public class WL_Oldwall extends Object {
         getImage();
         setAction();
 
-        solidArea.x = 0;
-        solidArea.y = 48;
-        solidArea.width = gp.tileSize * 7;
-        solidArea.height = 12;
+        solidArea.x = 12;
+        solidArea.y = 24;
+        solidArea.width = gp.tileSize +24;
+        solidArea.height = gp.tileSize-18;
 
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
     }
 
     public void getImage() {
-        int height = (gp.tileSize*2)-24 ;
-        int width = (gp.tileSize * 7)+12;
+        int width = gp.tileSize *2;
+        int height = gp.tileSize +24;
 
-        down1 = setup("tiles/wall/oldwall", width, height);
+        down1 = setup("tiles/exterior/garbage3", width, height);
 
     }
 

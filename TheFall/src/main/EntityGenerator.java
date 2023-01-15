@@ -22,8 +22,8 @@ public class EntityGenerator {
             case OBJ_BarrelShield.objName -> new OBJ_BarrelShield(gp);
             case OBJ_Shield.objName -> new OBJ_Shield(gp);
             case OBJ_BunkerDoor.objName ->new OBJ_BunkerDoor(gp);
-            case OBJ_CampFire.objName -> new OBJ_CampFire(gp);
-            case OBJ_Door.objName-> new OBJ_Door(gp);
+            //case OBJ_CampFire.objName -> new OBJ_CampFire(gp);
+//            case OBJ_Door.objName-> new OBJ_Door(gp);
             case OBJ_GarbageTrunk.objName -> new OBJ_GarbageTrunk(gp);
             case OBJ_IronDoor.objName -> new OBJ_IronDoor(gp);
             case OBJ_Locker.objName -> new OBJ_Locker(gp);

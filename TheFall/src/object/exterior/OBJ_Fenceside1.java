@@ -2,13 +2,14 @@ package object.exterior;
 
 import entity.Entity;
 import main.GamePanel;
+import object.Object;
 
-public class OBJ_Fenceside1 extends Entity {
+public class OBJ_Fenceside1 extends Object {
     GamePanel gp;
     public final static String objName = "Fenceside1";
 
-    public OBJ_Fenceside1(GamePanel gp) {
-        super(gp);
+    public OBJ_Fenceside1(GamePanel gp, int col, int row) {
+        super(gp,col,row);
         this.gp = gp;
         name = objName;
         speed = 0;

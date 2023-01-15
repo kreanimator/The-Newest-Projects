@@ -1,17 +1,40 @@
 package enemies;
 
-import entity.Entity;
+
 import main.GamePanel;
 import object.misc.OBJ_HPPack;
 import object.misc.OBJ_Money;
 
 import java.util.Random;
 
-public class Bug1 extends Entity {
-    GamePanel gp;
+public class Bug1 extends Enemy {
+
     public Bug1(GamePanel gp) {
-        super(gp);
         this.gp = gp;
+        type = typeEnemy;
+        name = "Green bug";
+
+        defaultSpeed = 1;
+        speed = defaultSpeed;
+        maxHP = 4;
+        life = maxHP;
+        attack = 5;
+        defense = 0;
+        exp = 10;
+
+        solidArea.x = 0;
+        solidArea.y = 0;
+        solidArea.width = 24;
+        solidArea.height = 24;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+        getImage();
+
+
+    }
+    public Bug1 (GamePanel gp, int col, int row){
+        super(gp,col,row);
+
         type = typeEnemy;
         name = "Green bug";
 
@@ -34,6 +57,9 @@ public class Bug1 extends Entity {
 
 
     }
+
+
+
 
     public void getImage() {
         int size = gp.tileSize - 20;

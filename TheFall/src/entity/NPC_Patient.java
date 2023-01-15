@@ -6,12 +6,12 @@ import main.GamePanel;
 import java.awt.*;
 
 
-public class NPC_Patient extends Entity{
+public class NPC_Patient extends NPC{
 
     public final static String npcName = "Null Patient";
 
-    public NPC_Patient(GamePanel gp) {
-        super(gp);
+    public NPC_Patient(GamePanel gp,int col, int row) {
+        super(gp,col,row);
         name = npcName;
         direction = "down";
         defaultSpeed = 0;
