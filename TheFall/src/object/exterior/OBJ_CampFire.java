@@ -45,13 +45,7 @@ public class OBJ_CampFire extends Entity {
 
     }
 
-    public void setAction() {
 
-    }
-
-    public void update() {
-
-    }
 }
 
 

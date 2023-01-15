@@ -765,10 +765,26 @@ public class Player extends Entity {
                     g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
                 }
             }
+        }
 
+        int x = tempScreenX;
+        int y = tempScreenY;
+        if(tempScreenX > worldX){
+            x = worldX;
+        }
+        if(tempScreenY > worldY){
+            y = worldY;
+        }
+        int rightOffset = gp.screenWidth - gp.player.screenX;
+        if(rightOffset > gp.worldWidth - gp.player.worldX){
+            x = gp.screenWidth - (gp.worldWidth-worldX);
+        }
+        int bottomOffset = gp.screenHeight - gp.player.screenY;
+        if(bottomOffset > gp.worldHeight-gp.player.worldY){
+            y = gp.screenHeight - (gp.worldHeight-worldY);
         }
         if(drawing) {
-            g2.drawImage(image, tempScreenX, tempScreenY, null);
+            g2.drawImage(image, x, y, null);
             //CHECK SOLID AREA
             g2.setColor(Color.RED);
             g2.drawRect(screenX + solidArea.x, screenY + solidArea.y, solidArea.width, solidArea.height);

@@ -21,7 +21,7 @@ public class WL_RuinedWallBD extends Entity {
 
         solidArea.x = 64;
         solidArea.y = 48;
-        solidArea.width = gp.tileSize * 10;
+        solidArea.width = gp.tileSize * 9;
         solidArea.height = 12;
 
         solidAreaDefaultX = solidArea.x;
@@ -30,7 +30,7 @@ public class WL_RuinedWallBD extends Entity {
 
     public void getImage() {
         int height = (gp.tileSize*2)-24 ;
-        int width = (gp.tileSize * 11)+15;
+        int width = (gp.tileSize * 10)+15;
 
         down1 = setup("tiles/wall/ruinedwallbd", width, height);
 

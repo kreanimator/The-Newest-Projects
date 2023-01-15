@@ -1,38 +1,38 @@
-package object.walls;
+package object.fridges;
 
 import entity.Entity;
 import main.GamePanel;
 
-public class WL_RuinedWallFD extends Entity {
+public class OBJ_Fridge4 extends Entity {
     GamePanel gp;
-    public final static String objName = "RuinedwallFD";
+    public final static String objName = "Fridge4";
 
-    public WL_RuinedWallFD(GamePanel gp) {
+    public OBJ_Fridge4(GamePanel gp) {
         super(gp);
         this.gp = gp;
         name = objName;
         speed = 0;
         direction = "down";
         type = typeObstacle;
-        lightRadius = 300;
+
         collision = true;
         getImage();
         setAction();
 
-        solidArea.x = 64;
-        solidArea.y = 48;
-        solidArea.width = gp.tileSize * 9;
-        solidArea.height = 12;
+        solidArea.x = 6;
+        solidArea.y = 0;
+        solidArea.width = gp.tileSize-12;
+        solidArea.height = gp.tileSize;
 
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
     }
 
     public void getImage() {
-        int height = (gp.tileSize*2)-24 ;
-        int width = (gp.tileSize * 10)+15;
+        int width = gp.tileSize;
+        int height = gp.tileSize +24;
 
-        down1 = setup("tiles/wall/ruinedwallfd", width, height);
+        down1 = setup("tiles/exterior/fridge4", width, height);
 
     }
 

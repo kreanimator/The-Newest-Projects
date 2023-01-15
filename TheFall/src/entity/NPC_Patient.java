@@ -30,18 +30,11 @@ public class NPC_Patient extends Entity{
     }
 
     public void getImage() {
-//        up1 = setup("objects/interactiveobjects/movablerock", gp.tileSize, gp.tileSize);
-//        up2 = setup("objects/interactiveobjects/movablerock", gp.tileSize, gp.tileSize);
-//        up3 = setup("objects/interactiveobjects/movablerock", gp.tileSize, gp.tileSize);
+
         down1 = setup("npc/patient/down1", gp.tileSize, gp.tileSize);
         down2 = setup("npc/patient/down2", gp.tileSize, gp.tileSize);
         down3 = setup("npc/patient/down3", gp.tileSize, gp.tileSize);
-//        left1 = setup("objects/interactiveobjects/movablerock", gp.tileSize, gp.tileSize);
-//        left2 = setup("objects/interactiveobjects/movablerock", gp.tileSize, gp.tileSize);
-//        left3 = setup("objects/interactiveobjects/movablerock", gp.tileSize, gp.tileSize);
-//        right1 = setup("objects/interactiveobjects/movablerock", gp.tileSize, gp.tileSize);
-//        right2 = setup("objects/interactiveobjects/movablerock", gp.tileSize, gp.tileSize);
-//        right3 = setup("objects/interactiveobjects/movablerock", gp.tileSize, gp.tileSize);
+
     }
 
     public void setAction() {

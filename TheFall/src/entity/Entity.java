@@ -681,7 +681,7 @@ public class Entity {
 
     public boolean inCamera() {
         boolean inCamera = false;
-        if (worldX + gp.tileSize * 16 > gp.player.worldX+gp.tileSize - gp.player.screenX &&
+        if (worldX + gp.tileSize * 16> gp.player.worldX+gp.tileSize - gp.player.screenX &&
                 worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
                 worldY + gp.tileSize * 16 > gp.player.worldY - gp.player.screenY &&
                 worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
@@ -702,55 +702,104 @@ public class Entity {
             int tempScreenX = getScreenX();
             int tempScreenY = getScreenY();
 
+
             switch (direction) {
                 case "up" -> {
                     if (!attacking) {
-                        if (spriteNumber == 1) {image = up1;}
-                        if (spriteNumber == 2) {image = up2;}
-                        if (spriteNumber == 3) {image = up3;}
+                        if (spriteNumber == 1) {
+                            image = up1;
+                        }
+                        if (spriteNumber == 2) {
+                            image = up2;
+                        }
+                        if (spriteNumber == 3) {
+                            image = up3;
+                        }
                     }
                     if (attacking) {
                         tempScreenY = getScreenY() - up1.getHeight();
-                        if (spriteNumber == 1) {image = atkup1;}
-                        if (spriteNumber == 2) {image = atkup2;}
-                        if (spriteNumber == 3) {image = atkup3;}
+                        if (spriteNumber == 1) {
+                            image = atkup1;
+                        }
+                        if (spriteNumber == 2) {
+                            image = atkup2;
+                        }
+                        if (spriteNumber == 3) {
+                            image = atkup3;
+                        }
                     }
                 }
                 case "down" -> {
                     if (!attacking) {
-                        if (spriteNumber == 1) {image = down1;}
-                        if (spriteNumber == 2) {image = down2;}
-                        if (spriteNumber == 3) {image = down3;}
+                        if (spriteNumber == 1) {
+                            image = down1;
+                        }
+                        if (spriteNumber == 2) {
+                            image = down2;
+                        }
+                        if (spriteNumber == 3) {
+                            image = down3;
+                        }
                     }
                     if (attacking) {
-                        if (spriteNumber == 1) {image = atkdown1;}
-                        if (spriteNumber == 2) {image = atkdown2;}
-                        if (spriteNumber == 3) {image = atkdown3;}
+                        if (spriteNumber == 1) {
+                            image = atkdown1;
+                        }
+                        if (spriteNumber == 2) {
+                            image = atkdown2;
+                        }
+                        if (spriteNumber == 3) {
+                            image = atkdown3;
+                        }
                     }
                 }
                 case "left" -> {
                     if (!attacking) {
-                        if (spriteNumber == 1) {image = left1;}
-                        if (spriteNumber == 2) {image = left2;}
-                        if (spriteNumber == 3) {image = left3;}
+                        if (spriteNumber == 1) {
+                            image = left1;
+                        }
+                        if (spriteNumber == 2) {
+                            image = left2;
+                        }
+                        if (spriteNumber == 3) {
+                            image = left3;
+                        }
                     }
                     if (attacking) {
                         tempScreenX = getScreenX() - left1.getWidth();
-                        if (spriteNumber == 1) {image = atkleft1;}
-                        if (spriteNumber == 2) {image = atkleft2;}
-                        if (spriteNumber == 3) {image = atkleft3;}
+                        if (spriteNumber == 1) {
+                            image = atkleft1;
+                        }
+                        if (spriteNumber == 2) {
+                            image = atkleft2;
+                        }
+                        if (spriteNumber == 3) {
+                            image = atkleft3;
+                        }
                     }
                 }
                 case "right" -> {
                     if (!attacking) {
-                        if (spriteNumber == 1) {image = right1;}
-                        if (spriteNumber == 2) {image = right2;}
-                        if (spriteNumber == 3) {image = right3;}
+                        if (spriteNumber == 1) {
+                            image = right1;
+                        }
+                        if (spriteNumber == 2) {
+                            image = right2;
+                        }
+                        if (spriteNumber == 3) {
+                            image = right3;
+                        }
                     }
                     if (attacking) {
-                        if (spriteNumber == 1) {image = atkright1;}
-                        if (spriteNumber == 2) {image = atkright2;}
-                        if (spriteNumber == 3) {image = atkright3;}
+                        if (spriteNumber == 1) {
+                            image = atkright1;
+                        }
+                        if (spriteNumber == 2) {
+                            image = atkright2;
+                        }
+                        if (spriteNumber == 3) {
+                            image = atkright3;
+                        }
                     }
                 }
             }
@@ -764,13 +813,35 @@ public class Entity {
             if (dying) {
                 dyingAnimation(g2);
             }
+            if (gp.player.worldX < gp.player.screenX) {
+                tempScreenX = worldX;
+            }
+            if (gp.player.worldY < gp.player.screenY) {
+                tempScreenY = worldY;
+            }
+            int rightOffset = gp.screenWidth - gp.player.screenX;
+            if (rightOffset > gp.worldWidth - gp.player.worldX) {
+                tempScreenX = gp.screenWidth - (gp.worldWidth - worldX);
+            }
+            int bottomOffset = gp.screenHeight - gp.player.screenY;
+            if (bottomOffset > gp.worldHeight - gp.player.worldY) {
+                tempScreenY = gp.screenHeight - (gp.worldHeight - worldY);
+            }
+            if (inCamera()) {
 
-            g2.drawImage(image, tempScreenX, tempScreenY, null);
+                g2.drawImage(image, tempScreenX, tempScreenY, null);
+            } else if (gp.player.worldX < gp.player.screenX ||
+                    gp.player.worldY < gp.player.screenY ||
+                    rightOffset > gp.worldWidth - gp.player.worldX ||
+                    bottomOffset > gp.worldHeight - gp.player.worldY) {
+                g2.drawImage(image, tempScreenX, tempScreenY, null);
+            }
+        }
 
             //CHECK SOLID AREA
             g2.setColor(Color.RED);
             g2.drawRect(getScreenX() + solidArea.x, getScreenY() + solidArea.y, solidArea.width, solidArea.height);
-        }
+
             changeAlpha(g2, 1f);
 
 

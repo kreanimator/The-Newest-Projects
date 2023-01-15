@@ -3,25 +3,24 @@ package object.walls;
 import entity.Entity;
 import main.GamePanel;
 
-public class WL_RuinedWallFD extends Entity {
+public class WL_FactoryWall6 extends Entity {
     GamePanel gp;
-    public final static String objName = "RuinedwallFD";
-
-    public WL_RuinedWallFD(GamePanel gp) {
+    public final static String objName = "FactoryWall6";
+    public WL_FactoryWall6(GamePanel gp) {
         super(gp);
         this.gp = gp;
         name = objName;
         speed = 0;
         direction = "down";
         type = typeObstacle;
-        lightRadius = 300;
+
         collision = true;
         getImage();
         setAction();
 
-        solidArea.x = 64;
+        solidArea.x = 0;
         solidArea.y = 48;
-        solidArea.width = gp.tileSize * 9;
+        solidArea.width = gp.tileSize;
         solidArea.height = 12;
 
         solidAreaDefaultX = solidArea.x;
@@ -30,9 +29,9 @@ public class WL_RuinedWallFD extends Entity {
 
     public void getImage() {
         int height = (gp.tileSize*2)-24 ;
-        int width = (gp.tileSize * 10)+15;
+        int width = gp.tileSize;
 
-        down1 = setup("tiles/wall/ruinedwallfd", width, height);
+        down1 = setup("tiles/wall/factorywall6", width, height);
 
     }
 

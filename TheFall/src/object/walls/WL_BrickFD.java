@@ -30,7 +30,7 @@ public class WL_BrickFD extends Entity {
 
     public void getImage() {
         int height = (gp.tileSize*2)-24 ;
-        int width = (gp.tileSize * 11)+15;
+        int width = (gp.tileSize * 11)+12;
 
         down1 = setup("tiles/wall/brickwallfd", width, height);
 

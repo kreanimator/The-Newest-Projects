@@ -14,7 +14,6 @@ public class WL_Barn extends Entity {
         speed = 0;
         direction = "down";
         type = typeObstacle;
-        lightRadius = 300;
         collision = true;
         getImage();
         setAction();
@@ -30,7 +29,7 @@ public class WL_Barn extends Entity {
 
     public void getImage() {
         int height = (gp.tileSize*2)-24 ;
-        int width = gp.tileSize * 11;
+        int width = (gp.tileSize * 11)+12;
 
         down1 = setup("tiles/wall/barn", width, height);
 

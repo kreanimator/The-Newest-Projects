@@ -36,6 +36,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     int screenWidth2 = screenWidth;
     int screenHeight2 = screenHeight;
+
+    public final int worldWidth = tileSize * maxWorldCol;
+    public final int worldHeight = tileSize * maxWorldRow;
     //    BufferedImage tempScreen;
 //    Graphics2D g2;
     boolean fullScreenOn = false;
@@ -333,12 +336,9 @@ public class GamePanel extends JPanel implements Runnable {
             }
             // SORT
 
-            entityList.sort(new Comparator<Entity>() {
-                @Override
-                public int compare(Entity o1, Entity o2) {
-                    int result = Integer.compare(o1.worldY, o2.worldY);
-                    return result;
-                }
+            entityList.sort((o1, o2) -> {
+                int result = Integer.compare(o1.worldY, o2.worldY);
+                return result;
             });
             //DRAW ENTITIES
 

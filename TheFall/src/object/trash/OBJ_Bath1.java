@@ -1,38 +1,38 @@
-package object.walls;
+package object.trash;
 
 import entity.Entity;
 import main.GamePanel;
 
-public class WL_RuinedWallFD extends Entity {
+public class OBJ_Bath1 extends Entity {
     GamePanel gp;
-    public final static String objName = "RuinedwallFD";
+    public final static String objName = "Bath1";
 
-    public WL_RuinedWallFD(GamePanel gp) {
+    public OBJ_Bath1(GamePanel gp) {
         super(gp);
         this.gp = gp;
         name = objName;
         speed = 0;
         direction = "down";
         type = typeObstacle;
-        lightRadius = 300;
+
         collision = true;
         getImage();
         setAction();
 
-        solidArea.x = 64;
-        solidArea.y = 48;
-        solidArea.width = gp.tileSize * 9;
-        solidArea.height = 12;
+        solidArea.x = 12;
+        solidArea.y = 24;
+        solidArea.width = gp.tileSize +24;
+        solidArea.height = gp.tileSize-18;
 
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
     }
 
     public void getImage() {
-        int height = (gp.tileSize*2)-24 ;
-        int width = (gp.tileSize * 10)+15;
+        int width = gp.tileSize *2;
+        int height = gp.tileSize +24;
 
-        down1 = setup("tiles/wall/ruinedwallfd", width, height);
+        down1 = setup("tiles/exterior/bath1", width, height);
 
     }
 
