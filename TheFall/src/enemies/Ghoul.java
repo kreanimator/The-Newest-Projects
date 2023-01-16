@@ -10,13 +10,13 @@ import object.weapon.OBJ_Ammo_Shotgun;
 import java.util.Objects;
 import java.util.Random;
 
-public class Ghoul extends Entity {
+public class Ghoul extends Enemy {
 
     GamePanel gp;
 
     public static final String enName = "Ghoul";
-    public Ghoul(GamePanel gp) {
-        super(gp);
+    public Ghoul(GamePanel gp, int col, int row) {
+        super(gp, col, row);
         this.gp = gp;
         type = typeEnemy;
         name = enName;

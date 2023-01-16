@@ -1,7 +1,7 @@
 package entity;
 
 import main.GamePanel;
-import object.exterior.OBJ_IronDoor;
+import object.exterior.doors.OBJ_IronDoor;
 import tile_interactive.IT_MetalPlate;
 import tile_interactive.InteractiveTile;
 

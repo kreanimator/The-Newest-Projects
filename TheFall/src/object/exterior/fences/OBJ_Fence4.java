@@ -1,15 +1,15 @@
-package object.exterior;
+package object.exterior.fences;
 
 import entity.Entity;
 import main.GamePanel;
 import object.Object;
 
-public class OBJ_Fenceside1 extends Object {
+public class OBJ_Fence4 extends Object {
     GamePanel gp;
-    public final static String objName = "Fenceside1";
+    public final static String objName = "Fence4";
 
-    public OBJ_Fenceside1(GamePanel gp, int col, int row) {
-        super(gp,col,row);
+    public OBJ_Fence4(GamePanel gp, int col, int row) {
+        super(gp, col , row);
         this.gp = gp;
         name = objName;
         speed = 0;
@@ -21,19 +21,19 @@ public class OBJ_Fenceside1 extends Object {
         setAction();
 
         solidArea.x = 0;
-        solidArea.y = 0;
-        solidArea.width = 6;
-        solidArea.height = gp.tileSize*2;
+        solidArea.y = gp.tileSize;
+        solidArea.width = gp.tileSize*2;
+        solidArea.height = 6;
 
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
     }
 
     public void getImage() {
-        int height = gp.tileSize*2;
-        int width = 4;
+        int width = gp.tileSize *2;
+        int height = gp.tileSize + 24;
 
-        down1 = setup("tiles/exterior/fence_side", width, height);
+        down1 = setup("tiles/exterior/fence4", width, height);
 
     }
 

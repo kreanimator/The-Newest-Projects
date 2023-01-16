@@ -7,13 +7,13 @@ import object.weapon.OBJ_Shotgun;
 
 import java.util.Random;
 
-public class DeathClaw extends Entity {
+public class DeathClaw extends Enemy {
 
     GamePanel gp;
 
 
-    public DeathClaw(GamePanel gp) {
-        super(gp);
+    public DeathClaw(GamePanel gp, int col, int row) {
+        super(gp, col, row);
         this.gp = gp;
         type = typeEnemy;
         name = "DeathClaw";

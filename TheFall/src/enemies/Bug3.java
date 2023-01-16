@@ -7,10 +7,10 @@ import object.misc.OBJ_Money;
 
 import java.util.Random;
 
-public class Bug3 extends Entity {
+public class Bug3 extends Enemy {
     GamePanel gp;
-    public Bug3(GamePanel gp) {
-        super(gp);
+    public Bug3(GamePanel gp, int col, int row) {
+        super(gp, col, row);
         this.gp = gp;
         type = typeEnemy;
         name = "Yellow bug";

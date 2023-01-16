@@ -1,9 +1,8 @@
 package enemies;
 
 import data.Progress;
-import entity.Entity;
 import main.GamePanel;
-import object.exterior.OBJ_IronDoor;
+import object.exterior.doors.OBJ_IronDoor;
 import object.misc.OBJ_HPPack;
 import object.misc.OBJ_Money;
 import object.projectiles.OBJ_Acid;
@@ -13,13 +12,13 @@ import object.weapon.OBJ_Ammo_Shotgun;
 import java.util.Objects;
 import java.util.Random;
 
-public class SlimeBoss extends Entity {
+public class SlimeBoss extends Enemy {
     GamePanel gp;
     public static final  String enName = "Gwargh the SLime Lord";
 
 
-    public SlimeBoss(GamePanel gp) {
-        super(gp);
+    public SlimeBoss(GamePanel gp, int col, int row) {
+        super(gp, col, row);
 
         this.gp = gp;
 

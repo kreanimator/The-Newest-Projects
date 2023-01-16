@@ -1,16 +1,17 @@
-package object.exterior;
+package object.exterior.doors;
 
 import entity.Entity;
 import main.GamePanel;
+import object.Object;
 
-public class OBJ_IronDoor extends Entity {
+public class OBJ_IronDoor extends Object {
 
     GamePanel gp;
     public final static String objName = "IronDoor";
 
-    public OBJ_IronDoor(GamePanel gp) {
+    public OBJ_IronDoor(GamePanel gp, int col, int row) {
 
-        super(gp);
+        super(gp, col, row);
         type = typeObstacle;
         name = objName;
         image = setup("objects/interactiveobjects/bunkerdoor2", gp.tileSize, gp.tileSize);

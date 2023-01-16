@@ -1,18 +1,6 @@
 package data;
 
-import entity.Entity;
 import main.GamePanel;
-import main.KeyHandler;
-import object.armor.OBJ_Armor_Learther;
-import object.armor.OBJ_Armor_Metal;
-import object.armor.OBJ_BarrelShield;
-import object.armor.OBJ_Shield;
-import object.exterior.OBJ_Door;
-import object.exterior.OBJ_GarbageTrunk;
-import object.exterior.OBJ_Locker;
-import object.interior.*;
-import object.misc.*;
-import object.weapon.*;
 
 import java.io.*;
 

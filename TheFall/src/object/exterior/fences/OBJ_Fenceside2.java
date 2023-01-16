@@ -1,4 +1,4 @@
-package object.exterior;
+package object.exterior.fences;
 
 import entity.Entity;
 import main.GamePanel;

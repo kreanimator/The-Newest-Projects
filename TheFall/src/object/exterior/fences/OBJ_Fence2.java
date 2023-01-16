@@ -1,15 +1,15 @@
-package object.exterior;
+package object.exterior.fences;
 
 import entity.Entity;
 import main.GamePanel;
 import object.Object;
 
-public class OBJ_Fence4 extends Object {
+public class OBJ_Fence2 extends Object {
     GamePanel gp;
-    public final static String objName = "Fence4";
+    public final static String objName = "Fence2";
 
-    public OBJ_Fence4(GamePanel gp, int col, int row) {
-        super(gp, col , row);
+    public OBJ_Fence2(GamePanel gp, int col , int row) {
+        super(gp, col ,row);
         this.gp = gp;
         name = objName;
         speed = 0;
@@ -33,7 +33,7 @@ public class OBJ_Fence4 extends Object {
         int width = gp.tileSize *2;
         int height = gp.tileSize + 24;
 
-        down1 = setup("tiles/exterior/fence4", width, height);
+        down1 = setup("tiles/exterior/fence2", width, height);
 
     }
 

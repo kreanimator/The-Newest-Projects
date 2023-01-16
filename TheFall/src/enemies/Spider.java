@@ -11,12 +11,12 @@ import object.weapon.OBJ_Ammo_Shotgun;
 
 import java.util.Random;
 
-public class Spider extends Entity {
+public class Spider extends Enemy {
     GamePanel gp;
 
 
-    public Spider(GamePanel gp) {
-        super(gp);
+    public Spider(GamePanel gp, int col, int row) {
+        super(gp, col, row);
         this.gp = gp;
         type = typeEnemy;
         name = "Spider";

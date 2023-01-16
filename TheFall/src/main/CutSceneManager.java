@@ -2,7 +2,7 @@ package main;
 
 import enemies.SlimeBoss;
 import entity.PlayerTemplate;
-import object.exterior.OBJ_IronDoor;
+import object.exterior.doors.OBJ_IronDoor;
 
 import java.awt.*;
 import java.util.Objects;
@@ -39,9 +39,7 @@ public class CutSceneManager {
 
             for (int i = 0; i < gp.obj[1].length; i++) {
                 if (gp.obj[gp.currentMap][i] == null) {
-                    gp.obj[gp.currentMap][i] = new OBJ_IronDoor(gp);
-                    gp.obj[gp.currentMap][i].worldX = gp.tileSize * 30;
-                    gp.obj[gp.currentMap][i].worldY = gp.tileSize * 46;
+                    gp.obj[gp.currentMap][i] = new OBJ_IronDoor(gp,30,46);
                     gp.obj[gp.currentMap][i].temp = true;
                     gp.playSE(28);
                     break;

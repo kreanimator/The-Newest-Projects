@@ -1,15 +1,14 @@
-package object.barrels;
+package object.exterior.crates;
 
-import entity.Entity;
 import main.GamePanel;
 import object.Object;
 
-public class OBJ_ToxicBarrels9 extends Object {
+public class OBJ_Crates2 extends Object {
     GamePanel gp;
-    public final static String objName = "ToxicBarrels9";
+    public final static String objName = "Crates2";
 
-    public OBJ_ToxicBarrels9(GamePanel gp, int col, int row) {
-        super(gp, col , row);
+    public OBJ_Crates2(GamePanel gp, int col , int row) {
+        super(gp,col,row);
         this.gp = gp;
         name = objName;
         speed = 0;
@@ -20,10 +19,10 @@ public class OBJ_ToxicBarrels9 extends Object {
         getImage();
         setAction();
 
-        solidArea.x = 6;
+        solidArea.x = 8;
         solidArea.y = 16;
         solidArea.width = 32;
-        solidArea.height = 32;
+        solidArea.height = 26;
 
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
@@ -33,16 +32,8 @@ public class OBJ_ToxicBarrels9 extends Object {
         int width = gp.tileSize;
         int height = gp.tileSize;
 
-        down1 = setup("tiles/exterior/toxic_barrels9", width, height);
+        down1 = setup("tiles/exterior/crates2", width, height);
 
-
-    }
-
-    public void setAction() {
-
-    }
-
-    public void update() {
 
     }
 }

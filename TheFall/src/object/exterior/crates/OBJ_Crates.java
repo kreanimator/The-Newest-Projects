@@ -1,15 +1,15 @@
-package object.exterior;
+package object.exterior.crates;
 
-import entity.Entity;
 import main.GamePanel;
 import object.Object;
 
-public class OBJ_WarningSign extends Object {
-    GamePanel gp;
-    public final static String objName = "Danger sign";
+public class OBJ_Crates extends Object {
 
-    public OBJ_WarningSign(GamePanel gp, int col, int row) {
-        super(gp, col,row);
+    GamePanel gp;
+    public final static String objName = "Crates";
+
+    public OBJ_Crates(GamePanel gp, int col , int row) {
+        super(gp,col,row);
         this.gp = gp;
         name = objName;
         speed = 0;
@@ -20,8 +20,8 @@ public class OBJ_WarningSign extends Object {
         getImage();
         setAction();
 
-        solidArea.x = 6;
-        solidArea.y = 16;
+        solidArea.x = 16;
+        solidArea.y = 12;
         solidArea.width = 32;
         solidArea.height = 32;
 
@@ -30,17 +30,11 @@ public class OBJ_WarningSign extends Object {
     }
 
     public void getImage() {
+        int width = gp.tileSize+12;
+        int height = gp.tileSize+12;
 
-        down1 = setup("tiles/exterior/danger", gp.tileSize, gp.tileSize);
+        down1 = setup("tiles/exterior/crates", width, height);
 
-
-    }
-
-    public void setAction() {
-
-    }
-
-    public void update() {
 
     }
 }

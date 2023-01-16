@@ -2,33 +2,24 @@ package main;
 
 import data.Progress;
 import enemies.*;
-import entity.Entity;
-import entity.NPC_BigRock;
-import entity.NPC_Ghoul;
-import entity.NPC_Nick;
+import entity.*;
 import object.barrels.*;
 import object.exterior.*;
-import object.fridges.OBJ_Fridge1;
-import object.fridges.OBJ_Fridge2;
-import object.fridges.OBJ_Fridge3;
-import object.fridges.OBJ_Fridge4;
-import object.misc.OBJ_HPPack;
-import object.misc.OBJ_Tent;
-import object.trash.OBJ_Bath1;
-import object.trash.OBJ_Garbage1;
-import object.trash.OBJ_Garbage2;
-import object.trash.OBJ_Garbage3;
+import object.exterior.crates.*;
+import object.exterior.doors.*;
+import object.exterior.fences.*;
+import object.fridges.*;
+import object.misc.*;
+import object.trash.*;
 import object.trees.OBJ_Tree1;
 import object.walls.*;
-import tile_interactive.IT_Box;
-import tile_interactive.IT_MetalPlate;
-import tile_interactive.IT_Vase;
+import tile_interactive.*;
+
 
 public class AssetSetter {
 
 
     GamePanel gp;
-
 
     public AssetSetter(GamePanel gp) {
         this.gp = gp;
@@ -205,78 +196,24 @@ public class AssetSetter {
         gp.obj[mapNum][i] = new WL_Sidewall(gp,44,59);i++;
 
 
-
-
-
         //BARRELS
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels1(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 80;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 54;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels2(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 67;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 50;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels3(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 76;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 54;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels4(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 84;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 50;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels5(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 84;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 59;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels6(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 77;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 56;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels1(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 83;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 64;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels10(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 78;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 61;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels2(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 72;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 64;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels3(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 67;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 59;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels7(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 80;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 54;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels9(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 72;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 59;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels1(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 70;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 54;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels8(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 73;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 56;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels12(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 84;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 54;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels4(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 78;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 66;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_ToxicBarrels3(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 66;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 64;
-        i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels1(gp, 80,54);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels2(gp,67,50);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels3(gp,76,54);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels4(gp,84,50);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels5(gp,84,59);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels6(gp,77,56);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels1(gp,83,64);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels10(gp,78,61);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels2(gp,72,64);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels3(gp,67,59);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels7(gp,80,54);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels9(gp,72,59);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels1(gp,70,54);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels8(gp,73,56);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels12(gp,84,54);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels4(gp,78,66);i++;
+        gp.obj[mapNum][i] = new OBJ_ToxicBarrels3(gp,66,64);i++;
 
         //FRIDGES
         gp.obj[mapNum][i] = new OBJ_Fridge1(gp,49,16);i++;
@@ -294,61 +231,40 @@ public class AssetSetter {
 
 
         //OBJECTS
+        gp.obj[mapNum][i] = new OBJ_Generator(gp,25,70);i++;
+        gp.obj[mapNum][i] = new OBJ_GarbageTrunkr(gp,44,59);
+        gp.obj[mapNum][i].setLoot(new OBJ_Tent(gp));i++;
+        gp.obj[mapNum][i] = new OBJ_GarbageTrunkl(gp,16,59);
+        gp.obj[mapNum][i].setLoot(new OBJ_Tent(gp));i++;
 
-        gp.obj[mapNum][i] = new OBJ_WarningSign(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 63;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 63;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_Pipes(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 16;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 15;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_Locker(gp);
-        gp.obj[mapNum][i].setLoot(new OBJ_Tent(gp));
-        gp.obj[mapNum][i].worldX = gp.tileSize * 34;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 81;
-        i++;
+        gp.obj[mapNum][i] = new OBJ_WarningSign(gp,63,63);i++;
+        gp.obj[mapNum][i] = new OBJ_Pipes(gp,16,15);i++;
+        gp.obj[mapNum][i] = new OBJ_Locker(gp,34,81);
+        gp.obj[mapNum][i].setLoot(new OBJ_Tent(gp));i++;
 
 
         //LEVEL 2
         mapNum =1;
         i=0;
-        gp.obj[mapNum][i] = new OBJ_IronDoor(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 89;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 48;
-        i++;
+        gp.obj[mapNum][i] = new OBJ_IronDoor(gp,89,48);i++;
 
 
 
         //LEVEL 3
         mapNum = 2;
         i=0;
-        gp.obj[mapNum][i] = new OBJ_IronDoor(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 98;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 57;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_Locker(gp);
-        gp.obj[mapNum][i].setLoot(new OBJ_HPPack(gp));
-        gp.obj[mapNum][i].worldX = gp.tileSize * 10;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 44;
+        gp.obj[mapNum][i] = new OBJ_IronDoor(gp,98,57);i++;
+
 
 
         //LEVEL 4
         mapNum = 3;
         i=0;
-        gp.obj[mapNum][i] = new OBJ_IronDoor(gp);
-        gp.obj[mapNum][i].worldX = gp.tileSize * 98;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 48;
-        i++;
-        gp.obj[mapNum][i] = new OBJ_Locker(gp);
-        gp.obj[mapNum][i].setLoot(new OBJ_HPPack(gp));
-        gp.obj[mapNum][i].worldX = gp.tileSize * 13;
-        gp.obj[mapNum][i].worldY = gp.tileSize * 39;
+        gp.obj[mapNum][i] = new OBJ_IronDoor(gp,98,48);i++;
+        gp.obj[mapNum][i] = new OBJ_Locker(gp,13,39);
+        gp.obj[mapNum][i].setLoot(new OBJ_HPPack(gp));i++;
 
     }
-
-
-
 
     public void setInteractiveTile(){
         int mapNum = 0;
@@ -406,117 +322,42 @@ public class AssetSetter {
         int mapNum = 0;
         int i = 0;
 
-        gp.enemy[mapNum][i] = new Bug1(gp,34,82);
-
-        i++;
-//        gp.enemy[mapNum][i] = new GreenSlime(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 77;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 82;
-//        i++;
-//        gp.enemy[mapNum][i] = new GreenSlime(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 78;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 85;
-//        i++;
-//        gp.enemy[mapNum][i] = new GreenSlime(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 75;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 83;
-//        i++;
-//        gp.enemy[mapNum][i] = new GreenSlime(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 74;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 83;
-//        i++;
+//        gp.enemy[mapNum][i] = new Bug1(gp,34,82);i++;
+//        gp.enemy[mapNum][i] = new GreenSlime(gp,77,82);i++;
+//        gp.enemy[mapNum][i] = new GreenSlime(gp,78,85);i++;
+//        gp.enemy[mapNum][i] = new GreenSlime(gp,75,83);i++;
+//        gp.enemy[mapNum][i] = new GreenSlime(gp,74,83);i++;
 //
-//        gp.enemy[mapNum][i] = new Punk(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 49;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize *13;
-//        i++;
-//        gp.enemy[mapNum][i] = new Punk(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 50;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 13;
-//        i++;
-//        gp.enemy[mapNum][i] = new Punk(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 63;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 13;
-//        i++;
-//        gp.enemy[mapNum][i] = new Punk(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 46;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 28;
-//        i++;
-//        gp.enemy[mapNum][i] = new Punk(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 47;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 28;
-//        i++;
-//        gp.enemy[mapNum][i] = new Punk(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 60;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 13;
-//        i++;
-//        gp.enemy[mapNum][i] = new Punk(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 30;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 18;
-//        i++;
-//        gp.enemy[mapNum][i] = new Punk(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 30;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 19;
-//        i++;
-//        gp.enemy[mapNum][i] = new Ghoul(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 75;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 46;
-//        i++;
-//        gp.enemy[mapNum][i] = new Ghoul(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 69;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 40;
-//        i++;
-//        gp.enemy[mapNum][i] = new Ghoul(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 78;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 50;
-//        i++;
-//        gp.enemy[mapNum][i] = new Ghoul(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 69;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 50;
-//        i++;
-//        gp.enemy[mapNum][i] = new Ghoul(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 70;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 43;
-//        i++;
-//        gp.enemy[mapNum][i] = new DeathClaw(gp);
-//        gp.enemy[mapNum][i].worldX = gp.tileSize * 29;
-//        gp.enemy[mapNum][i].worldY = gp.tileSize * 48;
-
-
-
+//        gp.enemy[mapNum][i] = new Punk(gp,49,13);i++;
+//        gp.enemy[mapNum][i] = new Punk(gp,50,13);i++;
+//        gp.enemy[mapNum][i] = new Punk(gp,63,13);i++;
+//        gp.enemy[mapNum][i] = new Punk(gp,46,28);i++;
+//        gp.enemy[mapNum][i] = new Punk(gp,47,28);i++;
+//        gp.enemy[mapNum][i] = new Punk(gp,60,13);i++;
+//        gp.enemy[mapNum][i] = new Punk(gp,30,18);i++;
+//        gp.enemy[mapNum][i] = new Punk(gp,30,19);i++;
+//        gp.enemy[mapNum][i] = new Ghoul(gp,75,46);i++;
+//        gp.enemy[mapNum][i] = new Ghoul(gp,69,40);i++;
+//        gp.enemy[mapNum][i] = new Ghoul(gp,78,50);i++;
+//        gp.enemy[mapNum][i] = new Ghoul(gp,69,50);i++;
+//        gp.enemy[mapNum][i] = new Ghoul(gp,70,43);i++;
+//        gp.enemy[mapNum][i] = new DeathClaw(gp,29,48);
 
         //LEVEL2
 
         mapNum =1;
         i=0;
-        gp.enemy[mapNum][i] = new Spider(gp);
-        gp.enemy[mapNum][i].worldX = gp.tileSize * 35;
-        gp.enemy[mapNum][i].worldY = gp.tileSize * 79;
-        i++;
+        gp.enemy[mapNum][i] = new Spider(gp,35,79);i++;
 
-        gp.enemy[mapNum][i] = new Bug1(gp);
-        gp.enemy[mapNum][i].worldX = gp.tileSize * 10;
-        gp.enemy[mapNum][i].worldY = gp.tileSize * 14;
-        i++;
-        gp.enemy[mapNum][i] = new Bug2(gp);
-        gp.enemy[mapNum][i].worldX = gp.tileSize * 13;
-        gp.enemy[mapNum][i].worldY = gp.tileSize * 14;
-        i++;
-        gp.enemy[mapNum][i] = new Bug3(gp);
-        gp.enemy[mapNum][i].worldX = gp.tileSize * 15;
-        gp.enemy[mapNum][i].worldY = gp.tileSize * 14;
+        gp.enemy[mapNum][i] = new Bug1(gp,10,14);i++;
+        gp.enemy[mapNum][i] = new Bug2(gp,13,14);i++;
+        gp.enemy[mapNum][i] = new Bug3(gp,15,14);
 
         mapNum =3;
         i=0;
         if(!Progress.slimeBossDefeated) {
-            gp.enemy[mapNum][i] = new SlimeBoss(gp);
-            gp.enemy[mapNum][i].worldX = gp.tileSize * 52;
-            gp.enemy[mapNum][i].worldY = gp.tileSize * 44;
+            gp.enemy[mapNum][i] = new SlimeBoss(gp,52,44);
         }
-    }
-    public void setup(Entity entity, int x, int y){
-        entity.worldX = gp.tileSize * x;
-        entity.worldY = gp.tileSize * y;
     }
 
 }

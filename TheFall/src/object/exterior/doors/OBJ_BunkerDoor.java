@@ -1,13 +1,14 @@
-package object.exterior;
+package object.exterior.doors;
 
 import entity.Entity;
 import main.GamePanel;
+import object.Object;
 
-public class OBJ_BunkerDoor extends Entity {
+public class OBJ_BunkerDoor extends Object {
     GamePanel gp;
     public final static String objName ="Bunker Door";
-    public OBJ_BunkerDoor(GamePanel gp) {
-        super(gp);
+    public OBJ_BunkerDoor(GamePanel gp, int col, int row) {
+        super(gp,col,row);
         type = typeObstacle;
         name = objName;
         image = setup("objects/interactiveobjects/bunkerdoor", gp.tileSize, gp.tileSize);

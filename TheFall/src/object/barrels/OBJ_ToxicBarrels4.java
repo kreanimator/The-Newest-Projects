@@ -2,13 +2,14 @@ package object.barrels;
 
 import entity.Entity;
 import main.GamePanel;
+import object.Object;
 
-public class OBJ_ToxicBarrels4 extends Entity {
+public class OBJ_ToxicBarrels4 extends Object {
     GamePanel gp;
     public final static String objName = "ToxicBarrels4";
 
-    public OBJ_ToxicBarrels4(GamePanel gp) {
-        super(gp);
+    public OBJ_ToxicBarrels4(GamePanel gp, int col, int row) {
+        super(gp, col, row);
         this.gp = gp;
         name = objName;
         speed = 0;

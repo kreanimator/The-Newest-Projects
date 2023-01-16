@@ -10,12 +10,12 @@ import object.projectiles.OBJ_Bullet;
 
 import java.util.Random;
 
-public class Punk extends Entity {
+public class Punk extends Enemy {
     GamePanel gp;
 
 
-    public Punk(GamePanel gp) {
-        super(gp);
+    public Punk(GamePanel gp, int col, int row) {
+        super(gp, col,row);
         this.gp = gp;
         type = typeEnemy;
         name = "Punk";

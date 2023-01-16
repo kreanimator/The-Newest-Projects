@@ -7,13 +7,13 @@ import object.misc.OBJ_Money;
 
 import java.util.Random;
 
-public class GreenSlime extends Entity {
+public class GreenSlime extends Enemy {
 
     GamePanel gp;
 
 
-    public GreenSlime(GamePanel gp) {
-        super(gp);
+    public GreenSlime(GamePanel gp, int col, int row) {
+        super(gp, col, row);
         this.gp = gp;
         type = typeEnemy;
         name = "Green Slime";
