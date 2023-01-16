@@ -21,6 +21,7 @@ public class OBJ_Generator extends Object {
         image = setup("tiles/exterior/generator", width, height);
 
         down1 = image;
+        down1 = image;
         collision = true;
         solidArea.x = 16;
         solidArea.y = 40;
